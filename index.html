@@ -20,6 +20,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       background-color: var(--black);
@@ -46,6 +50,7 @@
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
     }
 
     .hero {
@@ -116,6 +121,14 @@
       color: var(--titanium);
     }
 
+    section {
+      padding: 4rem 2rem;
+    }
+
+    #nosotros, #contacto {
+      background-color: #1A1A1A;
+    }
+
     footer {
       background-color: #111;
       color: var(--titanium);
@@ -158,7 +171,7 @@
   <section class="hero">
     <h2>Potencia Eléctrica, Diseño Futurista</h2>
     <p>Descubre la nueva era de las motos eléctricas con Blue Energy. Rendimiento, estilo y sostenibilidad en cada kilómetro.</p>
-    <button class="cta-button">Explorar Modelos</button>
+    <a href="#productos" class="cta-button">Explorar Modelos</a>
   </section>
 
   <section id="productos" class="products">
@@ -179,7 +192,16 @@
     </div>
   </section>
 
-   
+  <section id="nosotros">
+    <h2>Nosotros</h2>
+    <p>En Blue Energy Bikes impulsamos la movilidad eléctrica con diseño, innovación y compromiso ambiental. Diseñamos motos que combinan tecnología de punta, autonomía real y un estilo único pensado para quienes lideran el futuro.</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Quieres una Blue en tu vida? Escríbenos a <a href="mailto:ventas@blueenergy.com" style="color: var(--electric-blue);">ventas@blueenergy.com</a> o síguenos en nuestras redes para estar al día con los lanzamientos.</p>
+  </section>
+
   <footer>
     <p>&copy; 2025 Blue Energy Bikes. Todos los derechos reservados.</p>
   </footer>
