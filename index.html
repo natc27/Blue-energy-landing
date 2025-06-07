@@ -40,17 +40,53 @@
       flex-wrap: wrap;
     }
 
-    header h1 {
-      color: var(--electric-blue);
-      font-size: 1.5rem;
+    .logo {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
 
     nav a {
       color: var(--white);
-      margin-left: 1.5rem;
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #2a2a2a;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: var(--white);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: var(--black);
+      color: var(--neon-lime);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     .hero {
@@ -144,12 +180,9 @@
 
       nav {
         margin-top: 1rem;
-        display: flex;
         flex-direction: column;
-      }
-
-      nav a {
-        margin: 0.5rem 0;
+        align-items: flex-start;
+        gap: 1rem;
       }
 
       .hero h2 {
@@ -160,41 +193,51 @@
 </head>
 <body>
   <header>
-    <h1>Blue Energy Bikes</h1>
+    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo" />
     <nav>
       <a href="#productos">Productos</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto">Contacto</a>
+      <div class="dropdown">
+        <a>Módulos</a>
+        <div class="dropdown-content">
+          <a href="#">Gestión de Proyecto</a>
+          <a href="#">Gestión de Producción</a>
+          <a href="#">Celda de Manufactura Automatizada</a>
+        </div>
+      </div>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Potencia Eléctrica, Diseño Futurista</h2>
-    <p>Descubre la nueva era de las motos eléctricas con Blue Energy. Rendimiento, estilo y sostenibilidad en cada kilómetro.</p>
+    <h2>BLue Energy Bikes.</h2>
+    <h3>Potencia Eléctrica, Diseño Futurista</h3>
+    <p>Descubre la nueva era de las motos eléctricas. Rendimiento, estilo, potencia y sostenibilidad en cada kilómetro.</p>
     <a href="#productos" class="cta-button">Explorar Modelos</a>
   </section>
 
   <section id="productos" class="products">
     <div class="product">
-      <img src="bike1.jpg" alt="Blue Jet Naked" />
+      <img src="Multimedia/NakedBike.jpg" alt="Blue Jet Naked" />
       <h3>Blue Jet</h3>
-      <p>Naked urbana de 3500W con diseño agresivo y autonomía de hasta 120 km.</p>
+      <p>Naked urbana de 3.500W con diseño agresivo y autonomía de hasta 120 km.</p>
     </div>
     <div class="product">
-      <img src="bike2.jpg" alt="Blue Flash Sport" />
-      <h3>Blue Flash</h3>
-      <p>Sport carenada de 2000W ideal para iniciarse en el mundo eléctrico.</p>
+      <img src="Multimedia/Bvolution.jpg" alt="Blue Blaze Sport" />
+      <h3>Blue Blaze</h3>
+      <p>Sport carenada de 5.000W y autonomía de hasta 250 km, ideal para iniciarse en el mundo eléctrico.</p>
     </div>
     <div class="product">
-      <img src="bike3.jpg" alt="Blue Evolution" />
-      <h3>Blue Evolution</h3>
-      <p>Modelo avanzado de alto rendimiento, ideal para largas distancias con estilo.</p>
+      <img src="Multimedia/Bvolution.jpg" alt="Blue Thunder" />
+      <h3>Blue Thunder</h3>
+      <p>Modelo avanzado de alto rendimiento, con su motor de 3.500W y autonomía de 230 km.</p>
     </div>
   </section>
 
   <section id="nosotros">
     <h2>Nosotros</h2>
-    <p>En Blue Energy Bikes impulsamos la movilidad eléctrica con diseño, innovación y compromiso ambiental. Diseñamos motos que combinan tecnología de punta, autonomía real y un estilo único pensado para quienes lideran el futuro.</p>
+    <p>En Blue Energy Bikes impulsamos la movilidad eléctrica con diseño, innovación y compromiso ambiental. Diseñamos motos que combinan tecnología de punta, industria 4.0, autonomía real y un estilo único pensado para quienes lideran el futuro.</p>
+    <p> Somos una empresa colombiana con #TalentoUNAL </p>
   </section>
 
   <section id="contacto">
