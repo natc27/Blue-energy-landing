@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulación - Celda Automatizada</title>
+  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --titanium: #A0A0A0;
+      --white: #FFFFFF;
+      --neon-lime: #BFFF00;
+      --card-bg: #2a2a2a;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header {
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      height: 80px;
+      width: 80px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0;
+    }
+
+    nav a, .dropdown-button {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .dropdown-container {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #1C1C1C;
+      z-index: 1000;
+      list-style: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .dropdown-menu li {
+      margin: 0.5rem 0;
+    }
+
+    .dropdown-container:hover .dropdown-menu {
+      display: block;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: var(--electric-blue);
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card-bg);
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #444;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
+
+    tr:nth-child(even) {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown-container">
+          <button class="dropdown-button">Módulos ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+            <li><a href="simulacion.html">Simulación</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Simulación de la Celda Automatizada</h1>
+
+    <div class="card">
+      <h2>Resumen de Estaciones de Ensamblaje</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Estación</th>
+            <th>Tiempo de Proceso (MM:SS)</th>
+            <th>Falla (Duración)</th>
+            <th>Disponibilidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
+          <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
+          <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
+          <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
+          <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
+          <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
+          <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
+          <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
+          <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
+          <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Descripción de la Simulación</h2>
+      <p>Se ha modelado la línea de ensamblaje considerando flujos paralelos (para baterías, motores y chasis con variabilidad), fallas con distribución uniforme, buffers limitados y sin intervención humana directa. La simulación permite analizar KPIs como tiempos de ciclo, tasas de producción, utilización de estaciones y fallos.</p>
+    </div>
+  </div>
+</body>
+</html>
