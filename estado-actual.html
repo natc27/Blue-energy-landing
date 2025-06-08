@@ -14,17 +14,14 @@
       --white: #FFFFFF;
       --neon-lime: #BFFF00;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: 'Roboto', sans-serif;
       background-color: var(--black);
@@ -32,7 +29,6 @@
       line-height: 1.6;
       padding-top: 110px;
     }
-
     header {
       position: fixed;
       top: 0;
@@ -47,20 +43,17 @@
       z-index: 100;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
-
     .logo {
       height: 80px;
       width: 80px;
       border-radius: 50%;
     }
-
     nav ul {
       list-style: none;
       display: flex;
       align-items: center;
       gap: 1.5rem;
     }
-
     nav a, .dropdown-button {
       color: var(--white);
       text-decoration: none;
@@ -69,11 +62,9 @@
       background: none;
       border: none;
     }
-
     .dropdown-container {
       position: relative;
     }
-
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -85,28 +76,23 @@
       padding: 0.5rem 1rem;
       border-radius: 5px;
     }
-
     .dropdown-menu li {
       margin: 0.5rem 0;
     }
-
     .dropdown-container:hover .dropdown-menu {
       display: block;
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .menu-toggle span {
       background: var(--white);
       height: 3px;
       margin: 5px 0;
       width: 25px;
     }
-
     .mobile-nav {
       display: none;
       flex-direction: column;
@@ -117,95 +103,92 @@
       left: 0;
       width: 100%;
     }
-
     .mobile-nav a {
       color: var(--white);
       padding: 0.5rem 0;
       text-decoration: none;
       border-bottom: 1px solid var(--titanium);
     }
-
     @media (max-width: 850px) {
-      nav ul {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .mobile-nav {
-        display: none;
-      }
-
-      .mobile-nav.active {
-        display: flex;
-      }
+      nav ul { display: none; }
+      .menu-toggle { display: flex; }
+      .mobile-nav { display: none; }
+      .mobile-nav.active { display: flex; }
     }
-
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 4rem 2rem;
-    }
-
-    .estado-contenido {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
-      margin-bottom: 3rem;
     }
-
-    .descripcion-planta, .card {
+    .card, .descripcion-planta, .simulacion-card {
       background-color: #2a2a2a;
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
     }
-
-    .card h2, .descripcion-planta h2 {
+    h1, h2, h3 {
       color: var(--electric-blue);
       margin-bottom: 1rem;
     }
-
-    .card ul li, .descripcion-planta p {
+    p, li, table {
       color: var(--titanium);
-      margin-bottom: 0.75rem;
     }
-
-    .simulacion-card {
-      background-color: #2a2a2a;
-      padding: 2rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+    table {
+      width: 100%;
+      border-collapse: collapse;
     }
-
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--titanium);
+    }
+    thead tr {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
     .simulacion-card img {
       width: 100%;
       max-width: 600px;
       border-radius: 10px;
       margin-top: 1rem;
     }
-
-    .container h1, .container h3 {
-      color: var(--electric-blue);
-      margin-bottom: 1rem;
-    }
-
-    .container p {
-      color: var(--white);
-      margin-bottom: 1rem;
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem; }
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      thead { display: none; }
+      tr {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--electric-blue);
+      }
+      td {
+        padding-left: 50%;
+        position: relative;
+      }
+      td::before {
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 1rem;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      td:nth-of-type(1)::before { content: 'Indicador'; }
+      td:nth-of-type(2)::before { content: 'Valor'; }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
     <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
     <nav>
       <ul>
@@ -240,95 +223,83 @@
     </div>
   </header>
 
+  <!-- Contenido -->
   <div class="container">
     <h1>Estado actual de la planta</h1>
-    <div class="estado-contenido">
-      <div class="descripcion-planta">
-        <h2>Descripción general</h2>
-        <p>Considerando la demanda creciente en 2025 de motos eléctricas, la empresa ensambladora cuenta con 9 estaciones para cumplir con el proceso, sin embargo, todas las estaciones se encuentran operadas de forma manual, limitando la producción y los tiempos de entrega.</p>
-        <p>En cuanto la demanda aumenta se observan problemas de mercado con los tiempos de entrega, por lo que es importante mejorar estos tiempos de producción y alistamiento para sacar el mayor provecho a una demanda emergente en esta alternativa de movilidad en el país. Así, inicia el proceso para optimizar el ensamblaje de motos eléctricas de alto voltaje.</p>
-      </div>
 
-      <div class="container">
-    <h1>Simulación de la Celda Automatizada</h1>
-        <p>Se ha modelado la línea de ensamblaje considerando flujos paralelos (para baterías, motores y chasis con variabilidad), fallas con distribución uniforme, buffers limitados y sin intervención humana directa. La simulación permite analizar KPIs como tiempos de ciclo, tasas de producción, utilización de estaciones y fallos.</p>
-        <div class="simulacion-card">
-            <h2>Simulación del estado actual</h2>
-            <img src="Multimedia/simulacion-estado-actual.png" alt="Simulación Planta">
-        </div>
-
-        <div class="card">
-        <h2>Resumen de Estaciones de Ensamblaje</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Estación</th>
-                <th>Tiempo de Proceso (MM:SS)</th>
-                <th>Falla (Duración)</th>
-                <th>Disponibilidad</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
-            <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
-            <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
-            <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
-            <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
-            <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
-            <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
-            <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
-            <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
-            <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
-            </tbody>
-        </table>
-        </div>
-
-      <div class="card">
-        <h2>Características generales de la planta</h2>
-        <ul>
-          <li><strong>Línea de ensamblaje:</strong> 10 estaciones manuales</li>
-          <li><strong>Turnos activos:</strong> 1 diario</li>
-          <li><strong>Duración del Turno:</strong> 8 horas</li>
-          <li><strong>Personal operativo:</strong> 5 trabajadores</li>
-          <li><strong>Tiempo de ciclo:</strong> 202.5 segundos (3:23 minutos) por estación en promedio</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Indicadores productivos de la planta</h2>
-        <table style="width: 100%; border-collapse: collapse; color: var(--white);">
-          <thead>
-            <tr style="background-color: var(--electric-blue); color: var(--black);">
-              <th style="padding: 0.75rem; text-align: left;">Indicador</th>
-              <th style="padding: 0.75rem; text-align: left;">Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">Tiempo total de ensamblaje</td>
-              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">33:45 minutos por motocicleta</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">Capacidad instalada</td>
-              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">14 motos/día</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">Producción mensual</td>
-              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">313 unidades</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.75rem;">O.E.E. estimado</td>
-              <td style="padding: 0.75rem;">60%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="descripcion-planta">
+      <h2>Descripción general</h2>
+      <p>Considerando la demanda creciente en 2025 de motos eléctricas, la empresa ensambladora cuenta con 9 estaciones para cumplir con el proceso. Sin embargo, todas las estaciones se encuentran operadas de forma manual, limitando la producción y los tiempos de entrega.</p>
+      <p>En cuanto la demanda aumenta se observan problemas de mercado con los tiempos de entrega, por lo que es importante mejorar estos tiempos de producción y alistamiento para sacar el mayor provecho a una demanda emergente. Así, inicia el proceso para optimizar el ensamblaje de motos eléctricas de alto voltaje.</p>
     </div>
 
-    <h3>Diagnóstico</h3>
-    <p>Si bien en el momento cumple con la demanda esperada, la planta y sus procesos presentan retrasos significativos, limitaciones debido a los procesos manuales, un nivel tecnológico bajo y dificultades en el monitoreo y trazabilidad de los productos y procesos.</p>
-    <p>No obstante, se debe reconocer la alta flexibilidad con la que cuenta la operación, lo que permite una ventaja en cuanto a la personalización de partes y cambios en los modelos.</p>
-    <p>Por lo tanto es evidente la opción de mejora en los procesos, que le permita a la empresa adaptarse a tiempos con picos de demanda o a una sostenibilidad a largo plazo con un mercado creciente, procurando conservar el valor de la flexibilidad y personalización, altamente valorado en las tendencias de mercado vehicular actuales.</p>
+    <div class="card">
+      <h2>Resumen de Estaciones de Ensamblaje</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Estación</th>
+            <th>Tiempo de Proceso (MM:SS)</th>
+            <th>Falla (Duración)</th>
+            <th>Disponibilidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
+          <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
+          <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
+          <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
+          <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
+          <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
+          <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
+          <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
+          <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
+          <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
+        </tbody>
+      </table>
+    </div>
 
+    <div class="simulacion-card">
+      <h2>Simulación del estado actual</h2>
+      <p>Se ha modelado la línea de ensamblaje considerando flujos paralelos (para baterías, motores y chasis), fallas con distribución uniforme, buffers limitados y sin intervención humana directa. La simulación permite analizar KPIs como tiempos de ciclo, tasas de producción, utilización de estaciones y fallos.</p>
+      <img src="Multimedia/simulacion-estado-actual.png" alt="Simulación Planta">
+    </div>
+
+    <div class="card">
+      <h2>Características generales de la planta</h2>
+      <ul>
+        <li><strong>Línea de ensamblaje:</strong> 10 estaciones manuales</li>
+        <li><strong>Turnos activos:</strong> 1 diario</li>
+        <li><strong>Duración del Turno:</strong> 8 horas</li>
+        <li><strong>Personal operativo:</strong> 5 trabajadores</li>
+        <li><strong>Tiempo de ciclo:</strong> 202.5 segundos (3:23 minutos) por estación en promedio</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Indicadores productivos de la planta</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Indicador</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tiempo total de ensamblaje</td><td>33:45 minutos por motocicleta</td></tr>
+          <tr><td>Capacidad instalada</td><td>14 motos/día</td></tr>
+          <tr><td>Producción mensual</td><td>313 unidades</td></tr>
+          <tr><td>O.E.E. estimado</td><td>60%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="descripcion-planta">
+      <h3>Diagnóstico</h3>
+      <p>Si bien en el momento cumple con la demanda esperada, la planta y sus procesos presentan retrasos significativos, limitaciones debido a los procesos manuales, un nivel tecnológico bajo y dificultades en el monitoreo y trazabilidad de los productos y procesos.</p>
+      <p>No obstante, se debe reconocer la alta flexibilidad con la que cuenta la operación, lo que permite una ventaja en cuanto a la personalización de partes y cambios en los modelos.</p>
+      <p>Por lo tanto es evidente la opción de mejora en los procesos, que le permita a la empresa adaptarse a tiempos con picos de demanda o a una sostenibilidad a largo plazo con un mercado creciente, procurando conservar el valor de la flexibilidad y personalización, altamente valorado en las tendencias de mercado vehicular actuales.</p>
+    </div>
   </div>
 </body>
 </html>
