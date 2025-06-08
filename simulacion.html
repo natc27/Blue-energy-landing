@@ -15,6 +15,7 @@
       --white: #FFFFFF;
       --neon-lime: #BFFF00;
       --card-bg: #2a2a2a;
+      --hover-bg: #3a3a3a;
     }
 
     body {
@@ -72,10 +73,16 @@
       border-radius: 5px;
     }
 
-    .dropdown-menu li {
-      margin: 0.5rem 0;
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
     }
-
+    .dropdown-menu li a:hover {
+      background-color: var(--hover-bg);
+    }
     .dropdown-container:hover .dropdown-menu {
       display: block;
     }
