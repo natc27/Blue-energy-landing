@@ -94,6 +94,56 @@
       display: block;
     }
 
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background: var(--white);
+      height: 3px;
+      margin: 5px 0;
+      width: 25px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--black);
+      padding: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+
+    .mobile-nav a {
+      color: var(--white);
+      padding: 0.5rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--titanium);
+    }
+
+    @media (max-width: 850px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .mobile-nav.active {
+        display: flex;
+      }
+    }
+
+
     .hero {
       position: relative;
       height: 100vh;
@@ -260,6 +310,11 @@
 <body>
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -279,6 +334,18 @@
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
     </nav>
+    <div class="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="estado-actual.html">Estado actual</a>
+      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+      <a href="gestion-produccion.html">Gestión de Producción</a>
+      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="simulacion.html">Simulación</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
   </header>
 
   <section class="hero">
