@@ -30,6 +30,7 @@
       background-color: var(--black);
       color: var(--white);
       line-height: 1.6;
+      padding-top: 110px; /* deja espacio para header fijo */
     }
 
     header {
@@ -47,16 +48,10 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding-top: 110px;
-      }
-    }
-
-
     .logo {
       height: 80px;
       width: 80px;
+      border-radius: 50%;
     }
 
     nav ul {
@@ -100,14 +95,13 @@
     }
 
     .hero {
-      margin-top: 100px;
       position: relative;
       height: 100vh;
       padding: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;     
+      align-items: center;
       text-align: center;
       overflow: hidden;
     }
@@ -123,18 +117,25 @@
       z-index: 0;
     }
 
+    .hero h2, .hero h3, .hero p, .hero a {
+      position: relative;
+      z-index: 1;
+    }
+
     .hero h2 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
+    }
+
+    .hero h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--electric-blue);
     }
 
     .hero p {
       max-width: 600px;
       color: var(--titanium);
-    }
-    .hero a {
-      position: relative;
-      z-index: 1;
     }
 
     .cta-button {
@@ -166,6 +167,8 @@
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
 
     .product:hover {
@@ -192,6 +195,45 @@
 
     #nosotros, #contacto {
       background-color: #1A1A1A;
+      padding: 4rem 2rem;
+    }
+
+    .equipo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .miembro {
+      background-color: #2a2a2a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .miembro:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 15px var(--electric-blue);
+    }
+
+    .miembro img {
+      width: 80%;
+      max-width: 200px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    .miembro h3 {
+      color: var(--electric-blue);
+    }
+
+    .miembro p {
+      color: var(--titanium);
     }
 
     footer {
@@ -216,120 +258,77 @@
   </style>
 </head>
 <body>
-  padding-top: 100px;
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
     <nav>
       <ul>
-        <li> <a href="index.html">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li class="dropdown-container">
           <button class="dropdown-button">Módulos ▾</button>
           <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual de la planta</a></li>
+            <li><a href="estado-actual.html">Estado actual</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
             <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
             <li><a href="presupuesto.html">Presupuesto</a></li>
-            <li><a href="simulacion.html">Simulación</a></li>
+            <li><a href="simulación.html">Simulación</a></li>
           </ul>
         </li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-
-
-
   <section class="hero">
-
-    <h2>Blue Energy Bikes.</h2>
+    <h2>BLue Energy Bikes.</h2>
     <h3>Potencia Eléctrica, Diseño Futurista</h3>
     <p>Descubre la nueva era de las motos eléctricas. Rendimiento, estilo, potencia y sostenibilidad en cada kilómetro.</p>
     <a href="#productos" class="cta-button">Explorar Modelos</a>
   </section>
 
   <section id="productos" class="products">
-    <div class="product">
+    <a href="Blue-jet.html" class="product">
       <img src="Multimedia/NakedBike.jpg" alt="Blue Jet Naked" />
       <h3>Blue Jet</h3>
       <p>Naked urbana de 3.500W con diseño agresivo y autonomía de hasta 120 km.</p>
-    </div>
-    <div class="product">
+    </a>
+    <a href="Blue-blaze.html" class="product">
       <img src="Multimedia/Bvolution.jpg" alt="Blue Blaze Sport" />
       <h3>Blue Blaze</h3>
       <p>Sport carenada de 5.000W y autonomía de hasta 250 km, ideal para iniciarse en el mundo eléctrico.</p>
-    </div>
-    <div class="product">
+    </a>
+    <a href="Blue-thunder.html" class="product">
       <img src="Multimedia/Bvolution.jpg" alt="Blue Thunder" />
       <h3>Blue Thunder</h3>
       <p>Modelo avanzado de alto rendimiento, con su motor de 3.500W y autonomía de 230 km.</p>
-    </div>
+    </a>
   </section>
-  
+
   <section id="nosotros">
     <h2>Nosotros</h2>
     <p>En Blue Energy Bikes impulsamos la movilidad eléctrica con diseño, innovación y compromiso ambiental. Diseñamos motos que combinan tecnología de punta, industria 4.0, autonomía real y un estilo único pensado para quienes lideran el futuro.</p>
     <p>Somos una empresa colombiana con #TalentoUNAL</p>
 
-    <style>
-      .equipo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .miembro {
-        background-color: #2a2a2a;
-        padding: 1.5rem;
-        border-radius: 10px;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .miembro:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 15px var(--electric-blue);
-      }
-
-      .miembro img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-      }
-
-      .miembro h3 {
-        color: var(--electric-blue);
-      }
-
-      .miembro p {
-        color: var(--titanium);
-      }
-    </style>
-
     <div class="equipo-grid">
       <div class="miembro">
-        <img src="Multimedia/integrante1.jpg" alt="Integrante 1" style="width: 80%; max-width: 200px; display: block; margin: 0 auto 1rem; border-radius: 20%;">
+        <img src="Multimedia/integrante1.jpg" alt="Integrante 1">
         <h3>Natalia Cely.</h3>
         <p>Ingeniera Mecatrónica.</p>
       </div>
       <div class="miembro">
-        <img src="Multimedia/integrante2.jpg" alt="Integrante 2" style="width: 80%; max-width: 200px; display: block; margin: 0 auto 1rem; border-radius: 20%;">
+        <img src="Multimedia/integrante2.jpg" alt="Integrante 2">
         <h3>Felipe Chaves.</h3>
         <p>Ingeniero Mecatrónico.</p>
       </div>
       <div class="miembro">
-        <img src="Multimedia/integrante3.jpg" alt="Integrante 3" style="width: 80%; max-width: 200px; display: block; margin: 0 auto 1rem; border-radius: 20%;">
+        <img src="Multimedia/integrante3.jpg" alt="Integrante 3">
         <h3>Marco Quimbay.</h3>
         <p>Ingeniero Mecatrónico.</p>
       </div>
       <div class="miembro">
-        <img src="Multimedia/integrante4.jpg" alt="Integrante 4" style="width: 80%; max-width: 200px; display: block; margin: 0 auto 1rem; border-radius: 20%;">
+        <img src="Multimedia/integrante4.jpg" alt="Integrante 4">
         <h3>Andres Torres.</h3>
         <p>Ingeniero Mecatrónico.</p>
       </div>
@@ -338,7 +337,7 @@
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <p>¿Quieres una Blue en tu vida? Escríbenos a <a href="mailto:ventas@blueenergy.com" style="color: var(--electric-blue);">ventas@blueenergy.com</a> o síguenos en nuestras redes para estar al día con los lanzamientos.</p>
+    <p>¿Quieres empezar a rodar en una Blue? Escríbenos a <a href="mailto:ventas@blueenergy.com" style="color: var(--electric-blue);">ventas@blueenergy.com</a></p>
   </section>
 
   <footer>
@@ -346,4 +345,3 @@
   </footer>
 </body>
 </html>
-
