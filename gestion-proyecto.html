@@ -29,12 +29,18 @@
     }
 
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       background-color: var(--black);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     .logo {
@@ -139,14 +145,17 @@
         <li class="dropdown-container">
           <button class="dropdown-button">Módulos ▾</button>
           <ul class="dropdown-menu">
+            <li><a href="estado-actual.html">Estado actual de la planta</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
             <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+            <li><a href="presupuesto.html">Presupuesto</a></li>
+            <li><a href="simulacion.html">Simulación</a></li>
           </ul>
         </li>
-        <li><a href="index.html#nosotros">Nosotros</a></li>
-        <li><a href="index.html#productos">Productos</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
