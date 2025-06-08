@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión del Proyecto - Blue Energy Bikes</title>
+  <title>Blue Energy Bikes</title>
   <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -13,19 +13,24 @@
       --titanium: #A0A0A0;
       --white: #FFFFFF;
       --neon-lime: #BFFF00;
-      --card-bg: #2a2a2a;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Roboto', sans-serif;
       background-color: var(--black);
       color: var(--white);
+      line-height: 1.6;
+      padding-top: 110px;
     }
 
     header {
@@ -46,6 +51,7 @@
     .logo {
       height: 80px;
       width: 80px;
+      border-radius: 50%;
     }
 
     nav ul {
@@ -53,7 +59,6 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      padding: 0;
     }
 
     nav a, .dropdown-button {
@@ -89,62 +94,126 @@
       display: block;
     }
 
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background: var(--white);
+      height: 3px;
+      margin: 5px 0;
+      width: 25px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--black);
+      padding: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+
+    .mobile-nav a {
+      color: var(--white);
+      padding: 0.5rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--titanium);
+    }
+
+    @media (max-width: 850px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .mobile-nav.active {
+        display: flex;
+      }
+    }
+
     .container {
-      padding: 2rem;
       max-width: 1200px;
       margin: auto;
+      padding: 4rem 2rem;
     }
 
-    h1, h2, h3 {
-      color: var(--electric-blue);
-      margin-top: 2rem;
+    .estado-contenido {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .card {
-      background-color: var(--card-bg);
-      padding: 1.5rem;
+    .descripcion-planta, .card {
+      background-color: #2a2a2a;
+      padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
-      margin: 1.5rem 0;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
     }
 
-    ul li {
-      margin-bottom: 0.5rem;
+    .card h2, .descripcion-planta h2 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
     }
 
-    table {
+    .card ul li, .descripcion-planta p {
+      color: var(--titanium);
+      margin-bottom: 0.75rem;
+    }
+
+    .simulacion-card {
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+    }
+
+    .simulacion-card img {
       width: 100%;
-      border-collapse: collapse;
-      background-color: var(--card-bg);
+      max-width: 600px;
+      border-radius: 10px;
       margin-top: 1rem;
     }
 
-    th, td {
-      border: 1px solid #444;
-      padding: 0.75rem;
-      text-align: left;
+    .container h1, .container h3 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
     }
 
-    th {
-      background-color: var(--electric-blue);
-      color: var(--black);
-    }
-
-    tr:nth-child(even) {
-      background-color: #333;
+    .container p {
+      color: var(--white);
+      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <ul>
-        <li> <a href="index.html">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li class="dropdown-container">
           <button class="dropdown-button">Módulos ▾</button>
           <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual de la planta</a></li>
+            <li><a href="estado-actual.html">Estado actual</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
             <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
@@ -157,7 +226,20 @@
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
     </nav>
+    <div class="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="estado-actual.html">Estado actual</a>
+      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+      <a href="gestion-produccion.html">Gestión de Producción</a>
+      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="simulacion.html">Simulación</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
   </header>
+
 
   <div class="container">
     padding-top: 100px;
