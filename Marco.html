@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión del Proyecto - Blue Energy Bikes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --titanium: #A0A0A0;
+      --white: #FFFFFF;
+      --neon-lime: #BFFF00;
+      --card-bg: #2a2a2a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header {
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0;
+    }
+
+    nav a, .dropdown-button {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .dropdown-container {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #1C1C1C;
+      z-index: 1000;
+      list-style: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .dropdown-menu li {
+      margin: 0.5rem 0;
+    }
+
+    .dropdown-container:hover .dropdown-menu {
+      display: block;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      color: var(--electric-blue);
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
+      margin: 1.5rem 0;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card-bg);
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #444;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
+
+    tr:nth-child(even) {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <nav>
+      <ul>
+        <li class="dropdown-container">
+          <button class="dropdown-button">Módulos ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+            <li><a href="#modulo-produccion">Gestión de Producción</a></li>
+            <li><a href="#modulo-celda">Celda de Manufactura Automatizada</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Gestión del Proyecto</h1>
+
+    <div class="card">
+      <h2>1. Definición de Objetivos, Alcance y Restricciones</h2>
+      <p>El objetivo principal es desarrollar una línea de motos eléctricas innovadoras, enfocadas en el mercado urbano colombiano, priorizando la sostenibilidad, eficiencia energética y diseño atractivo. El alcance incluye el diseño técnico, la selección de componentes y la planificación de producción. Las restricciones son el presupuesto limitado, el tiempo de desarrollo (6 meses) y la disponibilidad local de materiales.</p>
+    </div>
+
+    <div class="card">
+      <h2>2. Estructura Desglosada del Trabajo (EDT)</h2>
+      <ul>
+        <li><strong>1. Planificación del proyecto</strong>
+          <ul><li>1.1 Definición de objetivos</li><li>1.2 Análisis de usuarios</li></ul>
+        </li>
+        <li><strong>2. Investigación</strong>
+          <ul><li>2.1 Benchmarking</li><li>2.2 Recolección de datos técnicos</li></ul>
+        </li>
+        <li><strong>3. Diseño del producto</strong>
+          <ul><li>3.1 Selección de componentes</li><li>3.2 Diseño CAD</li></ul>
+        </li>
+        <li><strong>4. Prototipado</strong>
+          <ul><li>4.1 Fabricación de partes</li><li>4.2 Ensamblaje</li></ul>
+        </li>
+        <li><strong>5. Evaluación</strong>
+          <ul><li>5.1 Pruebas de funcionamiento</li><li>5.2 Ajustes finales</li></ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+  <h2>3. Cronograma de Actividades</h2>
+  <table>
+    <thead>
+      <tr><th>Actividad</th><th>Inicio</th><th>Fin</th><th>Responsable</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Definición de objetivos, alcance y restricciones del proyecto</td><td>04/02/2025</td><td>04/08/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Elaboración de la Estructura Desglosada del Trabajo (EDT)</td><td>04/02/2025</td><td>04/08/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Creación del cronograma y asignación de responsables</td><td>04/02/2025</td><td>04/08/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Análisis de necesidades del usuario</td><td>04/09/2025</td><td>04/15/2025</td><td>Natalia Cely</td></tr>
+      <tr><td>Benchmarking de modelos existentes</td><td>04/09/2025</td><td>04/15/2025</td><td>Felipe Chaves</td></tr>
+      <tr><td>Selección y justificación de características clave</td><td>04/09/2025</td><td>04/25/2025</td><td>Marco Quimbay</td></tr>
+      <tr><td>Obtención de diseños CAD</td><td>04/09/2025</td><td>06/06/2025</td><td>Andres Torres</td></tr>
+      <tr><td>Creación lista de materiales (BOM)</td><td>04/09/2025</td><td>04/15/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Creación página web inicial</td><td>04/16/2025</td><td>05/06/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Diseño del layout de la planta de ensamblaje</td><td>05/07/2025</td><td>05/21/2025</td><td>Natalia Cely</td></tr>
+      <tr><td>Propuesta de automatización de procesos de ensamblaje</td><td>05/07/2025</td><td>05/28/2025</td><td>Felipe Chaves</td></tr>
+      <tr><td>Simulación de flujo de trabajo</td><td>05/22/2025</td><td>06/06/2025</td><td>Marco Quimbay</td></tr>
+      <tr><td>Definición de indicadores clave (OEE, tiempo de ciclo...)</td><td>06/23/2025</td><td>06/27/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Cálculo de costos de producción</td><td>05/29/2025</td><td>06/02/2025</td><td>Natalia Cely</td></tr>
+      <tr><td>Estimación de inversión inicial</td><td>05/29/2025</td><td>06/05/2025</td><td>Felipe Chaves</td></tr>
+      <tr><td>Análisis financiero</td><td>05/29/2025</td><td>06/06/2025</td><td>Marco Quimbay</td></tr>
+      <tr><td>Curva S y control presupuestal</td><td>06/09/2025</td><td>06/13/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Selección de proveedores</td><td>06/13/2025</td><td>06/20/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Verificación de requisitos técnicos y financieros</td><td>06/30/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Correcciones y finalización página web</td><td>06/30/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Documentación de resultados</td><td>06/30/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Preparación presentación final</td><td>06/30/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+      <tr><td>Entrega final, documentación y avances web</td><td>04/21/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+    <div class="card">
+      <h2>4. Análisis de Necesidades del Usuario y Benchmarking</h2>
+      <p>Se realizó una investigación en el mercado colombiano de movilidad urbana, encontrando que los usuarios priorizan la autonomía, el diseño deportivo, la conectividad y facilidad de recarga. El benchmarking incluyó marcas como NIU, Super Soco y Stärker, destacando elementos clave como baterías intercambiables, conectividad vía app y diseño aerodinámico.</p>
+    </div>
+
+    <div class="card">
+      <h2>5. Selección y Justificación de Características Clave</h2>
+      <ul>
+        <li><strong>Tipo de motor:</strong> Motor de cubo sin escobillas de 3.500W por su eficiencia y bajo mantenimiento.</li>
+        <li><strong>Tipo de batería:</strong> Batería de litio de 72V/40Ah, intercambiable, por su peso reducido y facilidad de recarga.</li>
+        <li><strong>Chasis:</strong> Acero reforzado, por su relación peso/resistencia.</li>
+        <li><strong>Frenos:</strong> Disco hidráulico delantero y trasero, por seguridad y respuesta rápida.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
