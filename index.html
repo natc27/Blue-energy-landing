@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blue Energy Bikes</title>
+  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -32,18 +33,23 @@
     }
 
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       background-color: var(--black);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     .logo {
-      height: 48px;
-      width: 48px;
-      border-radius: 50%;
+      height: 80px;
+      width: 80px;
     }
 
     nav ul {
@@ -86,46 +92,36 @@
       display: block;
     }
 
-    .hero {
-      background-image: url('Multimedia/Fondo.PNG');
-      background-size: cover;
-      background-position: center;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  .hero {
+    margin-top: 100px;
+    position: relative;
+    overflow: hidden;
+  }
 
-     .hero {Add commentMore actions
-      background-color: var(--black);
-      padding: 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('Multimedia/Fondo.PNG');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: 0;
+  }
 
-    .hero {
-      background-image: url('Multimedia/imagen21.jpg');
-      background-size: cover;
-      background-position: center;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
 
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      max-width: 600px;
-      color: var(--titanium);
-    }
+  .hero p {
+    max-width: 600px;
+    color: var(--titanium);
+  }
+  .hero a {
+    position: relative;
+    z-index: 1;
+  }
 
     .cta-button {
       margin-top: 2rem;
@@ -206,6 +202,7 @@
   </style>
 </head>
 <body>
+  padding-top: 100px;
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
     <nav>
