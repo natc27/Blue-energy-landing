@@ -30,6 +30,7 @@
       background-color: var(--black);
       color: var(--white);
       line-height: 1.6;
+      padding-top: 110px;
     }
 
     header {
@@ -50,6 +51,7 @@
     .logo {
       height: 80px;
       width: 80px;
+      border-radius: 50%;
     }
 
     nav ul {
@@ -92,133 +94,126 @@
       display: block;
     }
 
-    .hero {
-      margin-top: 100px;
-      position: relative;
-      height: 100vh;
-      padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;     
-    text-align: center;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url('Multimedia/Fondo.PNG');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.4;
-      z-index: 0;
-    }
-
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      max-width: 600px;
-      color: var(--titanium);
-    }
-    .hero a {
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-button {
-      margin-top: 2rem;
-      background-color: var(--electric-blue);
-      color: var(--black);
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1rem;
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
       cursor: pointer;
-      border-radius: 5px;
-      transition: background 0.3s ease;
     }
 
-    .cta-button:hover {
-      background-color: var(--neon-lime);
+    .menu-toggle span {
+      background: var(--white);
+      height: 3px;
+      margin: 5px 0;
+      width: 25px;
     }
 
-    .products {
-      padding: 4rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--black);
+      padding: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
     }
 
-    .product {
-      background-color: #2a2a2a;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    .product h3 {
-      color: var(--electric-blue);
-      margin: 1rem 0 0.5rem;
-    }
-
-    .product p {
-      color: var(--titanium);
-    }
-
-    section {
-      padding: 4rem 2rem;
-    }
-
-    #nosotros, #contacto {
-      background-color: #1A1A1A;
-    }
-
-    footer {
-      background-color: #111;
-      color: var(--titanium);
-      padding: 2rem;
-      text-align: center;
+    .mobile-nav a {
+      color: var(--white);
+      padding: 0.5rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--titanium);
     }
 
     @media (max-width: 850px) {
       nav ul {
-        flex-direction: column;
-        align-items: flex-start;
+        display: none;
       }
 
-      .dropdown-menu {
-        position: static;
-        display: block;
-        margin-top: 0.5rem;
+      .menu-toggle {
+        display: flex;
       }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .mobile-nav.active {
+        display: flex;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+
+    .estado-contenido {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .descripcion-planta, .card {
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+    }
+
+    .card h2, .descripcion-planta h2 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
+    }
+
+    .card ul li, .descripcion-planta p {
+      color: var(--titanium);
+      margin-bottom: 0.75rem;
+    }
+
+    .simulacion-card {
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+    }
+
+    .simulacion-card img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    .container h1, .container h3 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
+    }
+
+    .container p {
+      color: var(--white);
+      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
-  padding-top: 100px;
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <ul>
-        <li> <a href="index.html">Inicio</a></li>
+        <li><a href="index.html">Inicio</a></li>
         <li class="dropdown-container">
           <button class="dropdown-button">Módulos ▾</button>
           <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual de la planta</a></li>
+            <li><a href="estado-actual.html">Estado actual</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
             <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
@@ -231,42 +226,78 @@
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
     </nav>
+    <div class="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="estado-actual.html">Estado actual</a>
+      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+      <a href="gestion-produccion.html">Gestión de Producción</a>
+      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="simulacion.html">Simulación</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
   </header>
-</body>
 
-<div class="container">
+  <div class="container">
     <h1>Estado actual de la planta</h1>
     <div class="estado-contenido">
-        <div class="descripcion-planta">
-            <h2>Descripción general</h2>
-            <p>Considerando la demanda creciente en 2025 de motos eléctricas, la empresa ensambladora cuenta con 9 estaciones para cumplir con el proceso, sin embargo, todas las estaciones se encuentran operadas de forma manual, limitando la producción y los tiempos de entrega.</p>
-            <p>En cuanto la demanda aumenta se observan problemas de mercado con los tiempos de entrega, por lo que es importante mejorar estos tiempos de producción y alistamiento para sacar el mayor provecho a una demanda emergente en esta alternativa de movilidad en el país. Así, inicia el proceso para optimizar el ensamblaje de motos eléctricas de alto voltaje.</p>
-        </div>
-
-        <div class="card">
-            <h2>Características generales de la planta</h2>
-            <ul>
-                <li><strong>Línea de ensamblaje:</strong> 9 estaciones manuales</li>
-                <li><strong>Turnos activos:</strong> 1 diario</li>
-                <li><strong>Duración del Turno:</strong> 8 horas</li>
-                <li><strong>Personal operativo:</strong> 1 por estación (9 en total)</li>
-                <li><strong>Tiempo de ciclo:</strong> 30 minutos por estación en promedio</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>CIndicadores productivos de la planta</h2>
-            <ul>
-                <li><strong>Tiempo total de ensamblaje:</strong> 270 minutos (4.5 horas) por motocicleta</li>
-                <li><strong>Capacidad instalada:</strong> 9-12 motos/día</li>
-                <li><strong>Producción mensual:</strong> 198-264 unidades</li>
-                <li><strong>O.E.E. estimado:</strong> 60%</li>
-            </ul>
-        </div>
+      <div class="descripcion-planta">
+        <h2>Descripción general</h2>
+        <p>Considerando la demanda creciente en 2025 de motos eléctricas, la empresa ensambladora cuenta con 9 estaciones para cumplir con el proceso, sin embargo, todas las estaciones se encuentran operadas de forma manual, limitando la producción y los tiempos de entrega.</p>
+        <p>En cuanto la demanda aumenta se observan problemas de mercado con los tiempos de entrega, por lo que es importante mejorar estos tiempos de producción y alistamiento para sacar el mayor provecho a una demanda emergente en esta alternativa de movilidad en el país. Así, inicia el proceso para optimizar el ensamblaje de motos eléctricas de alto voltaje.</p>
+      </div>
+      <div class="card">
+        <h2>Características generales de la planta</h2>
+        <ul>
+          <li><strong>Línea de ensamblaje:</strong> 10 estaciones manuales</li>
+          <li><strong>Turnos activos:</strong> 1 diario</li>
+          <li><strong>Duración del Turno:</strong> 8 horas</li>
+          <li><strong>Personal operativo:</strong> 5 trabajadores</li>
+          <li><strong>Tiempo de ciclo:</strong> 202.5 segundos (3:23 minutos) por estación en promedio</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Indicadores productivos de la planta</h2>
+        <table style="width: 100%; border-collapse: collapse; color: var(--white);">
+          <thead>
+            <tr style="background-color: var(--electric-blue); color: var(--black);">
+              <th style="padding: 0.75rem; text-align: left;">Indicador</th>
+              <th style="padding: 0.75rem; text-align: left;">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">Tiempo total de ensamblaje</td>
+              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">33:45 minutos por motocicleta</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">Capacidad instalada</td>
+              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">14 motos/día</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">Producción mensual</td>
+              <td style="padding: 0.75rem; border-bottom: 1px solid var(--titanium);">313 unidades</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem;">O.E.E. estimado</td>
+              <td style="padding: 0.75rem;">60%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <h3> Diagnóstico</h3>
+
+    <h3>Diagnóstico</h3>
     <p>Si bien en el momento cumple con la demanda esperada, la planta y sus procesos presentan retrasos significativos, limitaciones debido a los procesos manuales, un nivel tecnológico bajo y dificultades en el monitoreo y trazabilidad de los productos y procesos.</p>
     <p>No obstante, se debe reconocer la alta flexibilidad con la que cuenta la operación, lo que permite una ventaja en cuanto a la personalización de partes y cambios en los modelos.</p>
     <p>Por lo tanto es evidente la opción de mejora en los procesos, que le permita a la empresa adaptarse a tiempos con picos de demanda o a una sostenibilidad a largo plazo con un mercado creciente, procurando conservar el valor de la flexibilidad y personalización, altamente valorado en las tendencias de mercado vehicular actuales.</p>
-</div>
 
+    <div class="simulacion-card">
+      <h2>Simulación del estado actual</h2>
+      <img src="Multimedia/simulacion-estado-actual.png" alt="Simulación Planta">
+    </div>
+  </div>
+</body>
+</html>
