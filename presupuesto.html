@@ -7,147 +7,28 @@
   <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    :root {
-      --black: #1C1C1C;
-      --electric-blue: #00BFFF;
-      --white: #FFFFFF;
-      --card-bg: #2a2a2a;
-      --hover-bg: #3a3a3a;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--black);
-      color: var(--white);
-    }
-    header {
-      background-color: var(--black);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo {
-      height: 80px;
-      width: 80px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
-    }
-    nav a, .dropdown-button {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .dropdown-container {
-      position: relative;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background-color: var(--black);
-      padding: 0.5rem;
-      border-radius: 5px;
-      top: 100%;
-      left: 0;
-      min-width: 250px;
-    }
-    .dropdown-menu li a {
-      display: block;
-      padding: 0.4rem 1rem;
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .dropdown-menu li a:hover {
-      background-color: var(--hover-bg);
-    }
-    .dropdown-container:hover .dropdown-menu {
-      display: block;
-    }
-    .container {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    h1 {
-      color: var(--electric-blue);
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .canvas-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      grid-template-areas:
-        "socios actividades recursos propuesta"
-        "socios actividades recursos relaciones"
-        "canales canales segmentos segmentos"
-        "estructura estructura ingresos ingresos";
-    }
-    .canvas-box {
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .canvas-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
-    }
-    h2 {
-      color: var(--electric-blue);
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .canvas-box i {
-      margin-right: 8px;
-      color: var(--electric-blue);
-    }
-    .socios { grid-area: socios; }
-    .actividades { grid-area: actividades; }
-    .recursos { grid-area: recursos; }
-    .propuesta { grid-area: propuesta; }
-    .relaciones { grid-area: relaciones; }
-    .canales { grid-area: canales; }
-    .segmentos { grid-area: segmentos; }
-    .estructura { grid-area: estructura; }
-    .ingresos { grid-area: ingresos; }
-  </style>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li class="dropdown-container">
           <button class="dropdown-button">Módulos ▾</button>
           <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual de la planta</a></li>
+            <li><a href="estado-actual.html">Estado actual</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
             <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
             <li><a href="presupuesto.html">Presupuesto</a></li>
             <li><a href="simulacion.html">Simulación</a></li>
-            <li><a href="canvas.html">Canvas</a></li>
           </ul>
         </li>
         <li><a href="index.html#productos">Productos</a></li>
@@ -155,6 +36,18 @@
         <li><a href="index.html#contacto">Contacto</a></li>
       </ul>
     </nav>
+    <div class="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="estado-actual.html">Estado actual</a>
+      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+      <a href="gestion-produccion.html">Gestión de Producción</a>
+      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="simulacion.html">Simulación</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
   </header>
 
   <div class="container">
