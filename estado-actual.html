@@ -248,6 +248,41 @@
         <p>Considerando la demanda creciente en 2025 de motos eléctricas, la empresa ensambladora cuenta con 9 estaciones para cumplir con el proceso, sin embargo, todas las estaciones se encuentran operadas de forma manual, limitando la producción y los tiempos de entrega.</p>
         <p>En cuanto la demanda aumenta se observan problemas de mercado con los tiempos de entrega, por lo que es importante mejorar estos tiempos de producción y alistamiento para sacar el mayor provecho a una demanda emergente en esta alternativa de movilidad en el país. Así, inicia el proceso para optimizar el ensamblaje de motos eléctricas de alto voltaje.</p>
       </div>
+
+      <div class="container">
+    <h1>Simulación de la Celda Automatizada</h1>
+        <p>Se ha modelado la línea de ensamblaje considerando flujos paralelos (para baterías, motores y chasis con variabilidad), fallas con distribución uniforme, buffers limitados y sin intervención humana directa. La simulación permite analizar KPIs como tiempos de ciclo, tasas de producción, utilización de estaciones y fallos.</p>
+        <div class="simulacion-card">
+            <h2>Simulación del estado actual</h2>
+            <img src="Multimedia/simulacion-estado-actual.png" alt="Simulación Planta">
+        </div>
+
+        <div class="card">
+        <h2>Resumen de Estaciones de Ensamblaje</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Estación</th>
+                <th>Tiempo de Proceso (MM:SS)</th>
+                <th>Falla (Duración)</th>
+                <th>Disponibilidad</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
+            <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
+            <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
+            <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
+            <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
+            <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
+            <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
+            <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
+            <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
+            <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
+            </tbody>
+        </table>
+        </div>
+
       <div class="card">
         <h2>Características generales de la planta</h2>
         <ul>
@@ -294,10 +329,6 @@
     <p>No obstante, se debe reconocer la alta flexibilidad con la que cuenta la operación, lo que permite una ventaja en cuanto a la personalización de partes y cambios en los modelos.</p>
     <p>Por lo tanto es evidente la opción de mejora en los procesos, que le permita a la empresa adaptarse a tiempos con picos de demanda o a una sostenibilidad a largo plazo con un mercado creciente, procurando conservar el valor de la flexibilidad y personalización, altamente valorado en las tendencias de mercado vehicular actuales.</p>
 
-    <div class="simulacion-card">
-      <h2>Simulación del estado actual</h2>
-      <img src="Multimedia/simulacion-estado-actual.png" alt="Simulación Planta">
-    </div>
   </div>
 </body>
 </html>
