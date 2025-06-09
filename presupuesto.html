@@ -19,67 +19,121 @@
       box-sizing: border-box;
     }
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Roboto', sans-serif;
       background-color: var(--black);
       color: var(--white);
+      line-height: 1.6;
+      padding-top: 110px; /* deja espacio para header fijo */
     }
+
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       background-color: var(--black);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      position: sticky;
-      top: 0;
+      flex-wrap: wrap;
       z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
+
     .logo {
       height: 80px;
       width: 80px;
+      border-radius: 50%;
     }
+
     nav ul {
       list-style: none;
       display: flex;
+      align-items: center;
       gap: 1.5rem;
-      padding: 0;
-      margin: 0;
     }
+
     nav a, .dropdown-button {
       color: var(--white);
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
       background: none;
       border: none;
-      cursor: pointer;
     }
+
     .dropdown-container {
       position: relative;
     }
+
     .dropdown-menu {
       display: none;
       position: absolute;
-      background-color: var(--black);
-      padding: 0.5rem;
-      border-radius: 5px;
       top: 100%;
       left: 0;
-      min-width: 250px;
+      background-color: #1C1C1C;
+      z-index: 1000;
+      list-style: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
     }
-    .dropdown-menu li a {
-      display: block;
-      padding: 0.4rem 1rem;
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 4px;
+
+    .dropdown-menu li {
+      margin: 0.5rem 0;
     }
-    .dropdown-menu li a:hover {
-      background-color: var(--hover-bg);
-    }
+
     .dropdown-container:hover .dropdown-menu {
       display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      background: var(--white);
+      height: 3px;
+      margin: 5px 0;
+      width: 25px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--black);
+      padding: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
+
+    .mobile-nav a {
+      color: var(--white);
+      padding: 0.5rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--titanium);
+    }
+
+    @media (max-width: 850px) {
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .mobile-nav.active {
+        display: flex;
+      }
     }
     .container {
       max-width: 1200px;
@@ -199,7 +253,7 @@
           <td></td>
         </tr>
         <tr>
-          <td><img src="Multimedia/robot-abb.jpg" alt="robot"></td>
+          <td><img src="Multimedia/robot-abb.png" alt="robot"></td>
           <td>Robot ABB IRB 2600ID</td>
           <td>4</td>
           <td>$82.392.199,85</td>
