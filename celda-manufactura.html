@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celda de Manufactura Robotizada</title>
+  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --titanium: #A0A0A0;
+      --white: #FFFFFF;
+      --neon-lime: #BFFF00;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      padding-top: 110px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+
+    .card {
+      background-color: #2a2a2a;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .card h2 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
+    }
+
+    .card p, .card li {
+      color: var(--titanium);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown-container">
+          <button class="dropdown-button">Módulos ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="estado-actual.html">Estado actual</a></li>
+            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+            <li><a href="presupuesto.html">Presupuesto</a></li>
+            <li><a href="simulacion.html">Simulación</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav">
+      <a href="index.html">Inicio</a>
+      <a href="estado-actual.html">Estado actual</a>
+      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+      <a href="gestion-produccion.html">Gestión de Producción</a>
+      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="simulacion.html">Simulación</a>
+      <a href="index.html#productos">Productos</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Celda de Manufactura Robotizada</h2>
+      <h3>Análisis y Justificación</h3>
+      <p>Se realiza un estudio de viabilidad que evalúa el valor agregado de automatizar el proceso mediante un robot. La robotización permite mejorar la eficiencia, repetitividad, reducción de errores humanos y aumento en la productividad.</p>
+
+      <h3>Diseño de la Celda Robotizada</h3>
+      <p>La celda ha sido diseñada considerando el espacio disponible, el flujo de producto, la interacción segura con el personal, y las necesidades funcionales. Se incorporan sensores, barreras de seguridad y mecanismos de agarre adaptado al producto.</p>
+
+      <h3>Simulación en RobotStudio</h3>
+      <p>Se desarrolló un modelo 3D en RobotStudio con programación de movimientos y animación completa. Se incluye un video demostrativo de la operación planificada.</p>
+      <p><strong>Video:</strong> <a href="Multimedia/simulacion-celda.mp4" target="_blank">Ver simulación de la celda</a></p>
+
+      <h3>Gestión del Riesgo</h3>
+      <ul>
+        <li>Identificación de peligros: colisiones, atrapamientos, fallas de programación.</li>
+        <li>Análisis inicial de riesgos con matriz de severidad y probabilidad.</li>
+        <li>Medidas de mitigación: escáneres de seguridad, paros de emergencia, zonas restringidas.</li>
+        <li>Evaluación posterior con medidas aplicadas, reduciendo el riesgo a niveles aceptables.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
