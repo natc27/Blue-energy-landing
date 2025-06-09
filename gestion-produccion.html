@@ -220,7 +220,7 @@
             <li><a href="estado-actual.html">Estado actual</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
-            <li><a href="celda-manufactura.html">Celda Robotizada</a></li>
+            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
             <li><a href="automatizacion-propuesta.html">Propuesta de Automatización</a></li>
           </ul>
         </li>
@@ -234,7 +234,7 @@
       <a href="estado-actual.html">Estado actual</a>
       <a href="gestion-proyecto.html">Gestión de Proyecto</a>
       <a href="gestion-produccion.html">Gestión de Producción</a>
-      <a href="celda-manufactura.html">Celda Robotizada</a>
+      <a href="celda-manufactura.html">Celda de manufactura automatizada</a>
       <a href="automatizacion-propuesta.html">Propuesta de Automatización</a>
       <a href="index.html#productos">Productos</a>
       <a href="index.html#nosotros">Nosotros</a>
@@ -272,45 +272,56 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
-          <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
-          <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
-          <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
-          <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
-          <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
-          <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
-          <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
-          <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
-          <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
+          <tr><td>Marcado</td><td>00:47:24</td><td>Uniform(1200,1320)</td><td>25.82%</td></tr>
+          <tr><td>Chasis 1</td><td>00:56:57</td><td>Uniform(600,900)</td><td>28.22%</td></tr>
+          <tr><td>Chasis 2</td><td>00:56:57</td><td>Uniform(600,900)</td><td>29.46%</td></tr>
+          <tr><td>Batería 1</td><td>00:56:28</td><td>Uniform(600,720)</td><td>25.31%</td></tr>
+          <tr><td>Batería 2</td><td>00:56:19</td><td>Uniform(600,720)</td><td>8.2%</td></tr>
+          <tr><td>Motor 1</td><td>00:50:55</td><td>Uniform(600,900)</td><td>13.04%</td></tr>
+          <tr><td>Motor 2</td><td>00:50:55</td><td>Uniform(600,900)</td><td>3.6%</td></tr>
+          <tr><td>Frenos y suspensión</td><td>00:53:21</td><td>Uniform(600,720)</td><td>6.08%</td></tr>
+          <tr><td>Llantas</td><td>00:53:54</td><td>Uniform(480,1020)</td><td>6.47%</td></tr>
+          <tr><td>Manillar</td><td>00:48:51</td><td>Uniform(600,720)</td><td>1.58%</td></tr>
+          <tr><td>Luces</td><td>00:52:15</td><td>Uniform(300,360)</td><td>5.23%</td></tr>
+          <tr><td>Cableado</td><td>00:52:48</td><td>Uniform(300,420)</td><td>6%</td></tr>
+          <tr><td>Corte y doblado</td><td>00:48:18</td><td>Uniform(120,1200)</td><td>0.84%</td></tr>
+          <tr><td>Asiento y detalles</td><td>00:52:15</td><td>Uniform(300,420)</td><td>3.17%</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="simulacion-card">
-      <h2>4. Simulación del estado actual</h2>
-      <p>Se ha modelado la línea de ensamblaje considerando flujos paralelos (para baterías, motores y chasis), fallas con distribución uniforme, buffers limitados y sin intervención humana directa. La simulación permite analizar KPIs como tiempos de ciclo, tasas de producción, utilización de estaciones y fallos.</p>
-      <img src="Multimedia/Simulacion_Plant.png" alt="Simulación Planta">
-      <p>Con su respectiva gráfica para entender como están funcionando las estaciones.</p>
-      <img src="Multimedia/Grafica_plantaActual.png" alt="Gráfica Simulación Planta">
+      <h2>4. Simulación del estado propuesto</h2>
+      <p>Se ha modelado la línea de ensamblaje propuesta considerando flujos paralelos (para baterías, motores y chasis), la inclusión de la celda de chasis robotizada en condiciones de trabajo iguales a las anteriores: 1 turno de 8 horas, 5 días a la semana.</p>
+      <img src="Multimedia/Simulacion_Plant_Propuesta.png" alt="Simulación Planta-después">
     </div>
 
-    <div class="card">
-      <h2>5. Indicadores productivos de la planta</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Indicador</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Tiempo total de ensamblaje</td><td>98 horas y 56 minutos por motocicleta</td></tr>
-          <tr><td>Capacidad instalada</td><td>menor a 1 moto/día</td></tr>
-          <tr><td>Producción mensual</td><td>13 unidades</td></tr>
-          <tr><td>O.E.E. global</td><td>49.52%</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div style="overflow-x:auto;">
+        <h2>5. O.E.E. y Tiempos por estación</h2>
+        <table>
+            <thead>
+                <tr>
+                <th>Estación</th>
+                <th>Ciclo Real (s)</th>
+                <th>Uptime (%)</th>
+                <th>Disponibilidad</th>
+                <th>Rendimiento</th>
+                <th>OEE</th>
+                <th>OEE (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Chasis</td><td>46776.96</td><td>54.14</td><td>0.5414</td><td>0.8765</td><td>0.4745</td><td>47.45</td></tr>
+                <tr><td>Baterías</td><td>42042.9</td><td>60.00</td><td>0.6</td><td>0.9752</td><td>0.5851</td><td>58.51</td></tr>
+                <tr><td>Motor</td><td>49151.0</td><td>48.00</td><td>0.48</td><td>0.8342</td><td>0.4004</td><td>40.04</td></tr>
+                <tr><td>Frenos</td><td>45624.0</td><td>52.00</td><td>0.52</td><td>0.8986</td><td>0.4673</td><td>46.73</td></tr>
+                <tr><td>Llantas</td><td>43200.0</td><td>55.00</td><td>0.55</td><td>0.9491</td><td>0.5220</td><td>52.20</td></tr>
+                <tr><td>Manillar</td><td>41000.0</td><td>58.00</td><td>0.58</td><td>1.0000</td><td>0.5800</td><td>58.00</td></tr>
+                <tr><td>Luces</td><td>47000.0</td><td>50.00</td><td>0.5</td><td>0.8723</td><td>0.4362</td><td>43.62</td></tr>
+                <tr><td>Ensamble</td><td>46000.0</td><td>53.00</td><td>0.53</td><td>0.8913</td><td>0.4724</td><td>47.24</td></tr>
+                <tr><td>Asiento</td><td>45000.0</td><td>57.00</td><td>0.57</td><td>0.9111</td><td>0.5193</td><td>51.93</td></tr>
+            </tbody>
+        </table>
 
     <div class="card">
       <h2>6. Comparativo Antes vs Después</h2>
@@ -319,9 +330,9 @@
           <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
         </thead>
         <tbody>
-          <tr><td>Tiempo total de ensamblaje</td><td>120 minutos</td><td>65 minutos</td></tr>
+          <tr><td>Tiempo total de ensamblaje</td><td>98:56 horas</td><td>65 minutos</td></tr>
           <tr><td>Personal necesario</td><td>18 operarios</td><td>12 operarios</td></tr>
-          <tr><td>Errores detectados</td><td>15 por semana</td><td>4 por semana</td></tr>
+          <tr><td>Producción mensual</td><td>13 unidades</td><td>20 unidades</td></tr>
           <tr><td>Índice OEE</td><td>45%</td><td>75%</td></tr>
         </tbody>
       </table>
