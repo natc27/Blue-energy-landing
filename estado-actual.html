@@ -279,12 +279,18 @@
     <div class="card">
       <h2>Características generales de la planta</h2>
       <ul>
-        <li><strong>Línea de ensamblaje:</strong> 10 estaciones manuales</li>
+        <li><strong>Línea de ensamblaje:</strong> 10 estaciones manuales e inspección</li>
         <li><strong>Turnos activos:</strong> 1 diario</li>
         <li><strong>Duración del Turno:</strong> 8 horas</li>
-        <li><strong>Personal operativo:</strong> 5 trabajadores</li>
-        <li><strong>Tiempo de ciclo:</strong> 202.5 segundos (3:23 minutos) por estación en promedio</li>
+        <li><strong>Personal operativo:</strong> 15 trabajadores</li>
+        <li><strong>Tiempo de ciclo:</strong> 356.158,08 segundos (9 horas) en promedio</li>
       </ul>
+    </div>
+
+    <div class="simulacion-card">
+      <h2>VSM del estado actual</h2>
+      <p>Se implementa un diagrama Value Stream Mapping para analizar el proceso o flujo de la planta, que junto a la simulación revelan el estado de la línea de producción y permiten priorizar estaciones que no esten siendo efectivas.</p>
+      <img src="Multimedia/VSM_actual.png" alt="VSM del estado actual">
     </div>
 
     
@@ -293,49 +299,61 @@
       <ol>
         <li>
           <h3>Tiempo total de ensamblaje</h3>
-          <p>Se suman los tiempos de operación de todas las estaciones de ensamblaje:</p>
+          <p>Se suman los tiempos de operación de todas las estaciones de ensamblaje obtenidos por el software Tecnomatix en la simulación:</p>
           <div class="formula">
-            4:30 + 3:45 + 5:00 + 3:15 + 2:50 + 2:00 + 3:30 + 4:10 + 2:30 + 2:15 = 33:45
+            12:59:37 + 12:27:48 + 10:29:43 + 11:57:51 + 09:31:41 + 10:00:03 + 09:01:44 + 11:27:45 + 10:59:49 = 98:55:59
           </div>
-          <p><strong>Resultado:</strong> 33 minutos y 45 segundos por motocicleta.</p>
+          <p><strong>Resultado:</strong> 98 horas y 56 minutos por motocicleta.</p>
         </li>
     
         <li>
-          <h3>Capacidad instalada</h3>
-          <p>Considerando un turno de 8 horas (<em>28.800 segundos</em>) y un tiempo de ciclo promedio de <em>202,5 segundos</em> por motocicleta:</p>
+          <h3>Capacidad instalada o capacidad de cuello de botella</h3>
+          <p>Considerando un turno de 8 horas (<em>28.800 segundos</em>) y la estación más lenta (chasis), con tiempo de ciclo de <em>46.776,96 segundos</em>:</p>
           <div class="formula">
-            Capacidad = 28.800 / 202.5 ≈ 142 unidades por estación
+            Capacidad = 28.800/46.776,96 ≈ 0.61 unidades por turno = 1,62 turnos para superar la etapa de chasis.
           </div>
-          <p>Dado que las estaciones son manuales y trabajan en secuencia con 5 operarios, se ajusta la estimación:</p>
-          <p><strong>Resultado:</strong> 14 motocicletas por día.</p>
         </li>
     
         <li>
           <h3>Producción mensual</h3>
           <p>Suponiendo 22 días laborales al mes:</p>
           <div class="formula">
-            Producción mensual = 14 × 22 = 308 unidades
+            Producción mensual = 0,61 × 22 = 13,55 unidades = 13 unidades mensuales
           </div>
-          <p><strong>Producción observada:</strong> 313 unidades.</p>
-          <p><strong>Comentario:</strong> El rendimiento real supera levemente la capacidad estimada.</p>
         </li>
     
         <li>
           <h3>OEE estimado (Overall Equipment Effectiveness)</h3>
-          <p>El OEE se calcula como el producto de disponibilidad, eficiencia de desempeño y calidad:</p>
+          <p>El OEE se calcula como el producto de disponibilidad, eficiencia de desempeño y calidad en cada una de las estaciones:</p>
           <div class="formula">
             OEE = A × PE × Q
           </div>
-          <p>Con valores aproximados:</p>
-          <ul>
-            <li><strong>Disponibilidad (A):</strong> 0.95</li>
-            <li><strong>Eficiencia (PE):</strong> 0.85</li>
-            <li><strong>Calidad (Q):</strong> 0.75</li>
-          </ul>
-          <div class="formula">
-            OEE = 0.95 × 0.85 × 0.75 = 0.605
-          </div>
-          <p><strong>Resultado:</strong> 60.5% de efectividad global.</p>
+          <div style="overflow-x:auto;">
+            <table>
+            <thead>
+                <tr>
+                <th>Estación</th>
+                <th>Ciclo Real (s)</th>
+                <th>Uptime (%)</th>
+                <th>Disponibilidad</th>
+                <th>Rendimiento</th>
+                <th>OEE</th>
+                <th>OEE (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Chasis</td><td>46776.96</td><td>54.14</td><td>0.5414</td><td>0.8765</td><td>0.4745</td><td>47.45</td></tr>
+                <tr><td>Baterías</td><td>42042.9</td><td>60.00</td><td>0.6</td><td>0.9752</td><td>0.5851</td><td>58.51</td></tr>
+                <tr><td>Motor</td><td>49151.0</td><td>48.00</td><td>0.48</td><td>0.8342</td><td>0.4004</td><td>40.04</td></tr>
+                <tr><td>Frenos</td><td>45624.0</td><td>52.00</td><td>0.52</td><td>0.8986</td><td>0.4673</td><td>46.73</td></tr>
+                <tr><td>Llantas</td><td>43200.0</td><td>55.00</td><td>0.55</td><td>0.9491</td><td>0.5220</td><td>52.20</td></tr>
+                <tr><td>Manillar</td><td>41000.0</td><td>58.00</td><td>0.58</td><td>1.0000</td><td>0.5800</td><td>58.00</td></tr>
+                <tr><td>Luces</td><td>47000.0</td><td>50.00</td><td>0.5</td><td>0.8723</td><td>0.4362</td><td>43.62</td></tr>
+                <tr><td>Ensamble</td><td>46000.0</td><td>53.00</td><td>0.53</td><td>0.8913</td><td>0.4724</td><td>47.24</td></tr>
+                <tr><td>Asiento</td><td>45000.0</td><td>57.00</td><td>0.57</td><td>0.9111</td><td>0.5193</td><td>51.93</td></tr>
+            </tbody>
+            </table>
+          <p><strong>Resultado:</strong> 49,52% de efectividad global con el mayor cuello de botella en el motor.</p>
         </li>
       </ol>
     </div>
@@ -350,10 +368,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Tiempo total de ensamblaje</td><td>33:45 minutos por motocicleta</td></tr>
-          <tr><td>Capacidad instalada</td><td>14 motos/día</td></tr>
-          <tr><td>Producción mensual</td><td>313 unidades</td></tr>
-          <tr><td>O.E.E. estimado</td><td>60%</td></tr>
+          <tr><td>Tiempo total de ensamblaje</td><td>98 horas y 56 minutos por motocicleta</td></tr>
+          <tr><td>Capacidad instalada</td><td>menor a 1 moto/día</td></tr>
+          <tr><td>Producción mensual</td><td>13 unidades</td></tr>
+          <tr><td>O.E.E. global</td><td>49.52%</td></tr>
         </tbody>
       </table>
     </div>
@@ -361,6 +379,7 @@
     <div class="descripcion-planta">
       <h3>Diagnóstico</h3>
       <p>Si bien en el momento cumple con la demanda esperada, la planta y sus procesos presentan retrasos significativos, limitaciones debido a los procesos manuales, un nivel tecnológico bajo y dificultades en el monitoreo y trazabilidad de los productos y procesos.</p>
+      <p>Adicionalmente, el VSM refleja posibles dificultades en la utilización de la planta y un valor agregado bajo, por lo que es notoria una oportunidad de mejora en los procesos realizados por la planta. El cálculo del OEE permite priorizar las estaciones de motor, batería y chasis debido a sus altos tiempos de ciclo o baja disponiblidad respectivamente.</p>
       <p>No obstante, se debe reconocer la alta flexibilidad con la que cuenta la operación, lo que permite una ventaja en cuanto a la personalización de partes y cambios en los modelos.</p>
       <p>Por lo tanto es evidente la opción de mejora en los procesos, que le permita a la empresa adaptarse a tiempos con picos de demanda o a una sostenibilidad a largo plazo con un mercado creciente, procurando conservar el valor de la flexibilidad y personalización, altamente valorado en las tendencias de mercado vehicular actuales.</p>
     </div>
