@@ -6,14 +6,13 @@
   <title>Blue Energy Bikes</title>
   <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-   <style>Add commentMore actions
+  <style>
     :root {
       --black: #1C1C1C;
       --electric-blue: #00BFFF;
       --titanium: #A0A0A0;
       --white: #FFFFFF;
       --neon-lime: #BFFF00;
-      --hover-bg: #3a3a3a;
     }
 
     * {
@@ -78,24 +77,19 @@
     .dropdown-menu {
       display: none;
       position: absolute;
-      background-color: var(--black);
-      padding: 0.5rem;
-      border-radius: 5px;
       top: 100%;
       left: 0;
-      min-width: 250px;
+      background-color: #1C1C1C;
+      z-index: 1000;
+      list-style: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
     }
 
-    .dropdown-menu li a {
-      display: block;
-      padding: 0.4rem 1rem;
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 4px;
+    .dropdown-menu li {
+      margin: 0.5rem 0;
     }
-    .dropdown-menu li a:hover {
-      background-color: var(--hover-bg);
-    }
+
     .dropdown-container:hover .dropdown-menu {
       display: block;
     }
