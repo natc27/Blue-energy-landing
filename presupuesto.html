@@ -11,9 +11,9 @@
     :root {
       --black: #1C1C1C;
       --electric-blue: #00BFFF;
-      --white: #FFFFFF;
-      --card-bg: #2a2a2a;
-      --hover-bg: #3a3a3a;
+      --white: #FFFFFF;^
+      --gray: #A0A0A0;
+      --card: #2A2A2A;
     }
     * {
       box-sizing: border-box;
@@ -82,54 +82,44 @@
       display: block;
     }
     .container {
-      padding: 2rem;
       max-width: 1200px;
       margin: auto;
+      padding: 4rem 2rem;
     }
-    h1 {
+    h1, h2 {
       color: var(--electric-blue);
-      margin-bottom: 2rem;
       text-align: center;
+      margin-bottom: 1.5rem;
     }
-    .canvas-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      grid-template-areas:
-        "socios actividades recursos propuesta"
-        "socios actividades recursos relaciones"
-        "canales canales segmentos segmentos"
-        "estructura estructura ingresos ingresos";
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
     }
-    .canvas-box {
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    th, td {
+      border: 1px solid var(--gray);
+      padding: 0.75rem;
+      text-align: left;
+      vertical-align: middle;
+      color: var(--white);
     }
-    .canvas-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
+    th {
+      background-color: var(--electric-blue);
+      color: var(--black);
     }
-    h2 {
-      color: var(--electric-blue);
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+    tbody tr:hover {
+      background-color: var(--card);
     }
-    .canvas-box i {
-      margin-right: 8px;
-      color: var(--electric-blue);
+    td img {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
     }
-    .socios { grid-area: socios; }
-    .actividades { grid-area: actividades; }
-    .recursos { grid-area: recursos; }
-    .propuesta { grid-area: propuesta; }
-    .relaciones { grid-area: relaciones; }
-    .canales { grid-area: canales; }
-    .segmentos { grid-area: segmentos; }
-    .estructura { grid-area: estructura; }
-    .ingresos { grid-area: ingresos; }
+    .nota {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -170,47 +160,100 @@
     </div>
   </header>
 
-  <div class="container">
-    <h1>Canvas del Modelo de Negocio</h1>
-    <div class="canvas-grid">
-      <div class="canvas-box socios">
-        <h2><i class="fas fa-handshake"></i>Socios clave</h2>
-        <p>Proveedores de componentes eléctricos y mecánicos, aliados de distribución, talleres de ensamblaje, instituciones que promuevan movilidad eléctrica.</p>
-      </div>
-      <div class="canvas-box actividades">
-        <h2><i class="fas fa-cogs"></i>Actividades clave</h2>
-        <p>Diseño y ensamblaje de motos eléctricas, marketing digital, pruebas técnicas, desarrollo web, atención al cliente, alianzas logísticas.</p>
-      </div>
-      <div class="canvas-box recursos">
-        <h2><i class="fas fa-toolbox"></i>Recursos clave</h2>
-        <p>Prototipos, taller, herramientas, equipo humano interdisciplinario, página web, marca y conocimientos técnicos.</p>
-      </div>
-      <div class="canvas-box propuesta">
-        <h2><i class="fas fa-bolt"></i>Propuesta de valor</h2>
-        <p>Motos eléctricas urbanas con diseño atractivo, tecnología avanzada y rendimiento competitivo, enfocadas al usuario latinoamericano.</p>
-        <p>Personalización de corte para porta-placas de acuerdo con la línea de la moto.</p>
-      </div>
-      <div class="canvas-box relaciones">
-        <h2><i class="fas fa-heart"></i>Relación con clientes</h2>
-        <p>Web interactiva, atención personalizada, comunidad de usuarios, soporte técnico postventa.</p>
-      </div>
-      <div class="canvas-box canales">
-        <h2><i class="fas fa-bullhorn"></i>Canales</h2>
-        <p>Web oficial, ferias tecnológicas, distribuidores locales, redes sociales.</p>
-      </div>
-      <div class="canvas-box segmentos">
-        <h2><i class="fas fa-users"></i>Segmentos de mercado</h2>
-        <p>Jóvenes urbanos, profesionales que usan motos, estudiantes, tech-savvy, usuarios de movilidad sostenible.</p>
-      </div>
-      <div class="canvas-box estructura">
-        <h2><i class="fas fa-coins"></i>Estructura de costos</h2>
-        <p>Prototipado, componentes, licencias de software, hosting web, materiales, publicidad, equipo humano.</p>
-      </div>
-      <div class="canvas-box ingresos">
-        <h2><i class="fas fa-cash-register"></i>Fuentes de ingresos</h2>
-        <p>Venta de motos, personalización, repuestos, mantenimiento técnico.</p>
-      </div>
-    </div>
-  </div>
+  <main class="container">
+    <h1>Presupuesto Inicial del Proyecto</h1>
+    <p class="nota">A continuación se presenta una tabla detallada con los principales costos estimados para la puesta en marcha del sistema automatizado de producción. Las imágenes, observaciones y enlaces están sujetos a verificación final.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Concepto</th>
+          <th>Cantidad</th>
+          <th>Valor Unitario</th>
+          <th>Valor Total</th>
+          <th>Tipo de Gasto</th>
+          <th>Observaciones</th>
+          <th>Proveedor/Fuente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="Multimedia/trabajador.jpg" alt="salario de trabajadores"></td>
+          <td>Salario trabajadores</td>
+          <td>10</td>
+          <td>$1.800.000,00</td>
+          <td>$18.000.000,00</td>
+          <td>Mensual</td>
+          <td>Los empleados trabajan 8h/día y 5 días/semana</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="Multimedia/ing.jpg" alt="ingeniero"></td>
+          <td>Salario ingenieros</td>
+          <td>2</td>
+          <td>$3.000.000,00</td>
+          <td>$6.000.000,00</td>
+          <td>Mensual</td>
+          <td>Se plantean ingenieros Jr. para fomentar empleo</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><img src="Multimedia/robot-abb.jpg" alt="robot"></td>
+          <td>Robot ABB IRB 2600ID</td>
+          <td>4</td>
+          <td>$82.392.199,85</td>
+          <td>$329.568.799,40</td>
+          <td>Único</td>
+          <td>No incluye precio de envío y su precio se estime sobre tasas el 8 de junio, sin embargo puede fluctuar de acuerdo con el comportamiento del peso con respecto al dólar.</td>
+        </tr>
+        <tr>
+          <td><img src="Multimedia/siemens.jpg" alt="nx"></td>
+          <td>Licencia Siemens NX X Mach 3</td>
+          <td>1</td>
+          <td>$3.996.021,69</td>
+          <td>$3.996.021,69</td>
+          <td>Mensual</td>
+          <td>Mensualidad</td>
+          <td><a href="https://openit.com/es/siemens-nx-reinvents-to-cater-to-aec-industrys-needs/" target="_blank">Ver</a></td>
+        </tr>
+        <tr>
+          <td><img src="Multimedia/bodega.jpg" alt="bodega"></td>
+          <td>Bodega 3000m2</td>
+          <td>1</td>
+          <td>$70.000.000,00</td>
+          <td>$70.000.000,00</td>
+          <td>Mensual</td>
+          <td>Ubicada en La Perseverancia, Bogotá</td>
+          <td><a href="https://www.fincaraiz.com.co/bodega-en-arriendo-en-la-perseverancia-bogota/191976092" target="_blank">Ver</a></td>
+        </tr>
+        <tr>
+          <td><img src="Multimedia/rockwell.jpg" alt="rockwell"></td>
+          <td>Licencia Rockwell Studio 5000</td>
+          <td>1</td>
+          <td>$31.365.103,83</td>
+          <td>$31.365.103,83</td>
+          <td>Único</td>
+          <td>Pago de licencia perpetua</td>
+          <td><a href="https://www.codingplc.com/blog/how-to-buy-right-studio5000-license" target="_blank">Ver</a></td>
+        </tr>
+        <tr>
+          <td><img src="Multimedia/eje-robot.png" alt="eje"></td>
+          <td>Séptimo Eje para los robots</td>
+          <td>4</td>
+          <td>$6.179.414,99</td>
+          <td>$24.717.659,96</td>
+          <td>Único</td>
+          <td>No incluye precio de envío</td>
+          <td><a href="https://www.alibaba.com/product-detail/Customized-Heavy-Duty-Construction-Machinery-Parts_1601295233805.html" target="_blank">Ver</a></td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align:right; font-weight:bold;">Total</td>
+          <td colspan="4">$483.647.584,88</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
 </body>
 </html>
