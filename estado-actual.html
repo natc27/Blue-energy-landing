@@ -276,6 +276,48 @@
       </ul>
     </div>
 
+    
+    <div class="card">
+      <h2>Desarrollo de Cálculos de Indicadores</h2>
+      <p>A continuación, se presentan los desarrollos matemáticos para determinar los valores clave de rendimiento de la planta, aplicando fórmulas estándar de gestión de producción.</p>
+    
+      <h3>1. Tiempo total de ensamblaje</h3>
+      <p>
+        El tiempo total se calcula como la suma de los tiempos de proceso por estación:<br>
+        <code>T_total = 4:30 + 3:45 + 5:00 + 3:15 + 2:50 + 2:00 + 3:30 + 4:10 + 2:30 + 2:15</code><br>
+        <strong>Resultado:</strong> 33 minutos y 45 segundos por motocicleta.
+      </p>
+    
+      <h3>2. Capacidad instalada</h3>
+      <p>
+        La capacidad diaria se obtiene considerando un turno de 8 horas (28,800 segundos), y un tiempo de ciclo promedio de 202.5 segundos por estación:<br>
+        <code>Capacidad_día = 28,800 / 202.5 ≈ 142 motos por estación</code><br>
+        Dado que se cuenta con 10 estaciones y 5 trabajadores manuales, se asume que el sistema opera en secuencia y no en paralelo. Por lo tanto, se ajusta según la línea completa:<br>
+        <code>Capacidad_día ≈ 14 motos/día</code> (según rendimiento observado y restricciones de trabajo humano).
+      </p>
+    
+      <h3>3. Producción mensual</h3>
+      <p>
+        Con 22 días laborales al mes:<br>
+        <code>Producción_mensual = 14 motos/día × 22 días = 308 motos/mes</code><br>
+        El valor real registrado fue de 313, lo que implica una eficiencia levemente superior.
+      </p>
+    
+      <h3>4. OEE estimado</h3>
+      <p>
+        El OEE (Overall Equipment Effectiveness) se calcula mediante la fórmula:<br>
+        <code>OEE = A × PE × Q</code><br>
+        Asumiendo:
+        <ul>
+          <li><strong>A</strong> (Disponibilidad promedio): 95%</li>
+          <li><strong>PE</strong> (Eficiencia de desempeño): 85%</li>
+          <li><strong>Q</strong> (Calidad): 75% (estimado por defectos y reprocesos)</li>
+        </ul>
+        <code>OEE = 0.95 × 0.85 × 0.75 = 0.605 ≈ 60%</code>
+      </p>
+    </div>
+
+    
     <div class="card">
       <h2>Indicadores productivos de la planta</h2>
       <table>
