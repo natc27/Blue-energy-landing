@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celda de Manufactura Automatizada - Blue Energy Bikes</title>
+  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --white: #FFFFFF;
+      --card-bg: #2a2a2a;
+      --hover-bg: #3a3a3a;
+      --titanium: #A0A0A0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+    header {
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      height: 80px;
+      width: 80px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav a, .dropdown-button {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .dropdown-container {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: var(--black);
+      padding: 0.5rem;
+      border-radius: 5px;
+      top: 100%;
+      left: 0;
+      min-width: 250px;
+    }
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .dropdown-menu li a:hover {
+      background-color: var(--hover-bg);
+    }
+    .dropdown-container:hover .dropdown-menu {
+      display: block;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1 {
+      color: var(--electric-blue);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .canvas-box {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    .canvas-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
+    }
+    h2 {
+      color: var(--electric-blue);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .canvas-box i {
+      margin-right: 8px;
+      color: var(--electric-blue);
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+      color: var(--titanium);
+    }
+    p {
+      color: var(--titanium);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown-container">
+          <button class="dropdown-button">Módulos ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="estado-actual.html">Estado actual de la planta</a></li>
+            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+            <li><a href="presupuesto.html">Presupuesto</a></li>
+            <li><a href="simulacion.html">Simulación</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Celda de Manufactura Automatizada</h1>
+    <div class="canvas-box">
+      <h2>Introducción</h2>
+      <p>En el contexto de la automatización y la mejora continua de los procesos productivos, Blue Energy Bikes ha identificado oportunidades clave para optimizar la estación de preparación del chasis, una etapa crítica dentro de su cadena de ensamblaje de motocicletas. Considerando el crecimiento del mercado y la necesidad de mantener altos estándares de calidad y eficiencia, el equipo de ingeniería ha propuesto el diseño e implementación de una celda robotizada orientada a mejorar el alistamiento del chasis antes del ensamblaje final.</p>
+      <p>El análisis de esta estación, realizado a partir de herramientas de diseño de celdas y bajo la perspectiva del pensamiento Lean, ha evidenciado la posibilidad de reducir tiempos de ciclo, minimizar desperdicios y asegurar la homogeneidad en tareas repetitivas que tradicionalmente eran realizadas de forma manual. La automatización de estas operaciones permitirá un flujo continuo, mayor precisión y una integración más armónica con las etapas posteriores de producción.</p>
+    </div>
+    <div class="canvas-box">
+      <h2>Objetivo</h2>
+      <p>Diseñar una celda robotizada para la estación de alistamiento del chasis, detallando sus componentes principales, rutinas del manipulador y aportes a la eficiencia operativa. La solución deberá responder a los principios de Lean Manufacturing, garantizar la seguridad operativa y adaptarse al entorno físico de la planta.</p>
+    </div>
+    <div class="canvas-box">
+      <h2>Estación Seleccionada</h2>
+      <p><strong>Preparación del chasis:</strong> Esta etapa consiste en recibir el chasis pintado, realizar su limpieza superficial, instalar tuercas remachables y otros soportes de fijación, y liberarlo para su integración con otros sistemas. Su automatización permite consolidar operaciones, garantizar uniformidad y liberar recursos humanos para tareas de mayor valor agregado.</p>
+    </div>
+    <div class="canvas-box">
+      <h2>Rutinas del Manipulador</h2>
+      <ul>
+        <li>Recepción del chasis desde banda transportadora o AGV.</li>
+        <li>Limpieza automatizada mediante aire comprimido o cepillo rotativo.</li>
+        <li>Instalación de tuercas remachables y pernos.</li>
+        <li>Traslado del chasis a la siguiente estación.</li>
+      </ul>
+      <p>Estas tareas se desarrollan con un <strong>Takt Time</strong> de 4.8 minutos y un <strong>Throughput Time</strong> estimado de 5 minutos.</p>
+    </div>
+    <div class="canvas-box">
+      <h2>Estado de Entrada y Salida</h2>
+      <p><strong>Entrada:</strong> Chasis pintado, sin limpieza, sin soportes adicionales.</p>
+      <p><strong>Salida:</strong> Chasis limpio, pintura intacta, fijaciones instaladas, listo para el ensamblaje.</p>
+    </div>
+    <div class="canvas-box">
+      <h2>Componentes de la Celda</h2>
+      <ul>
+        <li><strong>Proceso:</strong> Estación de limpieza, máquina de inserción.</li>
+        <li><strong>Manipulación:</strong> Brazo robótico articulado o grúa pórtico.</li>
+        <li><strong>Transporte:</strong> Banda transportadora o AGV.</li>
+        <li><strong>Control:</strong> Panel HMI, sensores de presencia, monitoreo de fallos.</li>
+        <li><strong>Seguridad:</strong> Cortinas de luz, barreras físicas, botones de paro, señalización LED.</li>
+      </ul>
+    </div>
+    <div class="canvas-box">
+      <h2>Impacto Esperado</h2>
+      <p>La automatización de esta estación permitirá reducir la variabilidad en la instalación de componentes, disminuir la intervención humana en tareas repetitivas, optimizar el flujo de trabajo y avanzar hacia un sistema de producción Lean y escalable.</p>
+    </div>
+  </div>
+</body>
+</html>
