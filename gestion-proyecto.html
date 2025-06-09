@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Energy Bikes</title>
-  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blue Energy Bikes</title>
+<link href="Multimedia/logo-circ.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --black: #1C1C1C;
       --electric-blue: #00BFFF;
@@ -210,186 +211,329 @@
         content: attr(data-label);
       }
     }
+  
+    ol ol {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding-left: 2rem;
+    }
+
+    ol li {
+      margin-bottom: 0.25rem;
+    }
+
+
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --white: #FFFFFF;
+      --card-bg: #2a2a2a;
+      --hover-bg: #3a3a3a;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+    header {
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      height: 80px;
+      width: 80px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav a, .dropdown-button {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .dropdown-container {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: var(--black);
+      padding: 0.5rem;
+      border-radius: 5px;
+      top: 100%;
+      left: 0;
+      min-width: 250px;
+    }
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .dropdown-menu li a:hover {
+      background-color: var(--hover-bg);
+    }
+    .dropdown-container:hover .dropdown-menu {
+      display: block;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1 {
+      color: var(--electric-blue);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      grid-template-areas:
+        "socios actividades recursos propuesta"
+        "socios actividades recursos relaciones"
+        "canales canales segmentos segmentos"
+        "estructura estructura ingresos ingresos";
+    }
+    .canvas-box {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .canvas-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
+    }
+    h2 {
+      color: var(--electric-blue);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .canvas-box i {
+      margin-right: 8px;
+      color: var(--electric-blue);
+    }
+    .socios { grid-area: socios; }
+    .actividades { grid-area: actividades; }
+    .recursos { grid-area: recursos; }
+    .propuesta { grid-area: propuesta; }
+    .relaciones { grid-area: relaciones; }
+    .canales { grid-area: canales; }
+    .segmentos { grid-area: segmentos; }
+    .estructura { grid-area: estructura; }
+    .ingresos { grid-area: ingresos; }
   </style>
-</head>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" referrerpolicy="no-referrer" rel="stylesheet"/></head>
 <body>
-  <header>
-    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
-    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-container">
-          <button class="dropdown-button">Módulos ▾</button>
-          <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual</a></li>
-            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
-            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
-            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
-            <li><a href="presupuesto.html">Presupuesto</a></li>
-            <li><a href="simulacion.html">Simulación</a></li>
-          </ul>
-        </li>
-        <li><a href="index.html#productos">Productos</a></li>
-        <li><a href="index.html#nosotros">Nosotros</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="mobile-nav">
-      <a href="index.html">Inicio</a>
-      <a href="estado-actual.html">Estado actual</a>
-      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
-      <a href="gestion-produccion.html">Gestión de Producción</a>
-      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
-      <a href="presupuesto.html">Presupuesto</a>
-      <a href="simulacion.html">Simulación</a>
-      <a href="index.html#productos">Productos</a>
-      <a href="index.html#nosotros">Nosotros</a>
-      <a href="index.html#contacto">Contacto</a>
-    </div>
-  </header>
-
-
-  <div class="container">
-    <h1>Gestión del Proyecto</h1>
-
-    <div class="card">
-      <h2>1. Definición de Objetivos, Alcance y Restricciones</h2>
-      <p>El objetivo principal es desarrollar una línea de motos eléctricas innovadoras, enfocadas en el mercado urbano colombiano, priorizando la sostenibilidad, eficiencia energética y diseño atractivo. El alcance incluye el diseño técnico, la selección de componentes y la planificación de producción. Las restricciones son el presupuesto limitado, el tiempo de desarrollo (6 meses) y la disponibilidad local de materiales.</p>
-    </div>
-
-    <div class="card">
-      <h2>2. Estructura Desglosada del Trabajo (EDT)</h2>
-      <ol>
-        <li><strong>Planificación del proyecto</strong>
-          <ol><li>Definición de objetivos</li><li>Análisis de usuarios</li></ol>
-        </li>
-        <li><strong>Investigación</strong>
-          <ol><li>Benchmarking</li><li>Recolección de datos técnicos</li></ol>
-        </li>
-        <li><strong>Diseño del producto</strong>
-          <ol><li>Selección de componentes</li><li>Diseño CAD</li></ol>
-        </li>
-        <li><strong>Prototipado</strong>
-          <ol><li>Fabricación de partes</li><li>Ensamblaje</li></ol>
-        </li>
-        <li><strong>Evaluación</strong>
-          <ol><li>Pruebas de funcionamiento</li><li>Ajustes finales</li></ol>
-        </li>
-      </ol>
-    </div>
-
-    <div class="card">
-      <h2>2. Estructura Desglosada del Trabajo (EDT)</h2>
-      <ol>
-        <li><strong>Planificación del proyecto</strong>
-          <ol type="a">
-            <li>Definición de objetivos y restricciones</li>
-            <li>Identificación de actores clave</li>
-            <li>Delimitación del alcance del proyecto</li>
-          </ol>
-        </li>
-        <li><strong>Análisis del entorno</strong>
-          <ol type="a">
-            <li>Análisis de procesos actuales de ensamblaje</li>
-            <li>Revisión de documentación técnica disponible</li>
-            <li>Estudio de necesidades del usuario final</li>
-          </ol>
-        </li>
-        <li><strong>Investigación tecnológica</strong>
-          <ol type="a">
-            <li>Benchmarking de soluciones automatizadas</li>
-            <li>Estudio de tecnologías aplicables (robots, sensores, PLC, etc.)</li>
-          </ol>
-        </li>
-        <li><strong>Diseño de propuesta</strong>
-          <ol type="a">
-            <li>Definición de celdas automatizadas</li>
-            <li>Diseño preliminar de layout de planta</li>
-            <li>Selección y justificación de componentes</li>
-          </ol>
-        </li>
-        <li><strong>Evaluación técnica y económica</strong>
-          <ol type="a">
-            <li>Simulación de flujo de trabajo</li>
-            <li>Estimación de costos e inversión inicial</li>
-            <li>Análisis financiero y retorno esperado</li>
-          </ol>
-        </li>
-        <li><strong>Implementación digital</strong>
-          <ol type="a">
-            <li>Desarrollo de página web de presentación</li>
-            <li>Documentación técnica del proyecto</li>
-            <li>Preparación de presentación final</li>
-          </ol>
-        </li>
-      </ol>
-    </div>
-
-    <div class="card">
-      <h2>3. Cronograma de Actividades</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Actividad</th>
-            <th>Inicio</th>
-            <th>Fin</th>
-            <th>Responsable</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="Actividad">Definición de objetivos, alcance y restricciones del proyecto</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Elaboración de la Estructura Desglosada del Trabajo (EDT)</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Creación del cronograma y asignación de responsables</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Análisis de necesidades del usuario</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
-          <tr><td data-label="Actividad">Benchmarking de modelos existentes</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
-          <tr><td data-label="Actividad">Selección y justificación de características clave</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/25/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
-          <tr><td data-label="Actividad">Obtención de diseños CAD</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Andres Torres</td></tr>
-          <tr><td data-label="Actividad">Creación lista de materiales (BOM)</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Creación página web inicial</td><td data-label="Inicio">04/16/2025</td><td data-label="Fin">05/06/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Diseño del layout de la planta de ensamblaje</td><td data-label="Inicio">05/07/2025</td><td data-label="Fin">05/21/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
-          <tr><td data-label="Actividad">Propuesta de automatización de procesos de ensamblaje</td><td data-label="Inicio">05/07/2025</td><td data-label="Fin">05/28/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
-          <tr><td data-label="Actividad">Simulación de flujo de trabajo</td><td data-label="Inicio">05/22/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
-          <tr><td data-label="Actividad">Definición de indicadores clave (OEE, tiempo de ciclo...)</td><td data-label="Inicio">06/23/2025</td><td data-label="Fin">06/27/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Cálculo de costos de producción</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/02/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
-          <tr><td data-label="Actividad">Estimación de inversión inicial</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/05/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
-          <tr><td data-label="Actividad">Análisis financiero</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
-          <tr><td data-label="Actividad">Curva S y control presupuestal</td><td data-label="Inicio">06/09/2025</td><td data-label="Fin">06/13/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Selección de proveedores</td><td data-label="Inicio">06/13/2025</td><td data-label="Fin">06/20/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Verificación de requisitos técnicos y financieros</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Correcciones y finalización página web</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Documentación de resultados</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Preparación presentación final</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-          <tr><td data-label="Actividad">Entrega final, documentación y avances web</td><td data-label="Inicio">04/21/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h2>Visualización del Cronograma (Gantt)</h2>
-      <div style="overflow-x: auto; max-width: 100%; border: 1px solid var(--titanium); border-radius: 8px; padding: 1rem; background-color: #1C1C1C;">
-        <img src="Multimedia/gantt.png" alt="Diagrama de Gantt" style="height: auto; max-height: 650px;">
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>4. Análisis de Necesidades del Usuario y Benchmarking</h2>
-      <p>Se realizó una investigación en el mercado colombiano de movilidad urbana, encontrando que los usuarios priorizan la autonomía, el diseño deportivo, la conectividad y facilidad de recarga. El benchmarking incluyó marcas como NIU, Super Soco y Stärker, destacando elementos clave como baterías intercambiables, conectividad vía app y diseño aerodinámico.</p>
-    </div>
-
-    <div class="card">
-      <h2>5. Selección y Justificación de Características Clave</h2>
-      <ul>
-        <li><strong>Tipo de motor:</strong> Motor de cubo sin escobillas de 3.500W por su eficiencia y bajo mantenimiento.</li>
-        <li><strong>Tipo de batería:</strong> Batería de litio de 72V/40Ah, intercambiable, por su peso reducido y facilidad de recarga.</li>
-        <li><strong>Chasis:</strong> Acero reforzado, por su relación peso/resistencia.</li>
-        <li><strong>Frenos:</strong> Disco hidráulico delantero y trasero, por seguridad y respuesta rápida.</li>
-      </ul>
-    </div>
-  </div>
+<header>
+<img alt="Logo Blue Energy" class="logo" src="Multimedia/logo-circ.png"/>
+<div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<nav>
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown-container">
+<button class="dropdown-button">Módulos ▾</button>
+<ul class="dropdown-menu">
+<li><a href="estado-actual.html">Estado actual</a></li>
+<li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+<li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+<li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+<li><a href="presupuesto.html">Presupuesto</a></li>
+<li><a href="simulacion.html">Simulación</a></li>
+</ul>
+</li>
+<li><a href="index.html#productos">Productos</a></li>
+<li><a href="index.html#nosotros">Nosotros</a></li>
+<li><a href="index.html#contacto">Contacto</a></li>
+</ul>
+</nav>
+<div class="mobile-nav">
+<a href="index.html">Inicio</a>
+<a href="estado-actual.html">Estado actual</a>
+<a href="gestion-proyecto.html">Gestión de Proyecto</a>
+<a href="gestion-produccion.html">Gestión de Producción</a>
+<a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+<a href="presupuesto.html">Presupuesto</a>
+<a href="simulacion.html">Simulación</a>
+<a href="index.html#productos">Productos</a>
+<a href="index.html#nosotros">Nosotros</a>
+<a href="index.html#contacto">Contacto</a>
+</div>
+</header>
+<div class="container">
+<h1>Gestión del Proyecto</h1>
+<div class="card">
+<h2>1. Definición de Objetivos, Alcance y Restricciones</h2>
+<p>El objetivo principal es desarrollar una línea de motos eléctricas innovadoras, enfocadas en el mercado urbano colombiano, priorizando la sostenibilidad, eficiencia energética y diseño atractivo. El alcance incluye el diseño técnico, la selección de componentes y la planificación de producción. Las restricciones son el presupuesto limitado, el tiempo de desarrollo (6 meses) y la disponibilidad local de materiales.</p>
+</div>
+<div class="card">
+<h2>2. Estructura Desglosada del Trabajo (EDT)</h2>
+<ol>
+<li><strong>Planificación del proyecto</strong>
+<ol type="a">
+<li>Definición de objetivos y restricciones</li>
+<li>Identificación de actores clave</li>
+<li>Delimitación del alcance del proyecto</li>
+</ol>
+</li>
+<li><strong>Análisis del entorno</strong>
+<ol type="a">
+<li>Análisis de procesos actuales de ensamblaje</li>
+<li>Revisión de documentación técnica disponible</li>
+<li>Estudio de necesidades del usuario final</li>
+</ol>
+</li>
+<li><strong>Investigación tecnológica</strong>
+<ol type="a">
+<li>Benchmarking de soluciones automatizadas</li>
+<li>Estudio de tecnologías aplicables (robots, sensores, PLC, etc.)</li>
+</ol>
+</li>
+<li><strong>Diseño de propuesta</strong>
+<ol type="a">
+<li>Definición de celdas automatizadas</li>
+<li>Diseño preliminar de layout de planta</li>
+<li>Selección y justificación de componentes</li>
+</ol>
+</li>
+<li><strong>Evaluación técnica y económica</strong>
+<ol type="a">
+<li>Simulación de flujo de trabajo</li>
+<li>Estimación de costos e inversión inicial</li>
+<li>Análisis financiero y retorno esperado</li>
+</ol>
+</li>
+<li><strong>Implementación digital</strong>
+<ol type="a">
+<li>Desarrollo de página web de presentación</li>
+<li>Documentación técnica del proyecto</li>
+<li>Preparación de presentación final</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="card">
+<h2>3. Cronograma de Actividades</h2>
+<table>
+<thead>
+<tr>
+<th>Actividad</th>
+<th>Inicio</th>
+<th>Fin</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr><td data-label="Actividad">Definición de objetivos, alcance y restricciones del proyecto</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Elaboración de la Estructura Desglosada del Trabajo (EDT)</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Creación del cronograma y asignación de responsables</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Análisis de necesidades del usuario</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
+<tr><td data-label="Actividad">Benchmarking de modelos existentes</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
+<tr><td data-label="Actividad">Selección y justificación de características clave</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/25/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
+<tr><td data-label="Actividad">Obtención de diseños CAD</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Andres Torres</td></tr>
+<tr><td data-label="Actividad">Creación lista de materiales (BOM)</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Creación página web inicial</td><td data-label="Inicio">04/16/2025</td><td data-label="Fin">05/06/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Diseño del layout de la planta de ensamblaje</td><td data-label="Inicio">05/07/2025</td><td data-label="Fin">05/21/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
+<tr><td data-label="Actividad">Propuesta de automatización de procesos de ensamblaje</td><td data-label="Inicio">05/07/2025</td><td data-label="Fin">05/28/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
+<tr><td data-label="Actividad">Simulación de flujo de trabajo</td><td data-label="Inicio">05/22/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
+<tr><td data-label="Actividad">Definición de indicadores clave (OEE, tiempo de ciclo...)</td><td data-label="Inicio">06/23/2025</td><td data-label="Fin">06/27/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Cálculo de costos de producción</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/02/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
+<tr><td data-label="Actividad">Estimación de inversión inicial</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/05/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
+<tr><td data-label="Actividad">Análisis financiero</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
+<tr><td data-label="Actividad">Curva S y control presupuestal</td><td data-label="Inicio">06/09/2025</td><td data-label="Fin">06/13/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Selección de proveedores</td><td data-label="Inicio">06/13/2025</td><td data-label="Fin">06/20/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Verificación de requisitos técnicos y financieros</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Correcciones y finalización página web</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Documentación de resultados</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Preparación presentación final</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+<tr><td data-label="Actividad">Entrega final, documentación y avances web</td><td data-label="Inicio">04/21/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<h2>Visualización del Cronograma (Gantt)</h2>
+<div style="overflow-x: auto; max-width: 100%; border: 1px solid var(--titanium); border-radius: 8px; padding: 1rem; background-color: #1C1C1C;">
+<img alt="Diagrama de Gantt" src="Multimedia/gantt.png" style="height: auto; max-height: 650px;"/>
+</div>
+</div>
+<div class="card">
+<h2>4. Análisis de Necesidades del Usuario y Benchmarking</h2>
+<p>Se realizó una investigación en el mercado colombiano de movilidad urbana, encontrando que los usuarios priorizan la autonomía, el diseño deportivo, la conectividad y facilidad de recarga. El benchmarking incluyó marcas como NIU, Super Soco y Stärker, destacando elementos clave como baterías intercambiables, conectividad vía app y diseño aerodinámico.</p>
+<div class="canvas-grid">
+<div class="canvas-box socios">
+<h2><i class="fas fa-handshake"></i>Socios clave</h2>
+<p>Proveedores de componentes eléctricos y mecánicos, aliados de distribución, talleres de ensamblaje, instituciones que promuevan movilidad eléctrica.</p>
+</div>
+<div class="canvas-box actividades">
+<h2><i class="fas fa-cogs"></i>Actividades clave</h2>
+<p>Diseño y ensamblaje de motos eléctricas, marketing digital, pruebas técnicas, desarrollo web, atención al cliente, alianzas logísticas.</p>
+</div>
+<div class="canvas-box recursos">
+<h2><i class="fas fa-toolbox"></i>Recursos clave</h2>
+<p>Prototipos, taller, herramientas, equipo humano interdisciplinario, página web, marca y conocimientos técnicos.</p>
+</div>
+<div class="canvas-box propuesta">
+<h2><i class="fas fa-bolt"></i>Propuesta de valor</h2>
+<p>Motos eléctricas urbanas con diseño atractivo, tecnología avanzada y rendimiento competitivo, enfocadas al usuario latinoamericano.</p>
+<p>Personalización de corte para porta-placas de acuerdo con la línea de la moto.</p>
+</div>
+<div class="canvas-box relaciones">
+<h2><i class="fas fa-heart"></i>Relación con clientes</h2>
+<p>Web interactiva, atención personalizada, comunidad de usuarios, soporte técnico postventa.</p>
+</div>
+<div class="canvas-box canales">
+<h2><i class="fas fa-bullhorn"></i>Canales</h2>
+<p>Web oficial, ferias tecnológicas, distribuidores locales, redes sociales.</p>
+</div>
+<div class="canvas-box segmentos">
+<h2><i class="fas fa-users"></i>Segmentos de mercado</h2>
+<p>Jóvenes urbanos, profesionales que usan motos, estudiantes, tech-savvy, usuarios de movilidad sostenible.</p>
+</div>
+<div class="canvas-box estructura">
+<h2><i class="fas fa-coins"></i>Estructura de costos</h2>
+<p>Prototipado, componentes, licencias de software, hosting web, materiales, publicidad, equipo humano.</p>
+</div>
+<div class="canvas-box ingresos">
+<h2><i class="fas fa-cash-register"></i>Fuentes de ingresos</h2>
+<p>Venta de motos, personalización, repuestos, mantenimiento técnico.</p>
+</div>
+</div></div>
+<div class="card">
+<h2>5. Selección y Justificación de Características Clave</h2>
+<ul>
+<li><strong>Tipo de motor:</strong> Motor de cubo sin escobillas de 3.500W por su eficiencia y bajo mantenimiento.</li>
+<li><strong>Tipo de batería:</strong> Batería de litio de 72V/40Ah, intercambiable, por su peso reducido y facilidad de recarga.</li>
+<li><strong>Chasis:</strong> Acero reforzado, por su relación peso/resistencia.</li>
+<li><strong>Frenos:</strong> Disco hidráulico delantero y trasero, por seguridad y respuesta rápida.</li>
+</ul>
+</div>
+</div>
 </body>
 </html>
