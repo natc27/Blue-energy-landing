@@ -132,25 +132,74 @@
       color: var(--titanium);
       line-height: 1.6;
     }
-    .card {
-      background-color: var(--card-bg);
-      padding: 1.5rem;
+    .card, .descripcion-planta, .simulacion-card {
+      background-color: #2a2a2a;
+      padding: 2rem;
       border-radius: 10px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15);
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+    }
+    h1, h2, h3 {
+      color: var(--electric-blue);
+      margin-bottom: 1rem;
+    }
+    p, li, table {
+      color: var(--titanium);
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1rem;
     }
     th, td {
       padding: 0.75rem;
-      border: 1px solid var(--titanium);
       text-align: left;
+      border-bottom: 1px solid var(--titanium);
     }
-    th {
-      background-color: var(--hover-bg);
+    thead tr {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
+    .simulacion-card img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    .formula {
+      background-color: #1f1f1f;
+      border-left: 4px solid var(--electric-blue);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1rem;
+      color: var(--titanium);
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem; }
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      thead { display: none; }
+      tr {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--electric-blue);
+      }
+      td {
+        padding-left: 50%;
+        position: relative;
+      }
+      td::before {
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 1rem;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      td:nth-of-type(1)::before { content: 'Indicador'; }
+      td:nth-of-type(2)::before { content: 'Valor'; }
     }
   </style>
 </head>
@@ -198,21 +247,73 @@
 
     <div class="card">
       <h2>1. Justificación de la Automatización</h2>
-      <p>La automatización busca mejorar la eficiencia, reducir errores humanos y aumentar la capacidad de producción. Se identificaron cuellos de botella en estaciones manuales que retrasan el flujo general de ensamblaje. Se espera que la implementación de sistemas automáticos genere un incremento en el OEE y reduzca los tiempos de ciclo.</p>
+      <p>La automatización busca mejorar la eficiencia, reducir errores humanos y aumentar la capacidad de producción. Se identificaron cuellos de botella en estaciones manuales que retrasan el flujo general de ensamblaje o demoras significativas en estaciones como chasis, que al ser iniciales condicionan los tiempos de la cadena completa; además, para mantener la producción de las 3 líneas de productos, la selección de elementos correspondientes agrega tiempos improductivos. Se espera entonces que la implementación de sistemas automáticos genere un incremento en el OEE y reduzca los tiempos de ciclo y de ensamble general, entendiendo estos indicadores como herramientas para el monitoreo del desempeño de la planta.</p>
     </div>
 
     <div class="card">
       <h2>2. Propuesta Técnica</h2>
       <ul>
         <li>Integración de cintas transportadoras automatizadas para el flujo de motocicletas.</li>
-        <li>Estaciones robotizadas para tareas repetitivas como fijación, soldadura o inspección.</li>
-        <li>Sensores y visión artificial para garantizar calidad y seguridad.</li>
-        <li>SCADA o software de monitoreo para trazabilidad y control en tiempo real.</li>
+        <li>Estaciones robotizadas para tareas repetitivas como fijación y posición en estaciones complejas como el chasis.</li>
+        <li>Sensores, actuadores y visión artificial para garantizar monitoreo de calidad y seguridad, además de inspecciones automatizadas.</li>
+        <li>SCADA o software de monitoreo para trazabilidad y control de las operaciones en tiempo real.</li>
       </ul>
     </div>
 
     <div class="card">
-      <h2>3. Comparativo Antes vs Después</h2>
+      <h2>3. Resumen de Estaciones de Ensamblaje</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Estación</th>
+            <th>Tiempo de Proceso (MM:SS)</th>
+            <th>Falla (Duración)</th>
+            <th>Disponibilidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
+          <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
+          <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
+          <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
+          <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
+          <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
+          <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
+          <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
+          <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
+          <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="simulacion-card">
+      <h2>4. Simulación del estado actual</h2>
+      <p>Se ha modelado la línea de ensamblaje considerando flujos paralelos (para baterías, motores y chasis), fallas con distribución uniforme, buffers limitados y sin intervención humana directa. La simulación permite analizar KPIs como tiempos de ciclo, tasas de producción, utilización de estaciones y fallos.</p>
+      <img src="Multimedia/Simulacion_Plant.png" alt="Simulación Planta">
+      <p>Con su respectiva gráfica para entender como están funcionando las estaciones.</p>
+      <img src="Multimedia/Grafica_plantaActual.png" alt="Gráfica Simulación Planta">
+    </div>
+
+    <div class="card">
+      <h2>5. Indicadores productivos de la planta</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Indicador</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tiempo total de ensamblaje</td><td>98 horas y 56 minutos por motocicleta</td></tr>
+          <tr><td>Capacidad instalada</td><td>menor a 1 moto/día</td></tr>
+          <tr><td>Producción mensual</td><td>13 unidades</td></tr>
+          <tr><td>O.E.E. global</td><td>49.52%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>6. Comparativo Antes vs Después</h2>
       <table>
         <thead>
           <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
@@ -227,12 +328,12 @@
     </div>
 
     <div class="card">
-      <h2>4. Consideraciones de Seguridad</h2>
+      <h2>7. Consideraciones de Seguridad</h2>
       <p>La implementación incluirá análisis de riesgos bajo normativa ISO 12100. Se consideran zonas seguras delimitadas, paro de emergencia accesible, entrenamiento al personal y mantenimiento predictivo para evitar fallos inesperados.</p>
     </div>
 
     <div class="card">
-      <h2>5. Conclusión</h2>
+      <h2>8. Conclusión</h2>
       <p>La automatización de la línea permitirá a Blue Energy Bikes mejorar sus indicadores clave de producción, ser más competitiva y garantizar productos de alta calidad, con un retorno estimado de inversión en menos de un año.</p>
     </div>
   </main>
