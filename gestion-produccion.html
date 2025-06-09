@@ -3,64 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blue Energy Bikes</title>
+  <title>Propuesta de Automatización - Blue Energy Bikes</title>
   <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --black: #1C1C1C;
       --electric-blue: #00BFFF;
-      --titanium: #A0A0A0;
       --white: #FFFFFF;
-      --neon-lime: #BFFF00;
+      --card-bg: #2a2a2a;
+      --hover-bg: #3a3a3a;
+      --titanium: #A0A0A0;
     }
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    html {
-      scroll-behavior: smooth;
     }
     body {
+      margin: 0;
       font-family: 'Roboto', sans-serif;
       background-color: var(--black);
       color: var(--white);
-      line-height: 1.6;
-      padding-top: 110px;
     }
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
       background-color: var(--black);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      z-index: 100;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .logo {
       height: 80px;
       width: 80px;
-      border-radius: 50%;
     }
     nav ul {
       list-style: none;
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 1.5rem;
+      padding: 0;
+      margin: 0;
     }
     nav a, .dropdown-button {
       color: var(--white);
       text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
       background: none;
       border: none;
+      cursor: pointer;
     }
     .dropdown-container {
       position: relative;
@@ -68,16 +63,23 @@
     .dropdown-menu {
       display: none;
       position: absolute;
+      background-color: var(--black);
+      padding: 0.5rem;
+      border-radius: 5px;
       top: 100%;
       left: 0;
-      background-color: #1C1C1C;
-      z-index: 1000;
-      list-style: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+      min-width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
-    .dropdown-menu li {
-      margin: 0.5rem 0;
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .dropdown-menu li a:hover {
+      background-color: var(--hover-bg);
     }
     .dropdown-container:hover .dropdown-menu {
       display: block;
@@ -90,116 +92,75 @@
     .menu-toggle span {
       background: var(--white);
       height: 3px;
-      margin: 5px 0;
+      margin: 4px 0;
       width: 25px;
     }
     .mobile-nav {
       display: none;
       flex-direction: column;
+      width: 100%;
       background-color: var(--black);
       padding: 1rem;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
     }
     .mobile-nav a {
       color: var(--white);
-      padding: 0.5rem 0;
       text-decoration: none;
+      padding: 0.5rem 0;
       border-bottom: 1px solid var(--titanium);
     }
+    .mobile-nav.active {
+      display: flex;
+    }
     @media (max-width: 850px) {
-      nav ul { display: none; }
-      .menu-toggle { display: flex; }
-      .mobile-nav { display: none; }
-      .mobile-nav.active { display: flex; }
+      nav ul {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
     }
     .container {
+      padding: 2rem;
       max-width: 1200px;
       margin: auto;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
     }
-    .card, .descripcion-planta, .simulacion-card {
-      background-color: #2a2a2a;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
-    }
-    h1, h2, h3 {
+    h1, h2 {
       color: var(--electric-blue);
       margin-bottom: 1rem;
     }
-    p, li, table {
+    p, li {
       color: var(--titanium);
+      line-height: 1.6;
+    }
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15);
     }
     table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 1rem;
     }
     th, td {
       padding: 0.75rem;
+      border: 1px solid var(--titanium);
       text-align: left;
-      border-bottom: 1px solid var(--titanium);
     }
-    thead tr {
-      background-color: var(--electric-blue);
-      color: var(--black);
-    }
-    .simulacion-card img {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 10px;
-      margin-top: 1rem;
-    }
-    .formula {
-      background-color: #1f1f1f;
-      border-left: 4px solid var(--electric-blue);
-      padding: 0.75rem 1rem;
-      margin: 1rem 0;
-      font-family: 'Roboto Mono', monospace;
-      font-size: 1rem;
-      color: var(--titanium);
-      overflow-x: auto;
-      border-radius: 6px;
-    }
-    @media (max-width: 600px) {
-      .container { padding: 2rem 1rem; }
-      table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-      }
-      thead { display: none; }
-      tr {
-        margin-bottom: 1rem;
-        border-bottom: 2px solid var(--electric-blue);
-      }
-      td {
-        padding-left: 50%;
-        position: relative;
-      }
-      td::before {
-        position: absolute;
-        left: 0;
-        width: 45%;
-        padding-left: 1rem;
-        font-weight: bold;
-        white-space: nowrap;
-      }
-      td:nth-of-type(1)::before { content: 'Indicador'; }
-      td:nth-of-type(2)::before { content: 'Valor'; }
+    th {
+      background-color: var(--hover-bg);
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
     <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <nav>
       <ul>
@@ -210,8 +171,8 @@
             <li><a href="estado-actual.html">Estado actual</a></li>
             <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
             <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
-            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
-            <li><a href="presupuesto.html">Presupuesto</a></li>
+            <li><a href="celda-manufactura.html">Celda Robotizada</a></li>
+            <li><a href="automatizacion-propuesta.html">Propuesta de Automatización</a></li>
           </ul>
         </li>
         <li><a href="index.html#productos">Productos</a></li>
@@ -224,12 +185,56 @@
       <a href="estado-actual.html">Estado actual</a>
       <a href="gestion-proyecto.html">Gestión de Proyecto</a>
       <a href="gestion-produccion.html">Gestión de Producción</a>
-      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
-      <a href="presupuesto.html">Presupuesto</a>
+      <a href="celda-manufactura.html">Celda Robotizada</a>
+      <a href="automatizacion-propuesta.html">Propuesta de Automatización</a>
       <a href="index.html#productos">Productos</a>
       <a href="index.html#nosotros">Nosotros</a>
       <a href="index.html#contacto">Contacto</a>
     </div>
   </header>
+
+  <main class="container">
+    <h1>Propuesta de Automatización de la Línea de Producción</h1>
+
+    <div class="card">
+      <h2>1. Justificación de la Automatización</h2>
+      <p>La automatización busca mejorar la eficiencia, reducir errores humanos y aumentar la capacidad de producción. Se identificaron cuellos de botella en estaciones manuales que retrasan el flujo general de ensamblaje. Se espera que la implementación de sistemas automáticos genere un incremento en el OEE y reduzca los tiempos de ciclo.</p>
+    </div>
+
+    <div class="card">
+      <h2>2. Propuesta Técnica</h2>
+      <ul>
+        <li>Integración de cintas transportadoras automatizadas para el flujo de motocicletas.</li>
+        <li>Estaciones robotizadas para tareas repetitivas como fijación, soldadura o inspección.</li>
+        <li>Sensores y visión artificial para garantizar calidad y seguridad.</li>
+        <li>SCADA o software de monitoreo para trazabilidad y control en tiempo real.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>3. Comparativo Antes vs Después</h2>
+      <table>
+        <thead>
+          <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tiempo total de ensamblaje</td><td>120 minutos</td><td>65 minutos</td></tr>
+          <tr><td>Personal necesario</td><td>18 operarios</td><td>12 operarios</td></tr>
+          <tr><td>Errores detectados</td><td>15 por semana</td><td>4 por semana</td></tr>
+          <tr><td>Índice OEE</td><td>45%</td><td>75%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>4. Consideraciones de Seguridad</h2>
+      <p>La implementación incluirá análisis de riesgos bajo normativa ISO 12100. Se consideran zonas seguras delimitadas, paro de emergencia accesible, entrenamiento al personal y mantenimiento predictivo para evitar fallos inesperados.</p>
+    </div>
+
+    <div class="card">
+      <h2>5. Conclusión</h2>
+      <p>La automatización de la línea permitirá a Blue Energy Bikes mejorar sus indicadores clave de producción, ser más competitiva y garantizar productos de alta calidad, con un retorno estimado de inversión en menos de un año.</p>
+    </div>
+  </main>
 </body>
 </html>
