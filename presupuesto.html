@@ -179,40 +179,63 @@
 <body>
    <!-- Header -->
   <header>
-    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
-    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
-      <span></span><span></span><span></span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-container">
-          <button class="dropdown-button">Módulos ▾</button>
-          <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual</a></li>
-            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
-            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
-            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
-            <li><a href="presupuesto.html">Presupuesto</a></li>
-          </ul>
-        </li>
-        <li><a href="index.html#productos">Productos</a></li>
-        <li><a href="index.html#nosotros">Nosotros</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="mobile-nav">
-      <a href="index.html">Inicio</a>
-      <a href="estado-actual.html">Estado actual</a>
-      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
-      <a href="gestion-produccion.html">Gestión de Producción</a>
-      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
-      <a href="presupuesto.html">Presupuesto</a>
-      <a href="index.html#productos">Productos</a>
-      <a href="index.html#nosotros">Nosotros</a>
-      <a href="index.html#contacto">Contacto</a>
-    </div>
-  </header>
+  <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
+  <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav class="desktop-nav">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li class="dropdown-container">
+        <button class="dropdown-button">Módulos ▾</button>
+        <ul class="dropdown-menu">
+          <li><a href="estado-actual.html">Estado actual</a></li>
+          <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+          <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+          <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+          <li><a href="presupuesto.html">Presupuesto</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#productos">Productos</a></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+  <nav class="mobile-nav">
+    <a href="index.html">Inicio</a>
+    <a href="estado-actual.html">Estado actual</a>
+    <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+    <a href="gestion-produccion.html">Gestión de Producción</a>
+    <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+    <a href="presupuesto.html">Presupuesto</a>
+    <a href="index.html#productos">Productos</a>
+    <a href="index.html#nosotros">Nosotros</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+</header>
+
+<style>
+  .desktop-nav a,
+  .mobile-nav a,
+  .dropdown-button,
+  .dropdown-menu li a {
+    color: var(--white) !important;
+  }
+  .mobile-nav a {
+    display: block;
+  }
+</style>
+
+<script>
+  // Cierra menú móvil al hacer clic en un enlace
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.mobile-nav').classList.remove('active');
+    });
+  });
+</script>
 
   <main class="container">
     <h1>Presupuesto Inicial del Proyecto</h1>

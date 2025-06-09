@@ -164,7 +164,7 @@
     }
 
     .card p, .card li, .card td, .card th {
-      color: var(--titanium);
+      color: var(--white);
     }
 
     table {
@@ -222,80 +222,6 @@
       margin-bottom: 0.25rem;
     }
 
-
-    :root {
-      --black: #1C1C1C;
-      --electric-blue: #00BFFF;
-      --white: #FFFFFF;
-      --card-bg: #2a2a2a;
-      --hover-bg: #3a3a3a;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--black);
-      color: var(--white);
-    }
-    header {
-      background-color: var(--black);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo {
-      height: 80px;
-      width: 80px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
-    }
-    nav a, .dropdown-button {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .dropdown-container {
-      position: relative;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background-color: var(--black);
-      padding: 0.5rem;
-      border-radius: 5px;
-      top: 100%;
-      left: 0;
-      min-width: 250px;
-    }
-    .dropdown-menu li a {
-      display: block;
-      padding: 0.4rem 1rem;
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .dropdown-menu li a:hover {
-      background-color: var(--hover-bg);
-    }
-    .dropdown-container:hover .dropdown-menu {
-      display: block;
-    }
     .container {
       padding: 2rem;
       max-width: 1200px;
@@ -346,21 +272,21 @@
     .estructura { grid-area: estructura; }
     .ingresos { grid-area: ingresos; }
   
-@media (max-width: 768px) {
-  .canvas-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "socios"
-      "actividades"
-      "recursos"
-      "propuesta"
-      "relaciones"
-      "canales"
-      "segmentos"
-      "estructura"
-      "ingresos";
-  }
+    @media (max-width: 768px) {
+      .canvas-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "socios"
+          "actividades"
+          "recursos"
+          "propuesta"
+          "relaciones"
+          "canales"
+          "segmentos"
+          "estructura"
+          "ingresos";
+      }
 }
 </style>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" referrerpolicy="no-referrer" rel="stylesheet"/></head>
