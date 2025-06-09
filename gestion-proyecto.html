@@ -345,7 +345,24 @@
     .segmentos { grid-area: segmentos; }
     .estructura { grid-area: estructura; }
     .ingresos { grid-area: ingresos; }
-  </style>
+  
+@media (max-width: 768px) {
+  .canvas-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "socios"
+      "actividades"
+      "recursos"
+      "propuesta"
+      "relaciones"
+      "canales"
+      "segmentos"
+      "estructura"
+      "ingresos";
+  }
+}
+</style>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" referrerpolicy="no-referrer" rel="stylesheet"/></head>
 <body>
 <header>
