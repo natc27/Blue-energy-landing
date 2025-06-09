@@ -221,8 +221,132 @@
     ol li {
       margin-bottom: 0.25rem;
     }
-</style>
-</head>
+
+
+    :root {
+      --black: #1C1C1C;
+      --electric-blue: #00BFFF;
+      --white: #FFFFFF;
+      --card-bg: #2a2a2a;
+      --hover-bg: #3a3a3a;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+    header {
+      background-color: var(--black);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      height: 80px;
+      width: 80px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav a, .dropdown-button {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .dropdown-container {
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: var(--black);
+      padding: 0.5rem;
+      border-radius: 5px;
+      top: 100%;
+      left: 0;
+      min-width: 250px;
+    }
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .dropdown-menu li a:hover {
+      background-color: var(--hover-bg);
+    }
+    .dropdown-container:hover .dropdown-menu {
+      display: block;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1 {
+      color: var(--electric-blue);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      grid-template-areas:
+        "socios actividades recursos propuesta"
+        "socios actividades recursos relaciones"
+        "canales canales segmentos segmentos"
+        "estructura estructura ingresos ingresos";
+    }
+    .canvas-box {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .canvas-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
+    }
+    h2 {
+      color: var(--electric-blue);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .canvas-box i {
+      margin-right: 8px;
+      color: var(--electric-blue);
+    }
+    .socios { grid-area: socios; }
+    .actividades { grid-area: actividades; }
+    .recursos { grid-area: recursos; }
+    .propuesta { grid-area: propuesta; }
+    .relaciones { grid-area: relaciones; }
+    .canales { grid-area: canales; }
+    .segmentos { grid-area: segmentos; }
+    .estructura { grid-area: estructura; }
+    .ingresos { grid-area: ingresos; }
+  </style>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" referrerpolicy="no-referrer" rel="stylesheet"/></head>
 <body>
 <header>
 <img alt="Logo Blue Energy" class="logo" src="Multimedia/logo-circ.png"/>
@@ -271,7 +395,6 @@
 </div>
 <div class="card">
 <h2>2. Estructura Desglosada del Trabajo (EDT)</h2>
-
 <ol>
 <li><strong>Planificación del proyecto</strong>
 <ol type="a">
@@ -315,7 +438,6 @@
 </ol>
 </li>
 </ol>
-
 </div>
 <div class="card">
 <h2>3. Cronograma de Actividades</h2>
@@ -364,7 +486,45 @@
 <div class="card">
 <h2>4. Análisis de Necesidades del Usuario y Benchmarking</h2>
 <p>Se realizó una investigación en el mercado colombiano de movilidad urbana, encontrando que los usuarios priorizan la autonomía, el diseño deportivo, la conectividad y facilidad de recarga. El benchmarking incluyó marcas como NIU, Super Soco y Stärker, destacando elementos clave como baterías intercambiables, conectividad vía app y diseño aerodinámico.</p>
+<div class="canvas-grid">
+<div class="canvas-box socios">
+<h2><i class="fas fa-handshake"></i>Socios clave</h2>
+<p>Proveedores de componentes eléctricos y mecánicos, aliados de distribución, talleres de ensamblaje, instituciones que promuevan movilidad eléctrica.</p>
 </div>
+<div class="canvas-box actividades">
+<h2><i class="fas fa-cogs"></i>Actividades clave</h2>
+<p>Diseño y ensamblaje de motos eléctricas, marketing digital, pruebas técnicas, desarrollo web, atención al cliente, alianzas logísticas.</p>
+</div>
+<div class="canvas-box recursos">
+<h2><i class="fas fa-toolbox"></i>Recursos clave</h2>
+<p>Prototipos, taller, herramientas, equipo humano interdisciplinario, página web, marca y conocimientos técnicos.</p>
+</div>
+<div class="canvas-box propuesta">
+<h2><i class="fas fa-bolt"></i>Propuesta de valor</h2>
+<p>Motos eléctricas urbanas con diseño atractivo, tecnología avanzada y rendimiento competitivo, enfocadas al usuario latinoamericano.</p>
+<p>Personalización de corte para porta-placas de acuerdo con la línea de la moto.</p>
+</div>
+<div class="canvas-box relaciones">
+<h2><i class="fas fa-heart"></i>Relación con clientes</h2>
+<p>Web interactiva, atención personalizada, comunidad de usuarios, soporte técnico postventa.</p>
+</div>
+<div class="canvas-box canales">
+<h2><i class="fas fa-bullhorn"></i>Canales</h2>
+<p>Web oficial, ferias tecnológicas, distribuidores locales, redes sociales.</p>
+</div>
+<div class="canvas-box segmentos">
+<h2><i class="fas fa-users"></i>Segmentos de mercado</h2>
+<p>Jóvenes urbanos, profesionales que usan motos, estudiantes, tech-savvy, usuarios de movilidad sostenible.</p>
+</div>
+<div class="canvas-box estructura">
+<h2><i class="fas fa-coins"></i>Estructura de costos</h2>
+<p>Prototipado, componentes, licencias de software, hosting web, materiales, publicidad, equipo humano.</p>
+</div>
+<div class="canvas-box ingresos">
+<h2><i class="fas fa-cash-register"></i>Fuentes de ingresos</h2>
+<p>Venta de motos, personalización, repuestos, mantenimiento técnico.</p>
+</div>
+</div></div>
 <div class="card">
 <h2>5. Selección y Justificación de Características Clave</h2>
 <ul>
