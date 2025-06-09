@@ -155,6 +155,17 @@
       border-radius: 10px;
       margin-top: 1rem;
     }
+    .formula {
+      background-color: #1f1f1f;
+      border-left: 4px solid var(--electric-blue);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1rem;
+      color: var(--titanium);
+      overflow-x: auto;
+      border-radius: 6px;
+    }
     @media (max-width: 600px) {
       .container { padding: 2rem 1rem; }
       table, thead, tbody, th, td, tr {
@@ -277,58 +288,56 @@
     </div>
 
     
-    <div class="card">
-      <h2>🧮 Desarrollo de Cálculos</h2>
-      <p>Se presentan a continuación los cálculos detallados que permiten justificar los indicadores productivos estimados para la planta:</p>
+   <div class="card">
+      <h2>Desarrollo de cálculos</h2>
+      <ol>
+        <li>
+          <h3>Tiempo total de ensamblaje</h3>
+          <p>Se suman los tiempos de operación de todas las estaciones de ensamblaje:</p>
+          <div class="formula">
+            4:30 + 3:45 + 5:00 + 3:15 + 2:50 + 2:00 + 3:30 + 4:10 + 2:30 + 2:15 = 33:45
+          </div>
+          <p><strong>Resultado:</strong> 33 minutos y 45 segundos por motocicleta.</p>
+        </li>
     
-      <div style="margin-top: 2rem;">
-        <h3>1. ⏱️ Tiempo Total de Ensamblaje</h3>
-        <p>Se suman los tiempos de todas las estaciones:</p>
-        <pre style="background-color: #1e1e1e; padding: 1rem; border-radius: 8px; overflow-x: auto;">
-    Chasis .............. 4:30
-    Baterías ............ 3:45
-    Motor ............... 5:00
-    Frenos y suspensión . 3:15
-    Llantas ............. 2:50
-    Manillar ............ 2:00
-    Luces y cableado .... 3:30
-    Corte y doblado ..... 4:10
-    Ensamble eléctrico .. 2:30
-    Asiento y detalles .. 2:15
-    ────────────────────────────
-    TOTAL ............... 33:45 minutos
-        </pre>
-        <p><strong>Resultado:</strong> <span style="color: var(--neon-lime);">33 minutos y 45 segundos</span> por motocicleta.</p>
-      </div>
+        <li>
+          <h3>Capacidad instalada</h3>
+          <p>Considerando un turno de 8 horas (<em>28.800 segundos</em>) y un tiempo de ciclo promedio de <em>202,5 segundos</em> por motocicleta:</p>
+          <div class="formula">
+            Capacidad = 28.800 / 202.5 ≈ 142 unidades por estación
+          </div>
+          <p>Dado que las estaciones son manuales y trabajan en secuencia con 5 operarios, se ajusta la estimación:</p>
+          <p><strong>Resultado:</strong> 14 motocicletas por día.</p>
+        </li>
     
-      <div style="margin-top: 2rem;">
-        <h3>2. ⚙️ Capacidad Instalada</h3>
-        <p>Basado en un turno de 8 horas (28,800 segundos) y un tiempo de ciclo promedio:</p>
-        <p><code>Tiempo ciclo promedio = 202.5 segundos</code></p>
-        <p><code>Capacidad = 28,800 / 202.5 ≈ 142 motos/estación</code></p>
-        <p>Sin embargo, con trabajo manual y una línea secuencial:</p>
-        <p><strong>Resultado ajustado:</strong> <span style="color: var(--neon-lime);">14 motos/día</span></p>
-      </div>
+        <li>
+          <h3>Producción mensual</h3>
+          <p>Suponiendo 22 días laborales al mes:</p>
+          <div class="formula">
+            Producción mensual = 14 × 22 = 308 unidades
+          </div>
+          <p><strong>Producción observada:</strong> 313 unidades.</p>
+          <p><strong>Comentario:</strong> El rendimiento real supera levemente la capacidad estimada.</p>
+        </li>
     
-      <div style="margin-top: 2rem;">
-        <h3>3. 📅 Producción Mensual</h3>
-        <p>Con 22 días laborales al mes:</p>
-        <p><code>Producción mensual = 14 × 22 = 308</code></p>
-        <p><strong>Valor reportado:</strong> <span style="color: var(--neon-lime);">313 motos/mes</span> → Eficiencia por encima de lo estimado.</p>
-      </div>
-    
-      <div style="margin-top: 2rem;">
-        <h3>4. 📊 O.E.E. Estimado (Overall Equipment Effectiveness)</h3>
-        <p>Usamos la fórmula:</p>
-        <p><code>OEE = A × PE × Q</code></p>
-        <ul>
-          <li><strong>A (Disponibilidad):</strong> 0.95</li>
-          <li><strong>PE (Eficiencia de desempeño):</strong> 0.85</li>
-          <li><strong>Q (Calidad):</strong> 0.75</li>
-        </ul>
-        <p><code>OEE = 0.95 × 0.85 × 0.75 = 0.605</code></p>
-        <p><strong>Resultado:</strong> <span style="color: var(--neon-lime);">60%</span></p>
-      </div>
+        <li>
+          <h3>OEE estimado (Overall Equipment Effectiveness)</h3>
+          <p>El OEE se calcula como el producto de disponibilidad, eficiencia de desempeño y calidad:</p>
+          <div class="formula">
+            OEE = A × PE × Q
+          </div>
+          <p>Con valores aproximados:</p>
+          <ul>
+            <li><strong>Disponibilidad (A):</strong> 0.95</li>
+            <li><strong>Eficiencia (PE):</strong> 0.85</li>
+            <li><strong>Calidad (Q):</strong> 0.75</li>
+          </ul>
+          <div class="formula">
+            OEE = 0.95 × 0.85 × 0.75 = 0.605
+          </div>
+          <p><strong>Resultado:</strong> 60.5% de efectividad global.</p>
+        </li>
+      </ol>
     </div>
     
     <div class="card">
