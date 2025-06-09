@@ -131,10 +131,9 @@ nav a, .dropdown-button {
   display: flex
 }
 
-}
 
 
-    .hero {
+.hero {
   position: relative;
   height: 100vh;
   padding: 2rem;
@@ -286,7 +285,6 @@ footer {
   text-align: center
 }
 
-}
 
 .mobile-nav.active {
   display: flex
@@ -342,7 +340,7 @@ th, td {
   border-bottom: 1px solid var(--titanium)
 }
 
-}
+
 .container {
   max-width: 1200px;
   margin: auto;
