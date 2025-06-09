@@ -113,9 +113,12 @@
       .mobile-nav.active { display: flex; }
     }
     .container {
-      padding: 2rem;
       max-width: 1200px;
       margin: auto;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
     h1 {
       color: var(--electric-blue);
@@ -133,7 +136,7 @@
     .info-box {
       background-color: var(--card-bg);
       border-left: 5px solid var(--electric-blue);
-      padding: 2.5rem;
+      padding: 3rem;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
