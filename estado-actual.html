@@ -278,45 +278,58 @@
 
     
     <div class="card">
-      <h2>Desarrollo de Cálculos de Indicadores</h2>
-      <p>A continuación, se presentan los desarrollos matemáticos para determinar los valores clave de rendimiento de la planta, aplicando fórmulas estándar de gestión de producción.</p>
+      <h2>🧮 Desarrollo de Cálculos</h2>
+      <p>Se presentan a continuación los cálculos detallados que permiten justificar los indicadores productivos estimados para la planta:</p>
     
-      <h3>1. Tiempo total de ensamblaje</h3>
-      <p>
-        El tiempo total se calcula como la suma de los tiempos de proceso por estación:<br>
-        <code>T_total = 4:30 + 3:45 + 5:00 + 3:15 + 2:50 + 2:00 + 3:30 + 4:10 + 2:30 + 2:15</code><br>
-        <strong>Resultado:</strong> 33 minutos y 45 segundos por motocicleta.
-      </p>
+      <div style="margin-top: 2rem;">
+        <h3>1. ⏱️ Tiempo Total de Ensamblaje</h3>
+        <p>Se suman los tiempos de todas las estaciones:</p>
+        <pre style="background-color: #1e1e1e; padding: 1rem; border-radius: 8px; overflow-x: auto;">
+    Chasis .............. 4:30
+    Baterías ............ 3:45
+    Motor ............... 5:00
+    Frenos y suspensión . 3:15
+    Llantas ............. 2:50
+    Manillar ............ 2:00
+    Luces y cableado .... 3:30
+    Corte y doblado ..... 4:10
+    Ensamble eléctrico .. 2:30
+    Asiento y detalles .. 2:15
+    ────────────────────────────
+    TOTAL ............... 33:45 minutos
+        </pre>
+        <p><strong>Resultado:</strong> <span style="color: var(--neon-lime);">33 minutos y 45 segundos</span> por motocicleta.</p>
+      </div>
     
-      <h3>2. Capacidad instalada</h3>
-      <p>
-        La capacidad diaria se obtiene considerando un turno de 8 horas (28,800 segundos), y un tiempo de ciclo promedio de 202.5 segundos por estación:<br>
-        <code>Capacidad_día = 28,800 / 202.5 ≈ 142 motos por estación</code><br>
-        Dado que se cuenta con 10 estaciones y 5 trabajadores manuales, se asume que el sistema opera en secuencia y no en paralelo. Por lo tanto, se ajusta según la línea completa:<br>
-        <code>Capacidad_día ≈ 14 motos/día</code> (según rendimiento observado y restricciones de trabajo humano).
-      </p>
+      <div style="margin-top: 2rem;">
+        <h3>2. ⚙️ Capacidad Instalada</h3>
+        <p>Basado en un turno de 8 horas (28,800 segundos) y un tiempo de ciclo promedio:</p>
+        <p><code>Tiempo ciclo promedio = 202.5 segundos</code></p>
+        <p><code>Capacidad = 28,800 / 202.5 ≈ 142 motos/estación</code></p>
+        <p>Sin embargo, con trabajo manual y una línea secuencial:</p>
+        <p><strong>Resultado ajustado:</strong> <span style="color: var(--neon-lime);">14 motos/día</span></p>
+      </div>
     
-      <h3>3. Producción mensual</h3>
-      <p>
-        Con 22 días laborales al mes:<br>
-        <code>Producción_mensual = 14 motos/día × 22 días = 308 motos/mes</code><br>
-        El valor real registrado fue de 313, lo que implica una eficiencia levemente superior.
-      </p>
+      <div style="margin-top: 2rem;">
+        <h3>3. 📅 Producción Mensual</h3>
+        <p>Con 22 días laborales al mes:</p>
+        <p><code>Producción mensual = 14 × 22 = 308</code></p>
+        <p><strong>Valor reportado:</strong> <span style="color: var(--neon-lime);">313 motos/mes</span> → Eficiencia por encima de lo estimado.</p>
+      </div>
     
-      <h3>4. OEE estimado</h3>
-      <p>
-        El OEE (Overall Equipment Effectiveness) se calcula mediante la fórmula:<br>
-        <code>OEE = A × PE × Q</code><br>
-        Asumiendo:
+      <div style="margin-top: 2rem;">
+        <h3>4. 📊 O.E.E. Estimado (Overall Equipment Effectiveness)</h3>
+        <p>Usamos la fórmula:</p>
+        <p><code>OEE = A × PE × Q</code></p>
         <ul>
-          <li><strong>A</strong> (Disponibilidad promedio): 95%</li>
-          <li><strong>PE</strong> (Eficiencia de desempeño): 85%</li>
-          <li><strong>Q</strong> (Calidad): 75% (estimado por defectos y reprocesos)</li>
+          <li><strong>A (Disponibilidad):</strong> 0.95</li>
+          <li><strong>PE (Eficiencia de desempeño):</strong> 0.85</li>
+          <li><strong>Q (Calidad):</strong> 0.75</li>
         </ul>
-        <code>OEE = 0.95 × 0.85 × 0.75 = 0.605 ≈ 60%</code>
-      </p>
+        <p><code>OEE = 0.95 × 0.85 × 0.75 = 0.605</code></p>
+        <p><strong>Resultado:</strong> <span style="color: var(--neon-lime);">60%</span></p>
+      </div>
     </div>
-
     
     <div class="card">
       <h2>Indicadores productivos de la planta</h2>
