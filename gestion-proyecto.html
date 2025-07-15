@@ -78,19 +78,27 @@
     .dropdown-menu {
       display: none;
       position: absolute;
+      background-color: var(--black);
+      padding: 0.5rem;
+      border-radius: 5px;
       top: 100%;
       left: 0;
-      background-color: #1C1C1C;
-      z-index: 1000;
-      list-style: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+      min-width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
-
-    .dropdown-menu li {
-      margin: 0.5rem 0;
+    
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.4rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 4px;
     }
-
+    
+    .dropdown-menu li a:hover {
+      background-color: var(--hover-bg, #3a3a3a);
+    }
+    
     .dropdown-container:hover .dropdown-menu {
       display: block;
     }
@@ -336,86 +344,50 @@
 <div class="card">
 <h2>2. Estructura Desglosada del Trabajo (EDT)</h2>
 <ol>
-<li><strong>Planificación del proyecto</strong>
-<ol type="a">
-<li>Definición de objetivos y restricciones</li>
-<li>Identificación de actores clave</li>
-<li>Delimitación del alcance del proyecto</li>
-</ol>
-</li>
-<li><strong>Análisis del entorno</strong>
-<ol type="a">
-<li>Análisis de procesos actuales de ensamblaje</li>
-<li>Revisión de documentación técnica disponible</li>
-<li>Estudio de necesidades del usuario final</li>
-</ol>
-</li>
-<li><strong>Investigación tecnológica</strong>
-<ol type="a">
-<li>Benchmarking de soluciones automatizadas</li>
-<li>Estudio de tecnologías aplicables (robots, sensores, PLC, etc.)</li>
-</ol>
-</li>
-<li><strong>Diseño de propuesta</strong>
-<ol type="a">
-<li>Definición de celdas automatizadas</li>
-<li>Diseño preliminar de layout de planta</li>
-<li>Selección y justificación de componentes</li>
-</ol>
-</li>
-<li><strong>Evaluación técnica y económica</strong>
-<ol type="a">
-<li>Simulación de flujo de trabajo</li>
-<li>Estimación de costos e inversión inicial</li>
-<li>Análisis financiero y retorno esperado</li>
-</ol>
-</li>
-<li><strong>Implementación digital</strong>
-<ol type="a">
-<li>Desarrollo de página web de presentación</li>
-<li>Documentación técnica del proyecto</li>
-<li>Preparación de presentación final</li>
-</ol>
-</li>
+<div class="card">
+<div style="overflow-x: auto; max-width: 100%; border: 1px solid var(--titanium); border-radius: 8px; padding: 1rem; background-color: #1C1C1C;">
+<img alt="EDT" src="Multimedia/EDT.png" style="height: auto; max-height: 650px;"/>
+</div>
 </ol>
 </div>
 <div class="card">
 <h2>3. Cronograma de Actividades</h2>
 <table>
-<thead>
-<tr>
-<th>Actividad</th>
-<th>Inicio</th>
-<th>Fin</th>
-<th>Responsable</th>
-</tr>
-</thead>
-<tbody>
-<tr><td data-label="Actividad">Definición de objetivos, alcance y restricciones del proyecto</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Elaboración de la Estructura Desglosada del Trabajo (EDT)</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Creación del cronograma y asignación de responsables</td><td data-label="Inicio">04/02/2025</td><td data-label="Fin">04/08/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Análisis de necesidades del usuario</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
-<tr><td data-label="Actividad">Benchmarking de modelos existentes</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
-<tr><td data-label="Actividad">Selección y justificación de características clave</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/25/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
-<tr><td data-label="Actividad">Obtención de diseños CAD</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Andres Torres</td></tr>
-<tr><td data-label="Actividad">Creación lista de materiales (BOM)</td><td data-label="Inicio">04/09/2025</td><td data-label="Fin">04/15/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Creación página web inicial</td><td data-label="Inicio">04/16/2025</td><td data-label="Fin">05/06/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Diseño del layout de la planta de ensamblaje</td><td data-label="Inicio">05/07/2025</td><td data-label="Fin">05/21/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
-<tr><td data-label="Actividad">Propuesta de automatización de procesos de ensamblaje</td><td data-label="Inicio">05/07/2025</td><td data-label="Fin">05/28/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
-<tr><td data-label="Actividad">Simulación de flujo de trabajo</td><td data-label="Inicio">05/22/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
-<tr><td data-label="Actividad">Definición de indicadores clave (OEE, tiempo de ciclo...)</td><td data-label="Inicio">06/23/2025</td><td data-label="Fin">06/27/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Cálculo de costos de producción</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/02/2025</td><td data-label="Responsable">Natalia Cely</td></tr>
-<tr><td data-label="Actividad">Estimación de inversión inicial</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/05/2025</td><td data-label="Responsable">Felipe Chaves</td></tr>
-<tr><td data-label="Actividad">Análisis financiero</td><td data-label="Inicio">05/29/2025</td><td data-label="Fin">06/06/2025</td><td data-label="Responsable">Marco Quimbay</td></tr>
-<tr><td data-label="Actividad">Curva S y control presupuestal</td><td data-label="Inicio">06/09/2025</td><td data-label="Fin">06/13/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Selección de proveedores</td><td data-label="Inicio">06/13/2025</td><td data-label="Fin">06/20/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Verificación de requisitos técnicos y financieros</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Correcciones y finalización página web</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Documentación de resultados</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Preparación presentación final</td><td data-label="Inicio">06/30/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-<tr><td data-label="Actividad">Entrega final, documentación y avances web</td><td data-label="Inicio">04/21/2025</td><td data-label="Fin">07/11/2025</td><td data-label="Responsable">Equipo completo</td></tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Actividad</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Definición de objetivos, alcance y restricciones del proyecto</td><td>04/02/2025</td><td>04/08/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Elaboración de la Estructura Desglosada del Trabajo (EDT) específica para motos eléctricas.</td><td>04/02/2025</td><td>04/08/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Creación del cronograma de actividades con herramientas como Gantt y asignación de responsables.</td><td>04/02/2025</td><td>04/08/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Análisis de necesidades del usuario y benchmarking de modelos existentes.</td><td>04/09/2025</td><td>04/15/2025</td><td>Natalia Cely</td></tr>
+    <tr><td>Selección y justificación de características clave (tipo de motor, tipo de batería, chasis, frenos, etc.).</td><td>04/09/2025</td><td>04/25/2025</td><td>Felipe Chaves</td></tr>
+    <tr><td>Obtención diseños CAD de ejemplo de las motos eléctricas</td><td>06/04/2025</td><td>07/04/2025</td><td>Andres Torres</td></tr>
+    <tr><td>Creación lista de materiales, tabla BOM</td><td>05/02/2025</td><td>05/07/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Creación página WEB (Página inicial)</td><td>05/02/2025</td><td>05/06/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Diseño del layout de la planta de ensamblaje (antes de la automatización).</td><td>05/07/2025</td><td>05/21/2025</td><td>Natalia Cely</td></tr>
+    <tr><td>Propuesta de automatización de procesos de ensamblaje (robots, sistemas de transporte, estaciones de prueba).</td><td>05/07/2025</td><td>05/28/2025</td><td>Felipe Chaves</td></tr>
+    <tr><td>Simulación del flujo de trabajo con herramientas como Tecnomatix o simuladores de procesos industriales.</td><td>05/22/2025</td><td>06/06/2025</td><td>Marco Quimbay</td></tr>
+    <tr><td>Definición de indicadores clave (OEE, tiempo de ciclo, defectos por unidad, etc.).</td><td>06/23/2025</td><td>06/27/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Cálculo de costos de producción: materiales, mano de obra, energía, mantenimiento, etc.</td><td>05/29/2025</td><td>06/02/2025</td><td>Natalia Cely</td></tr>
+    <tr><td>Estimación de inversión inicial (maquinaria, herramientas, instalación).</td><td>05/29/2025</td><td>06/05/2025</td><td>Felipe Chaves</td></tr>
+    <tr><td>Análisis financiero: VPN, TIR, Payback, punto de equilibrio.</td><td>05/29/2025</td><td>06/06/2025</td><td>Marco Quimbay</td></tr>
+    <tr><td>Elaboración de curva S del proyecto para control de avance presupuestal.</td><td>06/09/2025</td><td>06/13/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Selección de proveedores para componentes clave (baterías, motores, controladores).</td><td>06/13/2025</td><td>06/20/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Implementación del gemelo digital, desarrollo y validación de HMI</td><td>06/30/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Verificación de cumplimiento de requisitos técnicos y financieros.</td><td>07/07/2025</td><td>07/18/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Correcciones y finalización página web</td><td>07/07/2025</td><td>07/18/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Documentación de resultados y reportes.</td><td>07/07/2025</td><td>07/18/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Preparación presentación final y video</td><td>07/07/2025</td><td>07/14/2025</td><td>Equipo completo</td></tr>
+    <tr><td>Documentación y entrega final, avances página web</td><td>04/21/2025</td><td>07/11/2025</td><td>Equipo completo</td></tr>
+  </tbody>
 </table>
+
 </div>
 <div class="card">
 <h2>Visualización del Cronograma (Gantt)</h2>
