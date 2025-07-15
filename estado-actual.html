@@ -116,7 +116,7 @@
       .mobile-nav.active { display: flex; }
     }
     .container {
-      max-width: 1200px;
+      max-width: 2200px;
       margin: auto;
       padding: 4rem 2rem;
       display: flex;
@@ -150,10 +150,11 @@
       color: var(--black);
     }
     .simulacion-card img {
-      width: 100%;
-      max-width: 600px;
+      display: block;
+      max-width: 100%;
       border-radius: 10px;
-      margin-top: 1rem;
+      margin: 1rem auto;
+      height:auto
     }
     .formula {
       background-color: #1f1f1f;
@@ -166,6 +167,76 @@
       overflow-x: auto;
       border-radius: 6px;
     }
+
+    .tabla-ajustada {
+      margin: 2rem auto;
+      border-collapse: collapse;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      width: auto;
+    }
+
+    .tabla-ajustada th,
+    .tabla-ajustada td {
+      border: none;
+      padding: 10px 20px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .tabla-ajustada th {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
+    .tabla-ajustada tr:nth-child(even) {
+      background-color: #2e2e2e;
+    }
+
+    .tabla-ajustada tr:nth-child(odd) {
+      background-color: #1f1f1f;
+    }
+
+    .tabla-fallas {
+      margin: 2rem auto;
+      border-collapse: collapse;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      width: auto;
+      background-color: #1C1C1C;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+    }
+
+    .tabla-fallas thead {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
+
+    .tabla-fallas th,
+    .tabla-fallas td {
+      padding: 10px 20px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .tabla-fallas tbody tr:nth-child(odd) {
+      background-color: #2a2a2a;
+    }
+
+    .tabla-fallas tbody tr:nth-child(even) {
+      background-color: #202020;
+    }
+
+    .tabla-fallas td {
+      color: var(--white);
+    }
+
+    .tabla-fallas th {
+      font-weight: bold;
+    }
+
+
     @media (max-width: 600px) {
       .container { padding: 2rem 1rem; }
       table, thead, tbody, th, td, tr {
@@ -234,39 +305,94 @@
 
   <!-- Contenido -->
   <div class="container">
-    <h1>Estado actual de la planta</h1>
+    <h1>Estado inicial de la planta</h1>
 
     <div class="descripcion-planta">
       <h2>Descripción general</h2>
       <p>Considerando la demanda creciente en 2025 de motos eléctricas, la empresa ensambladora cuenta con 9 estaciones para cumplir con el proceso. Sin embargo, todas las estaciones se encuentran operadas de forma manual, limitando la producción y los tiempos de entrega.</p>
       <p>En cuanto la demanda aumenta se observan problemas de mercado con los tiempos de entrega, por lo que es importante mejorar estos tiempos de producción y alistamiento para sacar el mayor provecho a una demanda emergente. Así, inicia el proceso para optimizar el ensamblaje de motos eléctricas de alto voltaje.</p>
+      <p>Así, se puede observar el layout de la planta inicial correspondiente.</p>
     </div>
 
     <div class="card">
       <h2>Resumen de Estaciones de Ensamblaje</h2>
-      <table>
+      <table class="tabla-ajustada">
         <thead>
           <tr>
             <th>Estación</th>
-            <th>Tiempo de Proceso (MM:SS)</th>
-            <th>Falla (Duración)</th>
-            <th>Disponibilidad</th>
+            <th>Función</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Chasis</td><td>04:30</td><td>Uniform(240,360)</td><td>92%</td></tr>
-          <tr><td>Baterías</td><td>03:45</td><td>Uniform(180,360)</td><td>95%</td></tr>
-          <tr><td>Motor</td><td>05:00</td><td>Uniform(300,480)</td><td>90%</td></tr>
-          <tr><td>Frenos y suspensión</td><td>03:15</td><td>Uniform(120,240)</td><td>94%</td></tr>
-          <tr><td>Llantas</td><td>02:50</td><td>Uniform(120,210)</td><td>97%</td></tr>
-          <tr><td>Manillar</td><td>02:00</td><td>Uniform(90,180)</td><td>98%</td></tr>
-          <tr><td>Luces y cableado</td><td>03:30</td><td>Uniform(180,300)</td><td>93%</td></tr>
-          <tr><td>Corte y doblado</td><td>04:10</td><td>Uniform(240,360)</td><td>95%</td></tr>
-          <tr><td>Ensamble eléctrico</td><td>02:30</td><td>Uniform(120,240)</td><td>96%</td></tr>
-          <tr><td>Asiento y detalles</td><td>02:15</td><td>Uniform(90,150)</td><td>98%</td></tr>
+          <tr><td>Chasis</td><td>Base estructural de la moto.</td></tr>
+          <tr><td>Motor</td><td>Instala el sistema de propulsión.</td></tr>
+          <tr><td>Baterías</td><td>Coloca el sistema de energía.</td></tr>
+          <tr><td>Frenos</td><td>Ensamble del sistema de frenado.</td></tr>
+          <tr><td>Llantas</td><td>Montaje de ruedas al chasis.</td></tr>
+          <tr><td>Manillar</td><td>Instala dirección y controles.</td></tr>
+          <tr><td>Luces</td><td>Fija luces delanteras y traseras.</td></tr>
+          <tr><td>Asiento</td><td>Coloca el asiento al chasis.</td></tr>
+          <tr><td>Ensamble</td><td>Integración y revisión final.</td></tr>
         </tbody>
       </table>
     </div>
+
+  <div class="card">
+  <h2>Fallas por estación</h2>
+  <table class="tabla-fallas">
+    <thead>
+      <tr>
+        <th>Estación</th>
+        <th>Tiempo de proceso</th>
+        <th>Tiempo de set-up</th>
+        <th>Falla</th>
+        <th>Distribución</th>
+        <th>Tiempo de reparación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="4">chasis</td><td rowspan="4">65:00</td><td rowspan="4">5:00</td><td>alineacion_deficiente</td><td>Negexp(1200)</td><td>10:00</td></tr>
+      <tr><td>herramienta_danada</td><td>Negexp(1500)</td><td>9:00</td></tr>
+      <tr><td>pieza_mal_colocada</td><td>Negexp(1800)</td><td>8:00</td></tr>
+      <tr><td>error_de_medicion</td><td>Negexp(2100)</td><td>10:00</td></tr>
+
+      <tr><td rowspan="4">baterias</td><td rowspan="4">85:00</td><td rowspan="4">4:00</td><td>fuga_electrolito</td><td>Negexp(2400)</td><td>12:00</td></tr>
+      <tr><td>error_polaridad</td><td>Negexp(3000)</td><td>10:00</td></tr>
+      <tr><td>celdas_danadas</td><td>LogNorm(1800,600)</td><td>12:00</td></tr>
+      <tr><td>conexion_deficiente</td><td>Negexp(2700)</td><td>9:00</td></tr>
+
+      <tr><td rowspan="4">motor</td><td rowspan="4">95:00</td><td rowspan="4">6:00</td><td>desalineacion_eje</td><td>Negexp(1800)</td><td>10:00</td></tr>
+      <tr><td>fallo_ensamble</td><td>LogNorm(1500,450)</td><td>9:00</td></tr>
+      <tr><td>calibracion_incorrecta</td><td>Negexp(2400)</td><td>10:00</td></tr>
+      <tr><td>daño_en_carcasa</td><td>Negexp(3000)</td><td>12:00</td></tr>
+
+      <tr><td rowspan="3">llantas</td><td rowspan="3">75:00</td><td rowspan="3">4:00</td><td>llanta_deformada</td><td>Negexp(1800)</td><td>10:00</td></tr>
+      <tr><td>error_balanceo</td><td>Negexp(2100)</td><td>9:00</td></tr>
+      <tr><td>fijacion_incorrecta</td><td>LogNorm(1600,400)</td><td>10:00</td></tr>
+
+      <tr><td rowspan="3">frenos</td><td rowspan="3">80:00</td><td rowspan="3">5:00</td><td>fuga_hidraulica</td><td>Negexp(2400)</td><td>12:00</td></tr>
+      <tr><td>error_purga</td><td>Negexp(1800)</td><td>9:00</td></tr>
+      <tr><td>sensor_frenos</td><td>LogNorm(1500,400)</td><td>10:00</td></tr>
+
+      <tr><td rowspan="3">manillar</td><td rowspan="3">78:00</td><td rowspan="3">3:00</td><td>torque_inadecuado</td><td>Negexp(1500)</td><td>8:00</td></tr>
+      <tr><td>manillar_desviado</td><td>Negexp(1800)</td><td>10:00</td></tr>
+      <tr><td>pieza_incompleta</td><td>LogNorm(1200,350)</td><td>10:00</td></tr>
+
+      <tr><td rowspan="3">luces</td><td rowspan="3">90:00</td><td rowspan="3">4:00</td><td>corto_luces</td><td>Negexp(2400)</td><td>12:00</td></tr>
+      <tr><td>conexion_defectuosa</td><td>Negexp(2100)</td><td>10:00</td></tr>
+      <tr><td>direccion_mal_marcada</td><td>LogNorm(1800,500)</td><td>9:00</td></tr>
+
+      <tr><td rowspan="3">ensamble</td><td rowspan="3">105:00</td><td rowspan="3">6:00</td><td>pieza_olvidada</td><td>Negexp(3000)</td><td>12:00</td></tr>
+      <tr><td>fallo_estructura</td><td>LogNorm(2000,600)</td><td>10:00</td></tr>
+      <tr><td>ajuste_incompleto</td><td>Negexp(2400)</td><td>9:00</td></tr>
+
+      <tr><td rowspan="3">asiento</td><td rowspan="3">60:00</td><td rowspan="3">4:00</td><td>fijación_incompleta</td><td>Negexp(1800)</td><td>10:00</td></tr>
+      <tr><td>tapizado_defectuoso</td><td>Negexp(2100)</td><td>9:00</td></tr>
+      <tr><td>estructura_dañada</td><td>LogNorm(1600,400)</td><td>12:00</td></tr>
+    </tbody>
+  </table>
+</div>
+
 
     <div class="simulacion-card">
       <h2>Simulación del estado actual</h2>
@@ -279,9 +405,9 @@
     <div class="card">
       <h2>Características generales de la planta</h2>
       <ul>
-        <li><strong>Línea de ensamblaje:</strong> 10 estaciones manuales e inspección</li>
+        <li><strong>Línea de ensamblaje:</strong> 9 estaciones manuales e inspección</li>
         <li><strong>Turnos activos:</strong> 1 diario</li>
-        <li><strong>Duración del Turno:</strong> 8 horas</li>
+        <li><strong>Duración del Turno:</strong> 8 horas y 1 hora de descanso de 12:00 p.m. a 1:00 p.m.</li>
         <li><strong>Personal operativo:</strong> 15 trabajadores</li>
         <li><strong>Tiempo de ciclo:</strong> 356.158,08 segundos (9 horas) en promedio</li>
       </ul>
@@ -323,41 +449,49 @@
         </li>
     
         <li>
-          <h3>OEE estimado (Overall Equipment Effectiveness)</h3>
-          <p>El OEE se calcula como el producto de disponibilidad, eficiencia de desempeño y calidad en cada una de las estaciones:</p>
+          <h3>OEE obtenido (Overall Equipment Effectiveness)</h3>
+          <p>A partir del siguiente código en SimTalk se obtuvo el O.E.E. de la situación simulada:</p>
           <div class="formula">
-            OEE = A × PE × Q
+            var tiempo = eventController.end
+
+            var total_time = chasis.statWorkingTime+baterias.statWorkingTime+motor.statWorkingTime+llantas.statWorkingTime+frenos.statWorkingTime+manillar.statWorkingTime+luces.statWorkingTime+ensamble.statWorkingTime+asiento.statWorkingTime
+            var proc_time =  chasis.procTime+baterias.procTime+motor.procTime+llantas.procTime+frenos.procTime+manillar.procTime+luces.procTime+ensamble.procTime+asiento.procTime
+
+            var unidades_ideal = tiempo/proc_time
+
+            var dispo := total_time / tiempo
+            var rend := total / unidades_ideal
+            var cal := (total-fallas) / total
+
+            var oee := dispo*rend*cal*100
           </div>
-          <div style="overflow-x:auto;">
-            <table>
-            <thead>
-                <tr>
-                <th>Estación</th>
-                <th>Ciclo Real (s)</th>
-                <th>Uptime (%)</th>
-                <th>Disponibilidad</th>
-                <th>Rendimiento</th>
-                <th>OEE</th>
-                <th>OEE (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Chasis</td><td>46776.96</td><td>54.14</td><td>0.5414</td><td>0.8765</td><td>0.4745</td><td>47.45</td></tr>
-                <tr><td>Baterías</td><td>42042.9</td><td>60.00</td><td>0.6</td><td>0.9752</td><td>0.5851</td><td>58.51</td></tr>
-                <tr><td>Motor</td><td>49151.0</td><td>48.00</td><td>0.48</td><td>0.8342</td><td>0.4004</td><td>40.04</td></tr>
-                <tr><td>Frenos</td><td>45624.0</td><td>52.00</td><td>0.52</td><td>0.8986</td><td>0.4673</td><td>46.73</td></tr>
-                <tr><td>Llantas</td><td>43200.0</td><td>55.00</td><td>0.55</td><td>0.9491</td><td>0.5220</td><td>52.20</td></tr>
-                <tr><td>Manillar</td><td>41000.0</td><td>58.00</td><td>0.58</td><td>1.0000</td><td>0.5800</td><td>58.00</td></tr>
-                <tr><td>Luces</td><td>47000.0</td><td>50.00</td><td>0.5</td><td>0.8723</td><td>0.4362</td><td>43.62</td></tr>
-                <tr><td>Ensamble</td><td>46000.0</td><td>53.00</td><td>0.53</td><td>0.8913</td><td>0.4724</td><td>47.24</td></tr>
-                <tr><td>Asiento</td><td>45000.0</td><td>57.00</td><td>0.57</td><td>0.9111</td><td>0.5193</td><td>51.93</td></tr>
-            </tbody>
-            </table>
-          <p><strong>Resultado:</strong> 49,52% de efectividad global con el mayor cuello de botella en el chasis ya que condiciona los tiempos de toda la línea y en la estación de frenos debido a tu alto tiempo de ciclo y bajo uptime.</p>
-        </li>
+          </li>
       </ol>
-    </div>
+   </div>
+
     
+   <div class="card">
+      <h2>Resultados de la simulación</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Parámetro</th>
+            <th>Resutado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tiempo de simulación</td><td>7 días</td></tr>
+          <tr><td>Unidades ideales</td><td>14</td></tr>
+          <tr><td>Piezas logradas</td><td>10</td></tr>
+          <tr><td>Fallas</td><td>6</td></tr>
+          <tr><td>Disponibilidad</td><td>73.363%</td></tr>
+          <tr><td>Rendimiento</td><td>72.71%</td></tr>
+          <tr><td>Calidad</td><td>40%</td></tr>
+          <tr><td>O.E.E. global</td><td>21.339%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="card">
       <h2>Indicadores productivos de la planta</h2>
       <table>
