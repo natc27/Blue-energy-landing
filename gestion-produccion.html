@@ -106,7 +106,7 @@
       color: var(--white);
       text-decoration: none;
       padding: 0.5rem 0;
-      border-bottom: 1px solid var(--titanium);
+      border-bottom: 1px solid var(--white);
     }
     .mobile-nav.active {
       display: flex;
@@ -144,7 +144,7 @@
       margin-bottom: 1rem;
     }
     p, li, table {
-      color: var(--titanium);
+      color: var(--white);
     }
     table {
       width: 100%;
@@ -160,10 +160,11 @@
       color: var(--black);
     }
     .simulacion-card img {
-      width: 100%;
-      max-width: 600px;
+      display: block;
+      max-width: 100%;
       border-radius: 10px;
-      margin-top: 1rem;
+      margin: 1rem auto;
+      height:auto
     }
     .formula {
       background-color: #1f1f1f;
@@ -176,6 +177,47 @@
       overflow-x: auto;
       border-radius: 6px;
     }
+
+    .tabla-fallas {
+      margin: 2rem auto;
+      border-collapse: collapse;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      width: auto;
+      background-color: #1C1C1C;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+    }
+
+    .tabla-fallas thead {
+      background-color: var(--electric-blue);
+      color: var(--black);
+    }
+
+    .tabla-fallas th,
+    .tabla-fallas td {
+      padding: 10px 20px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .tabla-fallas tbody tr:nth-child(odd) {
+      background-color: #2a2a2a;
+    }
+
+    .tabla-fallas tbody tr:nth-child(even) {
+      background-color: #202020;
+    }
+
+    .tabla-fallas td {
+      color: var(--white);
+    }
+
+    .tabla-fallas th {
+      font-weight: bold;
+    }
+
     @media (max-width: 600px) {
       .container { padding: 2rem 1rem; }
       table, thead, tbody, th, td, tr {
@@ -255,50 +297,107 @@
       <h2>2. Propuesta Técnica</h2>
       <ul>
         <li>Integración de cintas transportadoras automatizadas para el flujo de motocicletas.</li>
-        <li>Estaciones robotizadas para tareas repetitivas como fijación y posición en estaciones complejas como el chasis.</li>
+        <li>Incorporación de una celda robotizadas para tareas repetitivas como fijación y posición en estaciones complejas como el chasis.</li>
         <li>Sensores, actuadores y visión artificial para garantizar monitoreo de calidad y seguridad, además de inspecciones automatizadas.</li>
-        <li>SCADA o software de monitoreo para trazabilidad y control de las operaciones en tiempo real.</li>
+        <li>Implementación de sistema SCADA o software de monitoreo para trazabilidad y control de las operaciones en tiempo real.</li>
       </ul>
     </div>
 
     <div class="card">
       <h2>3. Resumen de Estaciones de Ensamblaje</h2>
-      <table>
+      <table class="tabla-ajustada">
         <thead>
           <tr>
             <th>Estación</th>
-            <th>Tiempo de Proceso (MM:SS)</th>
-            <th>Falla (Duración)</th>
-            <th>Disponibilidad</th>
+            <th>Función</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Marcado</td><td>00:47:24</td><td>Uniform(1200,1320)</td><td>30.09%</td></tr>
-          <tr><td>Chasis 1</td><td>00:56:57</td><td>Uniform(600,900)</td><td>36.15%</td></tr>
-          <tr><td>Chasis 2</td><td>00:56:57</td><td>Uniform(600,900)</td><td>36.15%</td></tr>
-          <tr><td>Batería 1</td><td>00:56:28</td><td>Uniform(600,720)</td><td>35.85%</td></tr>
-          <tr><td>Batería 2</td><td>00:56:19</td><td>Uniform(600,720)</td><td>35.75%</td></tr>
-          <tr><td>Motor 1</td><td>00:50:55</td><td>Uniform(600,900)</td><td>32.33%</td></tr>
-          <tr><td>Motor 2</td><td>00:50:55</td><td>Uniform(600,900)</td><td>32.33%</td></tr>
-          <tr><td>Frenos y suspensión</td><td>00:53:21</td><td>Uniform(600,720)</td><td>33.87%</td></tr>
-          <tr><td>Llantas</td><td>00:53:54</td><td>Uniform(480,1020)</td><td>34.22%</td></tr>
-          <tr><td>Manillar</td><td>00:48:51</td><td>Uniform(600,720)</td><td>31.02%</td></tr>
-          <tr><td>Luces</td><td>00:52:15</td><td>Uniform(300,360)</td><td>32.44%</td></tr>
-          <tr><td>Cableado</td><td>00:52:48</td><td>Uniform(300,420)</td><td>33.52%</td></tr>
-          <tr><td>Corte y doblado</td><td>00:48:18</td><td>Uniform(120,1200)</td><td>30.66%</td></tr>
-          <tr><td>Asiento y detalles</td><td>00:52:15</td><td>Uniform(300,420)</td><td>33.17%</td></tr>
+          <tr><td>Marcado</td><td>Identificación y registro del chasis.</td></tr>
+          <tr><td>Chasis</td><td>Base estructural de la moto.</td></tr>
+          <tr><td>Baterías</td><td>Instalación del sistema de energía.</td></tr>
+          <tr><td>Manillar y llantas</td><td>Montaje de dirección y ruedas.</td></tr>
+          <tr><td>Motor</td><td>Instala el sistema de propulsión.</td></tr>
+          <tr><td>Luces y cableado</td><td>Ensamble de iluminación y conexiones.</td></tr>
+          <tr><td>Portaplaca</td><td>Corte y fijación del soporte de matrícula.</td></tr>
+          <tr><td>Asiento y detalles finales</td><td>Coloca el asiento y realiza acabados.</td></tr>
+          <tr><td>Inspección</td><td>Revisión final y control de calidad.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>4. Resumen de Simulación</h2>
+      <table class="tabla-fallas">
+        <thead>
+          <tr>
+            <th>Estación</th>
+            <th>Tiempo de proceso</th>
+            <th>Tiempo de set-up</th>
+            <th>Falla</th>
+            <th>Distribución</th>
+            <th>Tiempo de reparación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="5">Marcado</td><td rowspan="4">8:00</td><td rowspan="5">3:00</td><td>desalineacion_marcado</td><td>Negexp(0.09)</td><td>10:00</td></tr>
+          <tr><td>herramienta_danada</td><td>Negexp(1500)</td><td>9:00</td></tr>
+          <tr><td>pieza_mal_colocada</td><td>Negexp(1800)</td><td>8:00</td></tr>
+          <tr><td>error_de_medicion</td><td>Negexp(2100)</td><td>10:00</td></tr>
+
+          <tr><td rowspan="4">chasis</td><td rowspan="4">65:00</td><td rowspan="4">5:00</td><td>alineacion_deficiente</td><td>Negexp(1200)</td><td>10:00</td></tr>
+          <tr><td>herramienta_danada</td><td>Negexp(1500)</td><td>9:00</td></tr>
+          <tr><td>pieza_mal_colocada</td><td>Negexp(1800)</td><td>8:00</td></tr>
+          <tr><td>error_de_medicion</td><td>Negexp(2100)</td><td>10:00</td></tr>
+
+          <tr><td rowspan="4">baterias</td><td rowspan="4">85:00</td><td rowspan="4">4:00</td><td>fuga_electrolito</td><td>Negexp(2400)</td><td>12:00</td></tr>
+          <tr><td>error_polaridad</td><td>Negexp(3000)</td><td>10:00</td></tr>
+          <tr><td>celdas_danadas</td><td>LogNorm(1800,600)</td><td>12:00</td></tr>
+          <tr><td>conexion_deficiente</td><td>Negexp(2700)</td><td>9:00</td></tr>
+
+          <tr><td rowspan="4">motor</td><td rowspan="4">95:00</td><td rowspan="4">6:00</td><td>desalineacion_eje</td><td>Negexp(1800)</td><td>10:00</td></tr>
+          <tr><td>fallo_ensamble</td><td>LogNorm(1500,450)</td><td>9:00</td></tr>
+          <tr><td>calibracion_incorrecta</td><td>Negexp(2400)</td><td>10:00</td></tr>
+          <tr><td>daño_en_carcasa</td><td>Negexp(3000)</td><td>12:00</td></tr>
+
+          <tr><td rowspan="3">llantas</td><td rowspan="3">75:00</td><td rowspan="3">4:00</td><td>llanta_deformada</td><td>Negexp(1800)</td><td>10:00</td></tr>
+          <tr><td>error_balanceo</td><td>Negexp(2100)</td><td>9:00</td></tr>
+          <tr><td>fijacion_incorrecta</td><td>LogNorm(1600,400)</td><td>10:00</td></tr>
+
+          <tr><td rowspan="3">frenos</td><td rowspan="3">80:00</td><td rowspan="3">5:00</td><td>fuga_hidraulica</td><td>Negexp(2400)</td><td>12:00</td></tr>
+          <tr><td>error_purga</td><td>Negexp(1800)</td><td>9:00</td></tr>
+          <tr><td>sensor_frenos</td><td>LogNorm(1500,400)</td><td>10:00</td></tr>
+
+          <tr><td rowspan="3">manillar</td><td rowspan="3">78:00</td><td rowspan="3">3:00</td><td>torque_inadecuado</td><td>Negexp(1500)</td><td>8:00</td></tr>
+          <tr><td>manillar_desviado</td><td>Negexp(1800)</td><td>10:00</td></tr>
+          <tr><td>pieza_incompleta</td><td>LogNorm(1200,350)</td><td>10:00</td></tr>
+
+          <tr><td rowspan="3">luces</td><td rowspan="3">90:00</td><td rowspan="3">4:00</td><td>corto_luces</td><td>Negexp(2400)</td><td>12:00</td></tr>
+          <tr><td>conexion_defectuosa</td><td>Negexp(2100)</td><td>10:00</td></tr>
+          <tr><td>direccion_mal_marcada</td><td>LogNorm(1800,500)</td><td>9:00</td></tr>
+
+          <tr><td rowspan="3">ensamble</td><td rowspan="3">105:00</td><td rowspan="3">6:00</td><td>pieza_olvidada</td><td>Negexp(3000)</td><td>12:00</td></tr>
+          <tr><td>fallo_estructura</td><td>LogNorm(2000,600)</td><td>10:00</td></tr>
+          <tr><td>ajuste_incompleto</td><td>Negexp(2400)</td><td>9:00</td></tr>
+
+          <tr><td rowspan="3">asiento</td><td rowspan="3">60:00</td><td rowspan="3">4:00</td><td>fijación_incompleta</td><td>Negexp(1800)</td><td>10:00</td></tr>
+          <tr><td>tapizado_defectuoso</td><td>Negexp(2100)</td><td>9:00</td></tr>
+          <tr><td>estructura_dañada</td><td>LogNorm(1600,400)</td><td>12:00</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="simulacion-card">
-      <h2>4. Simulación del estado propuesto</h2>
-      <p>Se ha modelado la línea de ensamblaje propuesta considerando flujos paralelos (para baterías, motores y chasis), la inclusión de la celda de chasis robotizada en condiciones de trabajo iguales a las anteriores: 1 turno de 8 horas, 5 días a la semana.</p>
+      <h2>5. Simulación del estado propuesto</h2>
+      <p>Se ha modelado la línea de ensamblaje propuesta considerando flujos paralelos (para motores y portaplaca) y la inclusión de la celda de chasis robotizada en condiciones de trabajo iguales a las anteriores: 1 turno de 8 horas, 5 días a la semana.</p>
+      <p>Por medio del siguiente laout en Plan Simulation y obtuvo los siguientes reusltados:</p>
       <img src="Multimedia/Simulacion_Plant_Propuesta.png" alt="Simulación Planta-después" style="height: auto; max-height: 650px;"/>
+      <img src="Multimedia/Grafica_plantapropuesta.png" alt="Resultados Planta-después" style="height: auto; max-height: 650px;"/>
     </div>
 
+    <div class="card">
     <div style="overflow-x:auto;">
-        <h2>5. O.E.E. y Tiempos por estación</h2>
+        <h2>6. O.E.E. y Tiempos por estación</h2>
         <table>
             <thead>
                 <tr>
@@ -329,15 +428,16 @@
             </tbody>
         </table>
     </div>
+    </div>
 
     <div class="simulacion-card">
-      <h2>VSM de la propuesta</h2>
+      <h2>7. VSM de la propuesta</h2>
       <p>Se implementa un diagrama Value Stream Mapping para analizar el proceso o flujo de la planta, que junto a la simulación revelan un cambio notorio en los tiempos de ciclo con respecto al estado actual de la planta.</p>
       <img src="Multimedia/VSM_propuesta.png" alt="VSM de la propuesta" style="height: auto; max-height: 650px;" />
     </div>
 
     <div class="card">
-      <h2>6. Comparativo Antes vs Después</h2>
+      <h2>8. Comparativo Antes vs Después</h2>
       <table>
         <thead>
           <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
@@ -352,12 +452,12 @@
     </div>
 
     <div class="card">
-      <h2>7. Consideraciones de Seguridad</h2>
+      <h2>9. Consideraciones de Seguridad</h2>
       <p>La implementación incluirá análisis de riesgos bajo normativa ISO 12100. Se consideran zonas seguras delimitadas, paro de emergencia accesible, entrenamiento al personal y mantenimiento predictivo utilizando sistemas de monitoreo constante para evitar fallos inesperados.</p>
     </div>
 
     <div class="card">
-      <h2>8. Conclusión</h2>
+      <h2>Conclusión</h2>
       <p>La automatización de la línea permitirá a Blue Energy Bikes mejorar sus indicadores clave de producción, ser más competitiva y garantizar productos de alta calidad, con un retorno estimado de inversión en menos de un año.</p>
       <p>Es importante destacar que a pesar de aumentar significativamente la producción y disminución de tiempos y erorres, además de la adición de personalización en la estación de portaplaca, la línea de producción puede ser mas sencilla, en cuanto a fusión de estaciones, ya que el O.E.E. resulta siendo más bajo que el inicial, lo que indica que no se está explotando todo su potencial, a pesar de cumplir con la expectativa principal de aumento den produccion y reducción de tiempos y errores.</p>
     </div>
