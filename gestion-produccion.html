@@ -340,104 +340,166 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td rowspan="5">Marcado</td><td rowspan="4">8:00</td><td rowspan="5">3:00</td><td>desalineacion_marcado</td><td>Negexp(0.09)</td><td>10:00</td></tr>
-          <tr><td>herramienta_danada</td><td>Negexp(1500)</td><td>9:00</td></tr>
-          <tr><td>pieza_mal_colocada</td><td>Negexp(1800)</td><td>8:00</td></tr>
-          <tr><td>error_de_medicion</td><td>Negexp(2100)</td><td>10:00</td></tr>
+          <tr><td rowspan="5">marcado</td><td rowspan="5">8:00</td><td rowspan="5">3:00</td><td>desalineacion_marcado</td><td>Negexp(720)</td><td>3:00</td></tr>
+          <tr><td>error_marcado</td><td>Negexp(1080)</td><td>4:00</td></tr>
+          <tr><td>fallo_lectura</td><td>Negexp(2160)</td><td>8:00</td></tr>
+          <tr><td>contaminacion_chasis</td><td>Negexp(1440)</td><td>6:00</td></tr>
+          <tr><td>error_datos</td><td>Negexp(2880)</td><td>10:00</td></tr>
 
-          <tr><td rowspan="4">chasis</td><td rowspan="4">65:00</td><td rowspan="4">5:00</td><td>alineacion_deficiente</td><td>Negexp(1200)</td><td>10:00</td></tr>
-          <tr><td>herramienta_danada</td><td>Negexp(1500)</td><td>9:00</td></tr>
-          <tr><td>pieza_mal_colocada</td><td>Negexp(1800)</td><td>8:00</td></tr>
-          <tr><td>error_de_medicion</td><td>Negexp(2100)</td><td>10:00</td></tr>
+          <tr><td rowspan="5">chasis</td><td rowspan="5">20:00</td><td rowspan="5 ">6:00</td><td>desalineacion_estacion</td><td>Negexp(600)</td><td>3:00</td></tr>
+          <tr><td>fallo_sujecion</td><td>Negexp(960)</td><td>4:00</td></tr>
+          <tr><td>error_robot</td><td>Negexp(1200)</td><td>5:00</td></tr>
+          <tr><td>defecto_soldadura</td><td>Negexp(1500)</td><td>7:00</td></tr>
+          <tr><td>fallo_vision</td><td>Negexp(2400)</td><td>10:00</td></tr>
 
-          <tr><td rowspan="4">baterias</td><td rowspan="4">85:00</td><td rowspan="4">4:00</td><td>fuga_electrolito</td><td>Negexp(2400)</td><td>12:00</td></tr>
-          <tr><td>error_polaridad</td><td>Negexp(3000)</td><td>10:00</td></tr>
-          <tr><td>celdas_danadas</td><td>LogNorm(1800,600)</td><td>12:00</td></tr>
-          <tr><td>conexion_deficiente</td><td>Negexp(2700)</td><td>9:00</td></tr>
+          <tr><td rowspan="5">baterias</td><td rowspan="5">35:00</td><td rowspan="5">4:00</td><td>desalineacion_caja</td><td>Negexp(18000)</td><td>9:00</td></tr>
+          <tr><td>tornillos_sueltos</td><td>Negexp(24000)</td><td>12:00</td></tr>
+          <tr><td>conexion_bateria</td><td>Negexp(36000)</td><td>10:00</td></tr>
+          <tr><td>polaridad_invertida</td><td>Negexp(54000)</td><td>15:00</td></tr>
+          <tr><td>fijacion_Cableado</td><td>LogNorm(480,180)</td><td>12:00</td></tr>
 
-          <tr><td rowspan="4">motor</td><td rowspan="4">95:00</td><td rowspan="4">6:00</td><td>desalineacion_eje</td><td>Negexp(1800)</td><td>10:00</td></tr>
-          <tr><td>fallo_ensamble</td><td>LogNorm(1500,450)</td><td>9:00</td></tr>
-          <tr><td>calibracion_incorrecta</td><td>Negexp(2400)</td><td>10:00</td></tr>
-          <tr><td>daño_en_carcasa</td><td>Negexp(3000)</td><td>12:00</td></tr>
+          <tr><td rowspan="5">manillar_llantas</td><td rowspan="5">45:00</td><td rowspan="5">5:00</td><td>desalineacion_manillar</td><td>Negexp(900)</td><td>3:00</td></tr>
+          <tr><td>torque_incorrecto</td><td>Negexp(1200)</td><td>5:00</td></tr>
+          <tr><td>fallo_conexion</td><td>Negexp(1800)</td><td>7:00</td></tr>
+          <tr><td>defecto_llantas</td><td>Negexp(1500)</td><td>6:00</td></tr>
+          <tr><td>error_documentacion</td><td>Negexp(3000)</td><td>10:00</td></tr>
 
-          <tr><td rowspan="3">llantas</td><td rowspan="3">75:00</td><td rowspan="3">4:00</td><td>llanta_deformada</td><td>Negexp(1800)</td><td>10:00</td></tr>
-          <tr><td>error_balanceo</td><td>Negexp(2100)</td><td>9:00</td></tr>
-          <tr><td>fijacion_incorrecta</td><td>LogNorm(1600,400)</td><td>10:00</td></tr>
+          <tr><td rowspan="3">motor</td><td rowspan="3">40:00</td><td rowspan="3">4:00</td><td>fallo_herramienta</td><td>LogNorm(900,300)</td><td>12:00</td></tr>
+          <tr><td>fallo_electrico</td><td>Negexp(43200)</td><td>25:00</td></tr>
+          <tr><td>fallo_alineacion</td><td>Negexp(28800)</td><td>15:00</td></tr>
 
-          <tr><td rowspan="3">frenos</td><td rowspan="3">80:00</td><td rowspan="3">5:00</td><td>fuga_hidraulica</td><td>Negexp(2400)</td><td>12:00</td></tr>
-          <tr><td>error_purga</td><td>Negexp(1800)</td><td>9:00</td></tr>
-          <tr><td>sensor_frenos</td><td>LogNorm(1500,400)</td><td>10:00</td></tr>
+          <tr><td rowspan="4">frenos_suspension</td><td rowspan="4">35:00</td><td rowspan="4">5:00</td><td>cableado_defectuoso</td><td>Negexp(1200)</td><td>4:00</td></tr>
+          <tr><td>fuga_hidraulica</td><td>Negexp(2100)</td><td>8:00</td></tr>
+          <tr><td>alineacion_suspension</td><td>Negexp(1500)</td><td>6:00</td></tr>
+          <tr><td>daño_estructural</td><td>Negexp(6000)</td><td>15:00</td></tr>
 
-          <tr><td rowspan="3">manillar</td><td rowspan="3">78:00</td><td rowspan="3">3:00</td><td>torque_inadecuado</td><td>Negexp(1500)</td><td>8:00</td></tr>
-          <tr><td>manillar_desviado</td><td>Negexp(1800)</td><td>10:00</td></tr>
-          <tr><td>pieza_incompleta</td><td>LogNorm(1200,350)</td><td>10:00</td></tr>
+          <tr><td rowspan="3">luces_cableado</td><td rowspan="3">40:00</td><td rowspan="3">4:00</td><td>corto_sistema</td><td>Negexp(36000)</td><td>10:00</td></tr>
+          <tr><td>mal_enrutamiento</td><td>LogNorm(720,240)</td><td>10:00</td></tr>
+          <tr><td>fallo_verificacion</td><td>Negexp(54000)</td><td>15:00</td></tr>
 
-          <tr><td rowspan="3">luces</td><td rowspan="3">90:00</td><td rowspan="3">4:00</td><td>corto_luces</td><td>Negexp(2400)</td><td>12:00</td></tr>
-          <tr><td>conexion_defectuosa</td><td>Negexp(2100)</td><td>10:00</td></tr>
-          <tr><td>direccion_mal_marcada</td><td>LogNorm(1800,500)</td><td>9:00</td></tr>
+          <tr><td rowspan="5">porta_placa</td><td rowspan="5">5:00</td><td rowspan="5">2:00</td><td>fijacion_lamina</td><td>Negexp(1080)</td><td>4:00</td></tr>
+          <tr><td>configuracion_motor</td><td>Negexp(1500)</td><td>5:00</td></tr>
+          <tr><td>lente_sucia</td><td>Negexp(2400)</td><td>10:00</td></tr>
+          <tr><td>material_defectuoso</td><td>Negexp(1800)</td><td>4:00</td></tr>
+          <tr><td>error_cad</td><td>Negexp(3600)</td><td>15:00</td></tr>
 
-          <tr><td rowspan="3">ensamble</td><td rowspan="3">105:00</td><td rowspan="3">6:00</td><td>pieza_olvidada</td><td>Negexp(3000)</td><td>12:00</td></tr>
-          <tr><td>fallo_estructura</td><td>LogNorm(2000,600)</td><td>10:00</td></tr>
-          <tr><td>ajuste_incompleto</td><td>Negexp(2400)</td><td>9:00</td></tr>
+          <tr><td rowspan="4">asiento_detalles</td><td rowspan="4">60:00</td><td rowspan="4">6:00</td><td>adhesivo_mal</td><td>Negexp(27000)</td><td>4:00</td></tr>
+          <tr><td>carcasa_mal</td><td>Negexp(36000)</td><td>10:00</td></tr>
+          <tr><td>pieza_defectuosa</td><td>Negexp(72000)</td><td>8:00</td></tr>
+          <tr><td>daño_superficial</td><td>LogNorm(480,160)</td><td>15:00</td></tr>
 
-          <tr><td rowspan="3">asiento</td><td rowspan="3">60:00</td><td rowspan="3">4:00</td><td>fijación_incompleta</td><td>Negexp(1800)</td><td>10:00</td></tr>
-          <tr><td>tapizado_defectuoso</td><td>Negexp(2100)</td><td>9:00</td></tr>
-          <tr><td>estructura_dañada</td><td>LogNorm(1600,400)</td><td>12:00</td></tr>
+          <tr><td rowspan="5">inspección</td><td rowspan="5">20:00</td><td rowspan="5">3:00</td><td>fallo_mecanico</td><td>Negexp(720)</td><td>5:00</td></tr>
+          <tr><td>fallo_electrico_basico</td><td>Negexp(900)</td><td>4:00</td></tr>
+          <tr><td>bateria_suelta</td><td>Negexp(1200)</td><td>6:00</td></tr>
+          <tr><td>daño_cosmetico</td><td>Negexp(1500)</td><td>10:00</td></tr>
+          <tr><td>problema_grave</td><td>Negexp(4800)</td><td>20:00</td></tr>
         </tbody>
       </table>
     </div>
 
+    <div class="card">
+      <h2>5. Desarrollo de cálculos</h2>
+      <ol>
+        <li>
+          <h3>OEE obtenido (Overall Equipment Effectiveness)</h3>
+          <p>A partir del siguiente código en SimTalk se obtuvo el O.E.E. de la situación simulada:</p>
+          <div class="formula">
+            marcado.procTime.setTypeAndAttr("Const","8:00") //Tiempo de proceso
+            marcado.setupTime.setTypeAndAttr("Const","3:00") //Tiempo de preparacion
+            marcado.setupAfterNumParts := 2 //Frecuencia de preparacion
+            marcado.ShiftCalendarObject := ShiftCalendar //Horarios utiles de la estacion
+
+            //Fallas
+            marcado.Failures.createFailure("desalineacion_marcado","Negexp,1080","Const,180")
+            marcado.Failures.createFailure("error_marcado","Negexp,1440","Const,240")
+            marcado.Failures.createFailure("fallo_lectura","Negexp,2160","Const,480")
+            marcado.Failures.createFailure("contaminacion_chasis","Negexp,2160","Const,360")
+            marcado.Failures.createFailure("error_datos","Negexp,3600","Const,600")
+
+            var rt: table                               
+            WorkerPool.getWorkersToCreateTable(rt) 
+            rt [2,1]:= 15 //Cantidad de trabajadores
+
+            WorkerPool.setWorkersToCreateTable(rt)
+
+            var t:table := ShiftCalendar.ShiftPlan
+            t["From", 1] := 6:00:00 //Hora de entrada turno 1
+            t["To", 1] := 17:00:00 //Hora de salida turno 1
+            t["Pauses", 1] := "9:00-10:00 12:00-13:00" //Descanso turno 1
+            t["From", 2] := 18:00:00 //Hora de entrada turno 2
+            t["To", 2] := 5:00:00 //Hora de salida turno 2
+            t["Pauses", 2] := "21:00-22:00 00:00-01:00" //Descanso turno 2
+
+            ShiftCalendar.ShiftPlan := t
+          </div>
+          </li>
+          *Nota:* El código está en Codigo_Estaciones.txt (Este código debe ser colocado en un objeto tipo 'metodo' en Plant Simulation para su funcionamiento)
+      </ol>
+   </div>
+
     <div class="simulacion-card">
-      <h2>5. Simulación del estado propuesto</h2>
+      <h2>6. Simulación del estado propuesto</h2>
       <p>Se ha modelado la línea de ensamblaje propuesta considerando flujos paralelos (para motores y portaplaca) y la inclusión de la celda de chasis robotizada en condiciones de trabajo iguales a las anteriores: 1 turno de 8 horas, 5 días a la semana.</p>
       <p>Por medio del siguiente laout en Plan Simulation y obtuvo los siguientes reusltados:</p>
       <img src="Multimedia/Simulacion_Plant_Propuesta.png" alt="Simulación Planta-después" style="height: auto; max-height: 650px;"/>
       <img src="Multimedia/Grafica_plantapropuesta.png" alt="Resultados Planta-después" style="height: auto; max-height: 650px;"/>
     </div>
 
-    <div class="card">
-    <div style="overflow-x:auto;">
-        <h2>6. O.E.E. y Tiempos por estación</h2>
-        <table>
-            <thead>
-                <tr>
-                <th>Estación</th>
-                <th>Ciclo Real (s)</th>
-                <th>Uptime (%)</th>
-                <th>Disponibilidad</th>
-                <th>Rendimiento</th>
-                <th>OEE</th>
-                <th>OEE (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Marcado</td><td>2843.5</td><td>30.09</td><td>0.3009</td><td>1.000</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Chasis 1</td><td>3416.2</td><td>36.15</td><td>0.3615</td><td>0.832</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Chasis 2</td><td>3416.2</td><td>36.15</td><td>0.3615</td><td>0.832</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Batería 1</td><td>3387.8</td><td>35.85</td><td>0.3585</td><td>0.839</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Batería 2</td><td>3378.4</td><td>35.75</td><td>0.3575</td><td>0.842</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Motor 1</td><td>3055.2</td><td>32.33</td><td>0.3233</td><td>0.931</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Motor 2</td><td>3055.2</td><td>32.33</td><td>0.3233</td><td>0.931</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Frenos y suspensión</td><td>3200.7</td><td>33.87</td><td>0.3387</td><td>0.888</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Llantas</td><td>3233.8</td><td>34.22</td><td>0.3422</td><td>0.879</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Manillar</td><td>2923.0</td><td>31.02</td><td>0.3102</td><td>0.973</td><td>0.3002</td><td>30.02</td></tr>
-                <tr><td>Luces</td><td>3197.4</td><td>32.44</td><td>0.3244</td><td>0.889</td><td>0.2884</td><td>28.84</td></tr>
-                <tr><td>Cableado</td><td>3167.6</td><td>33.52</td><td>0.3352</td><td>0.898</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Corte y doblado</td><td>2897.4</td><td>30.66</td><td>0.3066</td><td>0.981</td><td>0.3009</td><td>30.09</td></tr>
-                <tr><td>Asiento y detalles</td><td>3134.6</td><td>33.17</td><td>0.3317</td><td>0.907</td><td>0.3009</td><td>30.09</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <div class="simulacion-card">
+      <h2>7. Indicadores de Simulación</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+        <thead>
+          <tr style="background-color: #1C1C1C; color: #00BFFF;">
+            <th style="padding: 0.8rem; border-bottom: 1px solid #444;">Indicador</th>
+            <th style="padding: 0.8rem; border-bottom: 1px solid #444;">Valor</th>
+          </tr>
+        </thead>
+        <tbody style="color: #A0A0A0;">
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Tiempo simulado</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">7 días</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Unidades ideales</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">38</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Piezas hechas</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">34</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Fallas</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">4</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Disponibilidad</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">84.567%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Rendimiento</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">88.71%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Calidad</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #333;">88.235%</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem;">OEE</td>
+            <td style="padding: 0.8rem;">66.194%</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
+
     <div class="simulacion-card">
-      <h2>7. VSM de la propuesta</h2>
-      <p>Se implementa un diagrama Value Stream Mapping para analizar el proceso o flujo de la planta, que junto a la simulación revelan un cambio notorio en los tiempos de ciclo con respecto al estado actual de la planta.</p>
+      <h2>8. VSM de la propuesta</h2>
+      <p>Se implementa un diagrama Value Stream Mapping para analizar el proceso o flujo de la planta propuesta, que junto a la simulación revelan un cambio notorio en los tiempos de ciclo con respecto al estado actual de la planta.</p>
       <img src="Multimedia/VSM_propuesta.png" alt="VSM de la propuesta" style="height: auto; max-height: 650px;" />
     </div>
 
     <div class="card">
-      <h2>8. Comparativo Antes vs Después</h2>
+      <h2>9. Comparativo Antes vs Después</h2>
       <table>
         <thead>
           <tr><th>Indicador</th><th>Antes</th><th>Después</th></tr>
