@@ -1,13 +1,534 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas del Modelo de Negocio - Blue Energy Bikes</title>
-  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presupuesto del Proyecto APM - Blue Energy</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #1C1C1C;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #1C1C1C;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #00BFFF;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1C1C1C;
+            min-width: 250px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            padding: 8px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #3a3a3a;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            background-color: white;
+            height: 4px;
+            width: 24px;
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #1C1C1C;
+            padding: 1rem;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #A0A0A0;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .main {
+            padding-top: 140px;
+            padding-bottom: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00BFFF;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            color: #A0A0A0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            background-color: #2A2A2A;
+            padding: 0.25rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: transparent;
+            color: white;
+        }
+
+        .tab-button:hover {
+            background-color: #3a3a3a;
+        }
+
+        .tab-button.active {
+            background-color: #00BFFF;
+            color: #1C1C1C;
+        }
+
+        /* Card */
+        .card {
+            background-color: #2A2A2A;
+            border: 1px solid #A0A0A0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00BFFF;
+            margin-bottom: 1rem;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            border: 1px solid #A0A0A0;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #00BFFF;
+            color: #1C1C1C;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #3a3a3a;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Cards for nomina */
+        .employee-card {
+            background-color: #3a3a3a;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .employee-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #00BFFF;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .employee-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .employee-total {
+            border-top: 1px solid #A0A0A0;
+            padding-top: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .employee-breakdown {
+            background-color: #2A2A2A;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Summary boxes */
+        .summary-box {
+            background-color: #3a3a3a;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .summary-title {
+            color: #00BFFF;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-value {
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        /* Chart container */
+        .chart-container {
+            background-color: #3a3a3a;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .chart-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00BFFF;
+            margin-bottom: 1rem;
+        }
+
+        /* Badges */
+        .badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            color: white;
+        }
+
+        .badge-monthly {
+            background-color: #ea580c;
+        }
+
+        .badge-unique {
+            background-color: #16a34a;
+        }
+
+        /* Links */
+        .link {
+            color: #00BFFF;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 2px solid #3a3a3a;
+            border-top: 2px solid #00BFFF;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Whitespace pre-line */
+        .whitespace-pre-line {
+            white-space: pre-line;
+        }
+
+        /* Space utilities */
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
+
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+
+        .space-y-1 > * + * {
+            margin-top: 0.25rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        /* Balance specific styles */
+        .balance-card {
+            background-color: #3a3a3a;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .balance-year-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #00BFFF;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .balance-section {
+            margin-bottom: 1rem;
+        }
+
+        .balance-section-title {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #A0A0A0;
+            padding-bottom: 0.25rem;
+        }
+
+        .balance-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .balance-total {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #A0A0A0;
+            padding-top: 0.25rem;
+            font-weight: bold;
+        }
+
+        .balance-total span {
+            color: #00BFFF;
+            font-family: monospace;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+            }
+
+            .grid-cols-3,
+            .grid-cols-4,
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .main {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Total row styling */
+        .total-row {
+            background-color: #3a3a3a;
+            font-weight: bold;
+        }
+
+        .total-row td {
+            color: #00BFFF;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background-color: #00BFFF;
+            color: #1C1C1C;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .highlight-box p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+<style>
     :root {
       --black: #1C1C1C;
       --electric-blue: #00BFFF;
@@ -182,164 +703,1663 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
-  </style>
-</head>
+  </style></head>
 <body>
-   <!-- Header -->
-  <header>
-  <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
-  <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <nav class="desktop-nav">
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li class="dropdown-container">
-        <button class="dropdown-button">Módulos ▾</button>
-        <ul class="dropdown-menu">
-          <li><a href="estado-actual.html">Estado actual</a></li>
-          <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
-          <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
-          <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
-          <li><a href="presupuesto.html">Presupuesto</a></li>
-        </ul>
-      </li>
-      <li><a href="index.html#productos">Productos</a></li>
-      <li><a href="index.html#nosotros">Nosotros</a></li>
-      <li><a href="index.html#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-  <nav class="mobile-nav">
-    <a href="index.html">Inicio</a>
-    <a href="estado-actual.html">Estado actual</a>
-    <a href="gestion-proyecto.html">Gestión de Proyecto</a>
-    <a href="gestion-produccion.html">Gestión de Producción</a>
-    <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
-    <a href="presupuesto.html">Presupuesto</a>
-    <a href="index.html#productos">Productos</a>
-    <a href="index.html#nosotros">Nosotros</a>
-    <a href="index.html#contacto">Contacto</a>
-  </nav>
+<!-- Header -->
+<header>
+<img alt="Logo Blue Energy" class="logo" src="Multimedia/logo-circ.png"/>
+<div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<nav class="desktop-nav">
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown-container">
+<button class="dropdown-button">Módulos ▾</button>
+<ul class="dropdown-menu">
+<li><a href="estado-actual.html">Estado actual</a></li>
+<li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+<li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+<li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+<li><a href="presupuesto.html">Presupuesto</a></li>
+</ul>
+</li>
+<li><a href="index.html#productos">Productos</a></li>
+<li><a href="index.html#nosotros">Nosotros</a></li>
+<li><a href="index.html#contacto">Contacto</a></li>
+</ul>
+</nav>
+<nav class="mobile-nav">
+<a href="index.html">Inicio</a>
+<a href="estado-actual.html">Estado actual</a>
+<a href="gestion-proyecto.html">Gestión de Proyecto</a>
+<a href="gestion-produccion.html">Gestión de Producción</a>
+<a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+<a href="presupuesto.html">Presupuesto</a>
+<a href="index.html#productos">Productos</a>
+<a href="index.html#nosotros">Nosotros</a>
+<a href="index.html#contacto">Contacto</a>
+</nav>
 </header>
-
-<style>
-  .desktop-nav a,
-  .mobile-nav a,
-  .dropdown-button,
-  .dropdown-menu li a {
-    color: var(--white) !important;
-  }
-  .mobile-nav a {
-    display: block;
-  }
-</style>
-
+<!-- Main Content -->
+<main class="main">
+<h1 class="title">Presupuesto del Proyecto APM</h1>
+<p class="subtitle">Navegue entre las diferentes secciones del presupuesto utilizando las pestañas a continuación.</p>
+<!-- Tabs Navigation -->
+<div class="tabs-container">
+<button class="tab-button active" onclick="showTab('descripciones')">Descripciones</button>
+<button class="tab-button" onclick="showTab('infraestructura')">Infraestructura</button>
+<button class="tab-button" onclick="showTab('insumos')">Insumos</button>
+<button class="tab-button" onclick="showTab('nomina')">Nómina</button>
+<button class="tab-button" onclick="showTab('costos')">Costos</button>
+<button class="tab-button" onclick="showTab('ventas')">Ventas</button>
+<button class="tab-button" onclick="showTab('general')">General</button>
+<button class="tab-button" onclick="showTab('balance')">Balance</button>
+</div>
+<!-- Content Area -->
+<div class="card">
+<h2 class="card-title" id="section-title">Descripciones</h2>
+<!-- Content will be populated by JavaScript -->
+<div id="content-area">
+<!-- Dynamic content goes here -->
+</div>
+</div>
+<div class="mt-8" style="color: #A0A0A0; font-size: 0.875rem;">
+<p><strong>Nota:</strong> Los valores mostrados son estimaciones basadas en cotizaciones y pueden estar sujetos a variaciones según las condiciones del mercado y disponibilidad de los proveedores.</p>
+</div>
+</main>
 <script>
-  // Cierra menú móvil al hacer clic en un enlace
-  document.querySelectorAll('.mobile-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector('.mobile-nav').classList.remove('active');
-    });
-  });
-</script>
+        // Data
+        const descripcionesData = [
+            {
+                estacion: "Marcado",
+                descripcion: "Se realiza el marcado del chasis mediante un sticker con un QR que identifica el tipo de moto que se va a ensamblar, y se graba el serial del chasis",
+                cosasNecesarias: "• Máquina de grabado\n• Impresora de etiquetas QR",
+                elementosGenerales: "Banda transportadora",
+                elementosPlanta: "Tapetes antifatiga"
+            },
+            {
+                estacion: "Chasis",
+                descripcion: "Se recibe el chasis de la moto, se hace una limpieza superficial, se suelda toda la tornillería para la futura colocación de los demás sistemas",
+                cosasNecesarias: "• Robot\n• Equipo de soldadura",
+                elementosGenerales: "Estantería",
+                elementosPlanta: "Elementos de seguridad de los trabajadores (Casco, botas, guantes, overol, etc...)"
+            },
+            {
+                estacion: "Batería",
+                descripcion: "Se coloca la caja que soporta la batería y se coloca la batería así como los tornillos y conectores para luego conectar la parte eléctrica",
+                cosasNecesarias: "",
+                elementosGenerales: "Herramientas",
+                elementosPlanta: "Alarmas, extintores y Botiquines"
+            },
+            {
+                estacion: "Manillar y llantas",
+                descripcion: "Se colocan el manillar y las llantas, se revisa que la alineación sea correcta",
+                cosasNecesarias: "• Equilibradora de ruedas de moto",
+                elementosGenerales: "Equipos de medición",
+                elementosPlanta: "Señalización de seguridad"
+            },
+            {
+                estacion: "Motor",
+                descripcion: "Se coloca el motor y se conecta con la batería",
+                cosasNecesarias: "",
+                elementosGenerales: "Suministros (Depende de cada estación)",
+                elementosPlanta: "Elementos de aseo"
+            },
+            {
+                estacion: "Frenos y suspensión",
+                descripcion: "Se colocan el sistema de frenos y la suspensión de la motocicleta",
+                cosasNecesarias: "",
+                elementosGenerales: "Tableta de consignación de datos",
+                elementosPlanta: "Servicio eléctrico"
+            },
+            {
+                estacion: "Luces y cableado",
+                descripcion: "Se coloca el sistema de iluminación de la moto y se conecta a la batería. Se realizan las demás conexiones eléctricas de la moto y se verifica que las conexiones estén en buen estado",
+                cosasNecesarias: "",
+                elementosGenerales: "",
+                elementosPlanta: "Servicio de agua"
+            },
+            {
+                estacion: "Asiento y detalles",
+                descripcion: "Se colocan, el asiento y los detalles finales, entre los que se encuentran, carcazas, tapas, adhesivos y el portaplacas de la moto",
+                cosasNecesarias: "",
+                elementosGenerales: "",
+                elementosPlanta: "Servicio de limpieza"
+            },
+            {
+                estacion: "Celda portaplaca",
+                descripcion: "Se realiza el corte laser del porta placas y se realizan los dobleces necesarios para que su forma sea la adecuada",
+                cosasNecesarias: "• Máquina de corte láser",
+                elementosGenerales: "",
+                elementosPlanta: "Sistema de seguridad (Cámaras)"
+            },
+            {
+                estacion: "Celda inspección",
+                descripcion: "Se hace una revisión general de la moto, en la que hacen inspecciones mecánica, eléctrica y de batería de la motocicleta",
+                cosasNecesarias: "",
+                elementosGenerales: "",
+                elementosPlanta: "Elementos de seguridad celda robotizada"
+            }
+        ];
 
-  <main class="container">
-    <h1>Presupuesto Inicial del Proyecto</h1>
-    <p class="nota">A continuación se presenta una tabla detallada con los principales costos estimados para la puesta en marcha del sistema automatizado de producción. Las imágenes, observaciones y enlaces están sujetos a verificación final.</p>
+        const infraestructuraData = [
+            {
+                concepto: "Robot ABB IRB 2600ID",
+                cantidad: "2",
+                valorUnitario: "$ 82.392.199,85",
+                valorTotal: "$ 164.784.399,70",
+                tipoGasto: "Único",
+                observaciones: "Cuestan 20000 dolares en Alibaba y se hace la conversion a la tasa del 8 de junio, no incluye precio de envio",
+                link: "https://www.alibaba.com/product-detail/Robot-Arm-6-Axis-IRB-2600ID_1600062931154.html"
+            },
+            {
+                concepto: "Licencia Siemens NX X Mach 3",
+                cantidad: "1",
+                valorUnitario: "$ 3.996.021,69",
+                valorTotal: "$ 3.996.021,69",
+                tipoGasto: "Mensual",
+                observaciones: "Mensualidad",
+                link: "https://openit.com/es/siemens-nx-reinvents-to-cater-to-aec-industrys-needs/"
+            },
+            {
+                concepto: "Licencia Rockwell Automation Studio 5000",
+                cantidad: "1",
+                valorUnitario: "$ 31.365.103,83",
+                valorTotal: "$ 31.365.103,83",
+                tipoGasto: "Único",
+                observaciones: "Pago de licencia perpetua",
+                link: "https://www.codingplc.com/blog/how-to-buy-right-studio5000-license"
+            },
+            {
+                concepto: "Septimo Eje para los robots",
+                cantidad: "2",
+                valorUnitario: "$ 6.179.414,99",
+                valorTotal: "$ 12.358.829,98",
+                tipoGasto: "Único",
+                observaciones: "No incluye precio de envio",
+                link: "https://www.alibaba.com/product-detail/Customized-Heavy-Duty-Construction-Machinery-Parts_1601295233805.html"
+            },
+            {
+                concepto: "Máquina de grabado",
+                cantidad: "1",
+                valorUnitario: "$ 7.239.600,00",
+                valorTotal: "$ 7.239.600,00",
+                tipoGasto: "Único",
+                observaciones: "1800 dólares y se hace la conversion a la tasa del 9 de junio",
+                link: "https://www.heatsign.com/es/producto/punzonadora-de-numeros-de-chasis/"
+            },
+            {
+                concepto: "Impresora de etiquetas QR + 10 rollos de adhesivo",
+                cantidad: "1",
+                valorUnitario: "$ 519.123,00",
+                valorTotal: "$ 519.123,00",
+                tipoGasto: "Único",
+                observaciones: "Se debe comprar el rollo de adhesivo cuando se termine. 109,05 Euros y se hace la conversion a la tasa del 9 de julio",
+                link: "https://www.amazon.es/dp/B01MTFTXIA"
+            },
+            {
+                concepto: "Equipo de soldadura",
+                cantidad: "1",
+                valorUnitario: "$ 19.461.600,00",
+                valorTotal: "$ 19.461.600,00",
+                tipoGasto: "Único",
+                observaciones: "Incluye envío",
+                link: "https://articulo.mercadolibre.com.co/MCO-2864579434-esab-rebel-emp-215ic-paratig-migstick-por-esab-rebel-_JM"
+            },
+            {
+                concepto: "Equilibradora de ruedas de moto",
+                cantidad: "2",
+                valorUnitario: "$ 342.944,00",
+                valorTotal: "$ 685.888,00",
+                tipoGasto: "Único",
+                observaciones: "85 dólares por unidad y se hace la conversion a la tasa del 9 de junio",
+                link: "https://www.amazon.com/Equilibrador-motocicleta-equilibrador-neum%C3%A1ticos-ajustable/dp/B0BQMDMSHV"
+            },
+            {
+                concepto: "Máquina de corte láser",
+                cantidad: "1",
+                valorUnitario: "$ 20.734.788,00",
+                valorTotal: "$ 20.734.788,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://es.aliexpress.com/i/1005007894485914.html"
+            },
+            {
+                concepto: "Bodega 3000m2",
+                cantidad: "1",
+                valorUnitario: "$ 70.000.000,00",
+                valorTotal: "$ 70.000.000,00",
+                tipoGasto: "Mensual",
+                observaciones: "Bodega en la Perseverancia Bogotá",
+                link: "https://www.fincaraiz.com.co/bodega-en-arriendo-en-la-perseverancia-bogota/191976092"
+            },
+            {
+                concepto: "Cámaras de seguridad",
+                cantidad: "30",
+                valorUnitario: "$ 199.900,00",
+                valorTotal: "$ 5.997.000,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://www.homecenter.com.co/homecenter-co/product/643963/tapo-c500/643963"
+            },
+            {
+                concepto: "Banda transporadora",
+                cantidad: "13",
+                valorUnitario: "$ 5.232.877,00",
+                valorTotal: "$ 68.027.401,00",
+                tipoGasto: "Único",
+                observaciones: "1300 dólares c/u y se hace la conversion a la tasa del 10 de junio",
+                link: "https://www.alibaba.com/product-detail/Factory-Price-Industrial-Inclined-1-Meter_1601211722502.html"
+            },
+            {
+                concepto: "Estantería",
+                cantidad: "12",
+                valorUnitario: "$ 399.900,00",
+                valorTotal: "$ 4.798.800,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://www.homecenter.com.co/homecenter-co/product/910086/estante-metalico-4-niveles-160x60x183-cm/910086"
+            },
+            {
+                concepto: "Herramientas (kit 314 P)",
+                cantidad: "6",
+                valorUnitario: "$ 760.207,00",
+                valorTotal: "$ 4.561.242,00",
+                tipoGasto: "Único",
+                observaciones: "189 dólares y se hace la conversión a la tasa del 10 de junio",
+                link: "https://www.amazon.com/STARWORK-Mechanic-herramientas-mec%C3%A1nicas-profesional/dp/B0DBKT8NCH"
+            },
+            {
+                concepto: "Equipos de medición",
+                cantidad: "6",
+                valorUnitario: "$ 572.118,00",
+                valorTotal: "$ 3.432.708,00",
+                tipoGasto: "Único",
+                observaciones: "Incluye Manómetro, tester de carga, Multímetro digital, Torquímetro, Micrómetro y Calibrador Vernier. [129,96 Dólares + 51.001 COP y se hace la conversion a la tasa del 10 de junio]",
+                link: "#"
+            },
+            {
+                concepto: "Tapetes antifatiga",
+                cantidad: "20",
+                valorUnitario: "$ 145.000,00",
+                valorTotal: "$ 2.900.000,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://mascolortapetes.com/producto/tapetes-antifatiga/"
+            },
+            {
+                concepto: "Elementos de seguridad de los trabajadores",
+                cantidad: "32",
+                valorUnitario: "$ 347.568,00",
+                valorTotal: "$ 11.122.176,00",
+                tipoGasto: "Único",
+                observaciones: "Incluye Overol resistente antiestático, Botas con punta de acero, Gorra tipo bump cap, Mascarillas de polvo, Gafas de seguridad transparentes y Guantes anticorte [207.219 COP + 34,95 USD y se hace la conversion a la tasa del 10 de junio]",
+                link: "#"
+            },
+            {
+                concepto: "Elementos de seguridad de infraestructura",
+                cantidad: "1",
+                valorUnitario: "$ 5.183.845,00",
+                valorTotal: "$ 5.183.845,00",
+                tipoGasto: "Único",
+                observaciones: "Alarmas de incendio, extintores Botiquines y Señalización de seguridad [593.900 COP + 1.143 USD y se hace la conversion a la tasa del 10 de junio]",
+                link: "#"
+            },
+            {
+                concepto: "Elementos de aseo",
+                cantidad: "1",
+                valorUnitario: "$ 681.380,00",
+                valorTotal: "$ 681.380,00",
+                tipoGasto: "Mensual",
+                observaciones: "Trapero y balde, Jabón de piso, Escoba y Recogedor, Desinfectante, Guantes 2 pares, Jabon de manos, Cepillo de baño y Destapador",
+                link: "#"
+            },
+            {
+                concepto: "Servicio eléctrico",
+                cantidad: "1",
+                valorUnitario: "$ 2.592.000,00",
+                valorTotal: "$ 2.592.000,00",
+                tipoGasto: "Mensual",
+                observaciones: "Consumo mensual: 4.320 kWh/mes - Costo promedio: $600 COP/kWh",
+                link: "https://www.enel.com.co/es/personas/tarifas-energia-enel-distribucion.html"
+            },
+            {
+                concepto: "Servicio de agua",
+                cantidad: "1",
+                valorUnitario: "$ 910.000,00",
+                valorTotal: "$ 910.000,00",
+                tipoGasto: "Mensual",
+                observaciones: "Consumo mensual: 260 m³/mes - Costo promedio: $3.500 COP/m³",
+                link: "https://www.acueducto.com.co/wps/portal/EAB2/Home/atencion-al-usuario/tarifas/tarifas_2025"
+            },
+            {
+                concepto: "Servicio de limpieza",
+                cantidad: "1",
+                valorUnitario: "$ 3.360.000,00",
+                valorTotal: "$ 3.360.000,00",
+                tipoGasto: "Mensual",
+                observaciones: "Producción deshechos bimestral: 6 Ton - Costo Bimestral: 140.000COP/0.25 Ton",
+                link: "https://ciudadlimpiabogota.com.co/wp-content/uploads/sites/3/2025/06/202505-Tarifas-ASE-_3.pdf"
+            },
+            {
+                concepto: "Sistema de seguridad (Grabador)",
+                cantidad: "8",
+                valorUnitario: "$ 178.900,00",
+                valorTotal: "$ 1.431.200,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://www.homecenter.com.co/homecenter-co/product/703785/dvr-xvr-dh-xvr1b04-i-4ch-1ch-ip-4-en-1-dahua/703785/"
+            },
+            {
+                concepto: "Scanner de códigos QR",
+                cantidad: "10",
+                valorUnitario: "$ 223.904,00",
+                valorTotal: "$ 2.239.040,00",
+                tipoGasto: "Único",
+                observaciones: "55,99 USD, se hace la conversión a la tasa del 10 de junio",
+                link: "https://www.amazon.com/Eyoyo-actualizado-inal%C3%A1mbrico-Inventario-compatible/dp/B09GLXVD5D"
+            },
+            {
+                concepto: "Mallas metálicas",
+                cantidad: "1",
+                valorUnitario: "$ 293.000,00",
+                valorTotal: "$ 293.000,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://www.homecenter.com.co/homecenter-co/product/768973/malla-eslabonada-de-200-x-100-m-en-metal-galvanizado-de-225mm-de-21-4x21-4-huecos-por-pulgada-colmallas/768973/"
+            },
+            {
+                concepto: "Cerraduras electromecánicas con sensores de posición",
+                cantidad: "2",
+                valorUnitario: "$ 400.700,00",
+                valorTotal: "$ 801.400,00",
+                tipoGasto: "Único",
+                observaciones: "100 USD, se hace la conversión a la tasa del 10 de junio",
+                link: "https://www.amazon.com/Sistema-Kit-cerradura-magn%C3%A9tica-el%C3%A9ctrica/dp/B0CW9NRSTP"
+            },
+            {
+                concepto: "Sensores ultrasonido",
+                cantidad: "1",
+                valorUnitario: "$ 1.202.100,00",
+                valorTotal: "$ 1.202.100,00",
+                tipoGasto: "Único",
+                observaciones: "300 USD, se hace la conversión a la tasa del 10 de junio (Kit de 4 sensores)",
+                link: "https://www.ebay.com/itm/405187838880"
+            },
+            {
+                concepto: "Cuerda de emergencia",
+                cantidad: "50",
+                valorUnitario: "$ 8.687,00",
+                valorTotal: "$ 434.350,00",
+                tipoGasto: "Único",
+                observaciones: "50 mts de cuerda",
+                link: "https://www.cedicol.com.co/producto/cuerda-semiestatica-13mm-x-metro-sosega/"
+            },
+            {
+                concepto: "Enclavamiento para cuerdas de emergencia",
+                cantidad: "1",
+                valorUnitario: "$ 719.545,00",
+                valorTotal: "$ 719.545,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://tienda.eimpsa.com/producto/enclavamiento-xy2cjs15-emergencia-preventa-telemecanique/"
+            },
+            {
+                concepto: "Torres de señal (andon)",
+                cantidad: "2",
+                valorUnitario: "$ 48.178,00",
+                valorTotal: "$ 96.356,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://www.mercadolibre.com.co/columna-de-advertencia-industrial-andon-led-signal-tower-sta/p/MCO2020036725"
+            },
+            {
+                concepto: "Relés de seguridad",
+                cantidad: "2",
+                valorUnitario: "$ 879.500,00",
+                valorTotal: "$ 1.759.000,00",
+                tipoGasto: "Único",
+                observaciones: "",
+                link: "https://interelectricas.com.co/maniobra-e-industria/8301-sentry-bsr10-rele-de-seguridad-ref-2tla010040r0000-i2.html"
+            },
+            {
+                concepto: 'Controladores con funciones "safe move"',
+                cantidad: "1",
+                valorUnitario: "$ 6.824.599,00",
+                valorTotal: "$ 6.824.599,00",
+                tipoGasto: "Único",
+                observaciones: "1700 USD, se hace la conversión a la tasa del 10 de junio",
+                link: "https://www.ebay.com/itm/192611398504"
+            },
+            {
+                concepto: "Deadman Switch",
+                cantidad: "1",
+                valorUnitario: "$ 1.571.505,00",
+                valorTotal: "$ 1.571.505,00",
+                tipoGasto: "Único",
+                observaciones: "336 EUR, se hace la conversión a la tasa del 10 de junio",
+                link: "https://www.airportcomponents.com/en/product/deadman-con-cable-14m/"
+            }
+        ];
 
-    <table>
-      <thead>
-        <tr>
-          <th>Imagen</th>
-          <th>Concepto</th>
-          <th>Cantidad</th>
-          <th>Valor Unitario</th>
-          <th>Valor Total</th>
-          <th>Tipo de Gasto</th>
-          <th>Observaciones</th>
-          <th>Proveedor/Fuente</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img src="Multimedia/trabajador.jpg" alt="salario de trabajadores"></td>
-          <td>Salario trabajadores</td>
-          <td>10</td>
-          <td>$1.800.000,00</td>
-          <td>$18.000.000,00</td>
-          <td>Mensual</td>
-          <td>Los empleados trabajan 8h/día y 5 días/semana</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><img src="Multimedia/ing.jpg" alt="ingeniero"></td>
-          <td>Salario ingenieros</td>
-          <td>2</td>
-          <td>$3.000.000,00</td>
-          <td>$6.000.000,00</td>
-          <td>Mensual</td>
-          <td>Se plantean ingenieros Jr. para fomentar empleo</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><img src="Multimedia/robot-abb.png" alt="robot"></td>
-          <td>Robot ABB IRB 2600ID</td>
-          <td>4</td>
-          <td>$82.392.199,85</td>
-          <td>$329.568.799,40</td>
-          <td>Único</td>
-          <td>No incluye precio de envío y su precio se estime sobre tasas el 8 de junio, sin embargo puede fluctuar de acuerdo con el comportamiento del peso con respecto al dólar.</td>
-          <td><a href="https://www.alibaba.com/product-detail/Robot-Arm-6-Axis-IRB-2600ID_1600062931154.html" target="_blank">Ver</a></td>
-        </tr>
-        <tr>
-          <td><img src="Multimedia/siemens.jpg" alt="nx"></td>
-          <td>Licencia Siemens NX X Mach 3</td>
-          <td>1</td>
-          <td>$3.996.021,69</td>
-          <td>$3.996.021,69</td>
-          <td>Mensual</td>
-          <td>Mensualidad</td>
-          <td><a href="https://openit.com/es/siemens-nx-reinvents-to-cater-to-aec-industrys-needs/" target="_blank">Ver</a></td>
-        </tr>
-        <tr>
-          <td><img src="Multimedia/bodega.jpg" alt="bodega"></td>
-          <td>Bodega 3000m2</td>
-          <td>1</td>
-          <td>$70.000.000,00</td>
-          <td>$70.000.000,00</td>
-          <td>Mensual</td>
-          <td>Ubicada en La Perseverancia, Bogotá</td>
-          <td><a href="https://www.fincaraiz.com.co/bodega-en-arriendo-en-la-perseverancia-bogota/191976092" target="_blank">Ver</a></td>
-        </tr>
-        <tr>
-          <td><img src="Multimedia/rockwell.jpg" alt="rockwell"></td>
-          <td>Licencia Rockwell Studio 5000</td>
-          <td>1</td>
-          <td>$31.365.103,83</td>
-          <td>$31.365.103,83</td>
-          <td>Único</td>
-          <td>Pago de licencia perpetua</td>
-          <td><a href="https://www.codingplc.com/blog/how-to-buy-right-studio5000-license" target="_blank">Ver</a></td>
-        </tr>
-        <tr>
-          <td><img src="Multimedia/eje-robot.png" alt="eje"></td>
-          <td>Séptimo Eje para los robots</td>
-          <td>4</td>
-          <td>$6.179.414,99</td>
-          <td>$24.717.659,96</td>
-          <td>Único</td>
-          <td>No incluye precio de envío</td>
-          <td><a href="https://www.alibaba.com/product-detail/Customized-Heavy-Duty-Construction-Machinery-Parts_1601295233805.html" target="_blank">Ver</a></td>
-        </tr>
-        <tr>
-          <td colspan="4" style="text-align:right; font-weight:bold;">Total</td>
-          <td colspan="4">$483.647.584,88</td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+        const insumosData = [
+            {
+                estacion: "Marcado",
+                insumo: "Stickers",
+                precio: "$ 187,76",
+                observaciones: "40 USD (10 rollos; cada rollo alcanza para unas 100 motos). Conversión a la tasa del 8-jun.",
+                link: "https://www.amazon.es/BETCKEY-continua-compatible-etiquetas-impresoras/dp/B01LY9NLV9"
+            },
+            {
+                estacion: "Chasis",
+                insumo: "Tornillería del chasis",
+                precio: "$ 119.970,00",
+                observaciones: "30 USD. Conversión a la tasa del 8-jun.",
+                link: "https://ryderzone.com/es/products/2012-2016-honda-cbr1000rr-bolts-set-nuts-washers-misc-hardware-screws-hose-oem"
+            },
+            {
+                estacion: "Chasis",
+                insumo: "Estructura base de la motocicleta",
+                precio: "$ 2.235.590,00",
+                observaciones: "559,04 USD. Conversión a la tasa del 8-jun.",
+                link: "https://www.ebay.com/itm/235739789900"
+            },
+            {
+                estacion: "Batería",
+                insumo: "Caja portabatería",
+                precio: "$ 75.767,00",
+                observaciones: "",
+                link: "https://www.amazon.com/-/es/eléctrico-motocicleta-eléctrica-almacenamiento-impermeable/dp/B0D1NG8Z78"
+            },
+            {
+                estacion: "Batería",
+                insumo: "Batería",
+                precio: "$ 1.760.000,00",
+                observaciones: "",
+                link: "https://beelectric.co/product/bateria-litio-48v-20ah/"
+            },
+            {
+                estacion: "Batería",
+                insumo: "Tornillos de fijación",
+                precio: "$ 67.983,00",
+                observaciones: "17 USD. Conversión a la tasa del 8-jun.",
+                link: "https://www.amazon.com/Kit-motocicleta-tornillos-parabrisas-arandelas/dp/B0BQ6TRZ2N"
+            },
+            {
+                estacion: "Manillar y llantas",
+                insumo: "Manillar",
+                precio: "$ 476.000,00",
+                observaciones: "",
+                link: "https://motomellos.com/producto/manubrio-strong-pulsar-ns-200-holograma/"
+            },
+            {
+                estacion: "Manillar y llantas",
+                insumo: "Horquilla de suspensión delantera",
+                precio: "$ 824.133,00",
+                observaciones: "195 000 CLP. Conversión a la tasa del 8-jun.",
+                link: "https://www.garageonline.cl/telescopicas-/2425-telescopica-completa-pulsar-ns-200-fi-abs-rs-200-bajaj-genuina.html"
+            },
+            {
+                estacion: "Manillar y llantas",
+                insumo: "Llantas",
+                precio: "$ 559.620,00",
+                observaciones: "Precio por 2 llantas.",
+                link: "https://www.alkosto.com/llanta-moto-dunlop-gt601-130-70-17-tl-trasera/p/7707235453689"
+            },
+            {
+                estacion: "Manillar y llantas",
+                insumo: "Rines",
+                precio: "$ 594.000,00",
+                observaciones: "Precio por 2 rines.",
+                link: "https://articulo.mercadolibre.com.co/MCO-603978543-rin-delantero-para-susuki-gn-125-_JM"
+            },
+            {
+                estacion: "Motor",
+                insumo: "Motor",
+                precio: "$ 675.791,00",
+                observaciones: "168,99 USD (tasa 8-jun). Para la moto de mayor potencia se usa Motor 2: 2.485.246 COP.",
+                link: "https://www.alibaba.com/product-detail/YMMOTOR-14inch-3000w-260-V2-Electric_1600928266537.html"
+            },
+            {
+                estacion: "Frenos y suspensión",
+                insumo: "Sistema de frenos (discos, mordazas, pastillas, bomba)",
+                precio: "$ 1.214.300,00",
+                observaciones: "",
+                link: "https://www.auteco.com.co/sistema-de-freno-del-tras-completo/p"
+            },
+            {
+                estacion: "Frenos y suspensión",
+                insumo: "Amortiguadores traseros",
+                precio: "$ 408.616,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-541538773-monoshock-amortiguador-para-pulsar-ns-200-endurance-original-_JM"
+            },
+            {
+                estacion: "Luces y cableado",
+                insumo: "Faro delantero",
+                precio: "$ 155.907,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-2838630632-farola-delantera-completa-para-bajaj-pulsar-ns200"
+            },
+            {
+                estacion: "Luces y cableado",
+                insumo: "Luz trasera",
+                precio: "$ 60.437,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-1013537730-stop-trasero-pulsar-ns-200"
+            },
+            {
+                estacion: "Luces y cableado",
+                insumo: "Direccionales",
+                precio: "$ 54.275,00",
+                observaciones: "",
+                link: "https://www.mercadolibre.com.co/direccional-x4-und-led-yamaha-xtz250"
+            },
+            {
+                estacion: "Luces y cableado",
+                insumo: "Arnés de cables",
+                precio: "$ 318.440,00",
+                observaciones: "",
+                link: "https://www.ebay.com/itm/195302438692"
+            },
+            {
+                estacion: "Asiento y detalles",
+                insumo: "Asiento",
+                precio: "$ 148.000,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-1560643879-cojin-silla-moto-akt-ttr-150"
+            },
+            {
+                estacion: "Asiento y detalles",
+                insumo: "Carcazas laterales y frontales",
+                precio: "$ 379.900,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-2370704922-kit-plastico-xtz-150"
+            },
+            {
+                estacion: "Asiento y detalles",
+                insumo: "Tapas de motor y batería",
+                precio: "$ 114.986,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-2880788858-tapa-de-bateria-lateral"
+            },
+            {
+                estacion: "Asiento y detalles",
+                insumo: "Adhesivos y logotipos",
+                precio: "$ 32.000,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-1447226855-yamaha-calcomanias-stickers"
+            },
+            {
+                estacion: "Celda portaplaca",
+                insumo: "Lámina metálica del porta placas",
+                precio: "$ 30.000,00",
+                observaciones: "",
+                link: "https://articulo.mercadolibre.com.co/MCO-1941517830-porta-placa-suzuki-en-acero-inoxidable"
+            }
+        ];
 
+        const nominaData = [
+            {
+                tipo: "Operadores",
+                cantidadEmpleados: 24,
+                horasDiarias: 9,
+                diasTrabajo: 30,
+                sueldoBasico: "$ 1.423.500,00",
+                auxilioTransporte: "$ 200.000,00",
+                salud: "$ 56.940,00",
+                pension: "$ 56.940,00",
+                fondoSolidaridad: "$ 0,00",
+                pagoHora: "$ 5.272,22",
+                diurnas: 0,
+                nocturnas: 0,
+                diurnasDominicales: 0,
+                nocturnasDominicales: 0,
+                totalNeto: "$ 1.509.620,00",
+                totalNomina: "$ 36.230.880,00",
+                totalAuxilio: "$ 4.800.000,00",
+                saludTotal: "$ 2.671.624,80",
+                pensionTotal: "$ 3.771.705,60",
+                arl: "$ 164.069,19",
+                cesantias: "$ 3.018.032,30",
+                interesesCesantias: "$ 30.180,32",
+                prima: "$ 3.018.032,30",
+                vacaciones: "$ 1.310.667,70",
+                icbf: "$ 942.926,40",
+                sena: "$ 628.617,60",
+                cajaCompensacion: "$ 1.257.235,20",
+                totalPagoNomina: "$ 53.043.971,42"
+            },
+            {
+                tipo: "Técnicos",
+                cantidadEmpleados: 6,
+                horasDiarias: 9,
+                diasTrabajo: 30,
+                sueldoBasico: "$ 1.708.200,00",
+                auxilioTransporte: "$ 200.000,00",
+                salud: "$ 68.328,00",
+                pension: "$ 68.328,00",
+                fondoSolidaridad: "$ 0,00",
+                pagoHora: "$ 6.326,67",
+                diurnas: 0,
+                nocturnas: 0,
+                diurnasDominicales: 0,
+                nocturnasDominicales: 0,
+                totalNeto: "$ 1.771.544,00",
+                totalNomina: "$ 10.629.264,00",
+                totalAuxilio: "$ 1.200.000,00",
+                saludTotal: "$ 801.487,44",
+                pensionTotal: "$ 1.131.511,68",
+                arl: "$ 49.220,76",
+                cesantias: "$ 885.417,69",
+                interesesCesantias: "$ 8.854,18",
+                prima: "$ 885.417,69",
+                vacaciones: "$ 393.200,31",
+                icbf: "$ 282.877,92",
+                sena: "$ 188.585,28",
+                cajaCompensacion: "$ 377.170,56",
+                totalPagoNomina: "$ 15.633.007,51"
+            },
+            {
+                tipo: "Ingenieros",
+                cantidadEmpleados: 2,
+                horasDiarias: 9,
+                diasTrabajo: 30,
+                sueldoBasico: "$ 2.847.000,00",
+                auxilioTransporte: "$ 200.000,00",
+                salud: "$ 113.880,00",
+                pension: "$ 113.880,00",
+                fondoSolidaridad: "$ 0,00",
+                pagoHora: "$ 10.544,44",
+                diurnas: 0,
+                nocturnas: 0,
+                diurnasDominicales: 0,
+                nocturnasDominicales: 0,
+                totalNeto: "$ 2.819.240,00",
+                totalNomina: "$ 5.638.480,00",
+                totalAuxilio: "$ 400.000,00",
+                saludTotal: "$ 445.270,80",
+                pensionTotal: "$ 628.617,60",
+                arl: "$ 27.344,87",
+                cesantias: "$ 469.685,38",
+                interesesCesantias: "$ 4.696,85",
+                prima: "$ 469.685,38",
+                vacaciones: "$ 218.444,62",
+                icbf: "$ 157.154,40",
+                sena: "$ 104.769,60",
+                cajaCompensacion: "$ 209.539,20",
+                totalPagoNomina: "$ 8.373.688,70"
+            }
+        ];
+
+        const costosData = {
+            resumen: {
+                porUnidad: "$ 10.305.902,76",
+                unidadesDeseadas: 165,
+                unidadesProducidas: 147,
+                perdidasAno1: "$ 74.202.499,84",
+                perdidasAno2: "$ 78.654.649,83",
+                perdidasAno3: "$ 83.373.928,82",
+                perdidasAno4: "$ 88.376.364,55",
+                perdidasAno5: "$ 93.678.946,43"
+            },
+            meses: [
+                // Año 1 (meses 0-12)
+                { mes: 0, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 1, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 2, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 3, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 4, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 5, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 6, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 7, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 8, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 9, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 10, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 11, unidades: 147, costo: "$ 1.514.967.705,13" },
+                { mes: 12, unidades: 147, costo: "$ 1.514.967.705,13" },
+                // Año 2 (meses 13-24)
+                { mes: 13, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 14, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 15, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 16, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 17, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 18, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 19, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 20, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 21, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 22, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 23, unidades: 147, costo: "$ 1.605.865.767,44" },
+                { mes: 24, unidades: 147, costo: "$ 1.605.865.767,44" },
+                // Año 3 (meses 25-36)
+                { mes: 25, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 26, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 27, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 28, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 29, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 30, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 31, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 32, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 33, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 34, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 35, unidades: 147, costo: "$ 1.702.217.713,49" },
+                { mes: 36, unidades: 147, costo: "$ 1.702.217.713,49" },
+                // Año 4 (meses 37-48)
+                { mes: 37, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 38, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 39, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 40, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 41, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 42, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 43, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 44, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 45, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 46, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 47, unidades: 147, costo: "$ 1.804.350.776,30" },
+                { mes: 48, unidades: 147, costo: "$ 1.804.350.776,30" },
+                // Año 5 (meses 49-60)
+                { mes: 49, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 50, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 51, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 52, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 53, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 54, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 55, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 56, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 57, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 58, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 59, unidades: 147, costo: "$ 1.912.611.822,87" },
+                { mes: 60, unidades: 147, costo: "$ 1.912.611.822,87" }
+            ]
+        };
+
+        const ventasData = {
+            resumen: {
+                porUnidad: "$ 20.000.000,00",
+                proporcionCosto: "194%"
+            },
+            meses: [
+                // Año 1 (meses 1-12)
+                { mes: 1, unidades: 45, costo: "$ 900.000.000,00" },
+                { mes: 2, unidades: 56, costo: "$ 1.120.000.000,00" },
+                { mes: 3, unidades: 78, costo: "$ 1.560.000.000,00" },
+                { mes: 4, unidades: 90, costo: "$ 1.800.000.000,00" },
+                { mes: 5, unidades: 98, costo: "$ 1.960.000.000,00" },
+                { mes: 6, unidades: 110, costo: "$ 2.200.000.000,00" },
+                { mes: 7, unidades: 120, costo: "$ 2.400.000.000,00" },
+                { mes: 8, unidades: 135, costo: "$ 2.700.000.000,00" },
+                { mes: 9, unidades: 137, costo: "$ 2.740.000.000,00" },
+                { mes: 10, unidades: 139, costo: "$ 2.780.000.000,00" },
+                { mes: 11, unidades: 143, costo: "$ 2.860.000.000,00" },
+                { mes: 12, unidades: 147, costo: "$ 2.940.000.000,00" },
+                // Año 2 (meses 13-24)
+                { mes: 13, unidades: 147, costo: "$ 3.116.400.000,00" },
+                { mes: 14, unidades: 147, costo: "$ 3.116.400.000,00" },
+                { mes: 15, unidades: 150, costo: "$ 3.180.000.000,00" },
+                { mes: 16, unidades: 155, costo: "$ 3.286.000.000,00" },
+                { mes: 17, unidades: 160, costo: "$ 3.392.000.000,00" },
+                { mes: 18, unidades: 165, costo: "$ 3.498.000.000,00" },
+                { mes: 19, unidades: 165, costo: "$ 3.498.000.000,00" },
+                { mes: 20, unidades: 160, costo: "$ 3.392.000.000,00" },
+                { mes: 21, unidades: 165, costo: "$ 3.498.000.000,00" },
+                { mes: 22, unidades: 170, costo: "$ 3.604.000.000,00" },
+                { mes: 23, unidades: 178, costo: "$ 3.773.600.000,00" },
+                { mes: 24, unidades: 160, costo: "$ 3.392.000.000,00" },
+                // Año 3 (meses 25-36)
+                { mes: 25, unidades: 160, costo: "$ 3.595.520.000,00" },
+                { mes: 26, unidades: 160, costo: "$ 3.595.520.000,00" },
+                { mes: 27, unidades: 147, costo: "$ 3.303.384.000,00" },
+                { mes: 28, unidades: 158, costo: "$ 3.550.576.000,00" },
+                { mes: 29, unidades: 175, costo: "$ 3.932.600.000,00" },
+                { mes: 30, unidades: 170, costo: "$ 3.820.240.000,00" },
+                { mes: 31, unidades: 180, costo: "$ 4.044.960.000,00" },
+                { mes: 32, unidades: 170, costo: "$ 3.820.240.000,00" },
+                { mes: 33, unidades: 170, costo: "$ 3.820.240.000,00" },
+                { mes: 34, unidades: 167, costo: "$ 3.752.824.000,00" },
+                { mes: 35, unidades: 180, costo: "$ 4.044.960.000,00" },
+                { mes: 36, unidades: 185, costo: "$ 4.157.320.000,00" },
+                // Año 4 (meses 37-48)
+                { mes: 37, unidades: 165, costo: "$ 3.930.352.800,00" },
+                { mes: 38, unidades: 167, costo: "$ 3.977.993.440,00" },
+                { mes: 39, unidades: 156, costo: "$ 3.715.969.920,00" },
+                { mes: 40, unidades: 159, costo: "$ 3.787.430.880,00" },
+                { mes: 41, unidades: 174, costo: "$ 4.144.735.680,00" },
+                { mes: 42, unidades: 177, costo: "$ 4.216.196.640,00" },
+                { mes: 43, unidades: 180, costo: "$ 4.287.657.600,00" },
+                { mes: 44, unidades: 149, costo: "$ 3.549.227.680,00" },
+                { mes: 45, unidades: 151, costo: "$ 3.596.868.320,00" },
+                { mes: 46, unidades: 147, costo: "$ 3.501.587.040,00" },
+                { mes: 47, unidades: 147, costo: "$ 3.501.587.040,00" },
+                { mes: 48, unidades: 147, costo: "$ 3.501.587.040,00" },
+                // Año 5 (meses 49-60)
+                { mes: 49, unidades: 153, costo: "$ 3.863.179.497,60" },
+                { mes: 50, unidades: 150, costo: "$ 3.787.430.880,00" },
+                { mes: 51, unidades: 148, costo: "$ 3.736.931.801,60" },
+                { mes: 52, unidades: 156, costo: "$ 3.938.928.115,20" },
+                { mes: 53, unidades: 158, costo: "$ 3.989.427.193,60" },
+                { mes: 54, unidades: 150, costo: "$ 3.787.430.880,00" },
+                { mes: 55, unidades: 156, costo: "$ 3.938.928.115,20" },
+                { mes: 56, unidades: 147, costo: "$ 3.711.682.262,40" },
+                { mes: 57, unidades: 147, costo: "$ 3.711.682.262,40" },
+                { mes: 58, unidades: 147, costo: "$ 3.711.682.262,40" },
+                { mes: 59, unidades: 147, costo: "$ 3.711.682.262,40" },
+                { mes: 60, unidades: 147, costo: "$ 3.711.682.262,40" }
+            ]
+        };
+
+        const generalData = {
+            resumenFinanciero: [
+                {
+                    ano: 0,
+                    ingreso: "$ 0",
+                    egreso: "$ 2.044.392.206,18",
+                    neto: "-$ 2.044.392.206,18",
+                    impuesto: "$ 0",
+                    netoImpuesto: "-$ 2.044.392.206,18",
+                    reserva: "$ 0",
+                    netoTotal: "-$ 2.044.392.206,18"
+                },
+                {
+                    ano: 1,
+                    ingreso: "$ 25.960.000.000,00",
+                    egreso: "$ 20.973.123.291,55",
+                    neto: "$ 4.986.876.708,45",
+                    impuesto: "$ 947.506.574,61",
+                    netoImpuesto: "$ 4.039.370.133,85",
+                    reserva: "$ 403.937.013,38",
+                    netoTotal: "$ 3.635.433.120,46"
+                },
+                {
+                    ano: 2,
+                    ingreso: "$ 40.746.400.000,00",
+                    egreso: "$ 22.231.510.689,04",
+                    neto: "$ 18.514.889.310,96",
+                    impuesto: "$ 3.517.828.969,08",
+                    netoImpuesto: "$ 14.997.060.341,88",
+                    reserva: "$ 1.499.706.034,19",
+                    netoTotal: "$ 13.497.354.307,69"
+                },
+                {
+                    ano: 3,
+                    ingreso: "$ 45.438.384.000,00",
+                    egreso: "$ 23.565.401.330,38",
+                    neto: "$ 21.872.982.669,62",
+                    impuesto: "$ 4.155.866.707,23",
+                    netoImpuesto: "$ 17.717.115.962,39",
+                    reserva: "$ 1.771.711.596,24",
+                    netoTotal: "$ 15.945.404.366,15"
+                },
+                {
+                    ano: 4,
+                    ingreso: "$ 45.711.194.080,00",
+                    egreso: "$ 24.979.325.410,20",
+                    neto: "$ 20.731.868.669,80",
+                    impuesto: "$ 3.939.055.047,26",
+                    netoImpuesto: "$ 16.792.813.622,54",
+                    reserva: "$ 1.679.281.362,25",
+                    netoTotal: "$ 15.113.532.260,28"
+                },
+                {
+                    ano: 5,
+                    ingreso: "$ 45.600.667.795,20",
+                    egreso: "$ 26.478.084.934,82",
+                    neto: "$ 19.122.582.860,38",
+                    impuesto: "$ 3.633.290.743,47",
+                    netoImpuesto: "$ 15.489.292.116,91",
+                    reserva: "$ 1.548.929.211,69",
+                    netoTotal: "$ 13.940.362.905,22"
+                }
+            ],
+            indicadores: {
+                vActualTotal: "$ 68.214.460.192,19",
+                vAnual: "$ 16.194.112.849,63",
+                vFuturoTotal: "$ 91.284.590.629,19",
+                tir: "16%"
+            },
+            flujoMensual: [
+                { mes: 0, flujo: -2044392206 },
+                { mes: 1, flujo: -2892152480 },
+                { mes: 2, flujo: -3519912755 },
+                { mes: 3, flujo: -3707673029 },
+                { mes: 4, flujo: -3655433303 },
+                { mes: 5, flujo: -3443193578 },
+                { mes: 6, flujo: -2990953852 },
+                { mes: 7, flujo: -2338714126 },
+                { mes: 8, flujo: -1386474401 },
+                { mes: 9, flujo: -394234674.8 },
+                { mes: 10, flujo: 638005050.9 },
+                { mes: 11, flujo: 1750244777 },
+                { mes: 12, flujo: 2942484502 },
+                { mes: 13, flujo: 4206258612 },
+                { mes: 14, flujo: 5470032721 },
+                { mes: 15, flujo: 6797406830 },
+                { mes: 16, flujo: 8230780939 },
+                { mes: 17, flujo: 9770155049 },
+                { mes: 18, flujo: 11415529158 },
+                { mes: 19, flujo: 13060903267 },
+                { mes: 20, flujo: 14600277376 },
+                { mes: 21, flujo: 16245651486 },
+                { mes: 22, flujo: 17997025595 },
+                { mes: 23, flujo: 19917999704 },
+                { mes: 24, flujo: 21457373813 },
+                { mes: 25, flujo: 23089110369 },
+                { mes: 26, flujo: 24720846925 },
+                { mes: 27, flujo: 26060447481 },
+                { mes: 28, flujo: 27647240036 },
+                { mes: 29, flujo: 29616056592 },
+                { mes: 30, flujo: 31472513148 },
+                { mes: 31, flujo: 33553689704 },
+                { mes: 32, flujo: 35410146260 },
+                { mes: 33, flujo: 37266602815 },
+                { mes: 34, flujo: 39055643371 },
+                { mes: 35, flujo: 41136819927 },
+                { mes: 36, flujo: 43330356483 },
+                { mes: 37, flujo: 45179098832 },
+                { mes: 38, flujo: 47075481821 },
+                { mes: 39, flujo: 48709841290 },
+                { mes: 40, flujo: 50415661719 },
+                { mes: 41, flujo: 52478786949 },
+                { mes: 42, flujo: 54613373138 },
+                { mes: 43, flujo: 56819420287 },
+                { mes: 44, flujo: 58287037516 },
+                { mes: 45, flujo: 59802295385 },
+                { mes: 46, flujo: 61222271974 },
+                { mes: 47, flujo: 62642248564 },
+                { mes: 48, flujo: 64062225153 },
+                { mes: 49, flujo: 65718897572 },
+                { mes: 50, flujo: 67299821374 },
+                { mes: 51, flujo: 68830246098 },
+                { mes: 52, flujo: 70562667135 },
+                { mes: 53, flujo: 72345587251 },
+                { mes: 54, flujo: 73926511053 },
+                { mes: 55, flujo: 75658932091 },
+                { mes: 56, flujo: 77164107275 },
+                { mes: 57, flujo: 78669282460 },
+                { mes: 58, flujo: 80174457644 },
+                { mes: 59, flujo: 81679632829 },
+                { mes: 60, flujo: 83184808013 }
+            ]
+        };
+
+        const balanceData = [
+            {
+                año: 1,
+                activos: {
+                    caja: "$ 403.937.013,38",
+                    bodega: "$ 12.260.000.000,00",
+                    dCobrar: "$ 0,00",
+                    total: "$ 12.663.937.013,38"
+                },
+                pasivos: {
+                    sobregiro: "$ 0,00",
+                    oBancarias: "$ 947.506.574,61",
+                    dPagar: "$ 0,00",
+                    total: "$ 947.506.574,61"
+                },
+                patrimonio: {
+                    total: "$ 13.611.443.587,99"
+                }
+            },
+            {
+                año: 2,
+                activos: {
+                    caja: "$ 1.499.706.034,19",
+                    bodega: "$ 9.100.000.000,00",
+                    dCobrar: "$ 0,00",
+                    total: "$ 10.599.706.034,19"
+                },
+                pasivos: {
+                    sobregiro: "$ 0,00",
+                    oBancarias: "$ 3.517.828.969,08",
+                    dPagar: "$ 0,00",
+                    total: "$ 3.517.828.969,08"
+                },
+                patrimonio: {
+                    total: "$ 7.081.877.065,11"
+                }
+            },
+            {
+                año: 3,
+                activos: {
+                    caja: "$ 3.361.399.992,48",
+                    bodega: "$ 3.940.000.000,00",
+                    dCobrar: "$ 0,00",
+                    total: "$ 7.301.399.992,48"
+                },
+                pasivos: {
+                    sobregiro: "$ 0,00",
+                    oBancarias: "$ 4.155.866.707,23",
+                    dPagar: "$ 0,00",
+                    total: "$ 4.155.866.707,23"
+                },
+                patrimonio: {
+                    total: "$ 3.145.533.285,25"
+                }
+            },
+            {
+                año: 4,
+                activos: {
+                    caja: "$ 5.242.365.354,28",
+                    bodega: "$ 840.000.000,00",
+                    dCobrar: "$ 0,00",
+                    total: "$ 6.082.365.354,28"
+                },
+                pasivos: {
+                    sobregiro: "$ 0,00",
+                    oBancarias: "$ 3.939.055.047,26",
+                    dPagar: "$ 0,00",
+                    total: "$ 3.939.055.047,26"
+                },
+                patrimonio: {
+                    total: "$ 2.143.310.307,02"
+                }
+            },
+            {
+                año: 5,
+                activos: {
+                    caja: "$ 5.556.883.280,24",
+                    bodega: "$ 0,00",
+                    dCobrar: "$ 0,00",
+                    total: "$ 5.556.883.280,24"
+                },
+                pasivos: {
+                    sobregiro: "$ 0,00",
+                    oBancarias: "$ 3.633.290.743,47",
+                    dPagar: "$ 0,00",
+                    total: "$ 3.633.290.743,47"
+                },
+                patrimonio: {
+                    total: "$ 1.923.592.536,77"
+                }
+            }
+        ];
+
+        // Current active tab
+        let currentTab = 'descripciones';
+
+        // Functions
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function showTab(tabName) {
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            // Update section title
+            const titles = {
+                'descripciones': 'Descripciones',
+                'infraestructura': 'Infraestructura',
+                'insumos': 'Insumos',
+                'nomina': 'Nómina',
+                'costos': 'Costos',
+                'ventas': 'Ventas',
+                'general': 'General',
+                'balance': 'Balance'
+            };
+            document.getElementById('section-title').textContent = titles[tabName];
+
+            // Update current tab
+            currentTab = tabName;
+
+            // Load content based on tab
+            loadTabContent(tabName);
+        }
+
+        function loadTabContent(tabName) {
+            const contentArea = document.getElementById('content-area');
+            
+            switch(tabName) {
+                case 'descripciones':
+                    loadDescripciones(contentArea);
+                    break;
+                case 'infraestructura':
+                    loadInfraestructura(contentArea);
+                    break;
+                case 'insumos':
+                    loadInsumos(contentArea);
+                    break;
+                case 'nomina':
+                    loadNomina(contentArea);
+                    break;
+                case 'costos':
+                    loadCostos(contentArea);
+                    break;
+                case 'ventas':
+                    loadVentas(contentArea);
+                    break;
+                case 'general':
+                    loadGeneral(contentArea);
+                    break;
+                case 'balance':
+                    loadBalance(contentArea);
+                    break;
+            }
+        }
+
+        function loadDescripciones(container) {
+            container.innerHTML = `
+                <div class="space-y-8">
+                    <!-- Primera tabla: Estaciones, Descripción y Cosas necesarias -->
+                    <div>
+                        <h3 class="chart-title">Proceso de Ensamblaje por Estaciones</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Estaciones</th>
+                                        <th>Descripción</th>
+                                        <th>Cosas necesarias</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${descripcionesData.map(item => `
+                                        <tr>
+                                            <td style="font-weight: 600;">${item.estacion}</td>
+                                            <td>${item.descripcion}</td>
+                                            <td class="whitespace-pre-line">${item.cosasNecesarias}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Segunda tabla: Elementos generales de las estaciones -->
+                    <div>
+                        <h3 class="chart-title">Elementos Generales de las Estaciones</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Elemento</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${descripcionesData.filter(item => item.elementosGenerales && item.elementosGenerales.trim() !== '').map(item => `
+                                        <tr>
+                                            <td style="font-weight: 600;">${item.elementosGenerales}</td>
+                                            <td>Elemento necesario para la estación: ${item.estacion}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tercera tabla: Elementos de la planta -->
+                    <div>
+                        <h3 class="chart-title">Elementos de la Planta</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Elemento</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${descripcionesData.filter(item => item.elementosPlanta && item.elementosPlanta.trim() !== '').map(item => `
+                                        <tr>
+                                            <td style="font-weight: 600;">${item.elementosPlanta}</td>
+                                            <td>Elemento de infraestructura general de la planta</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadInfraestructura(container) {
+            container.innerHTML = `
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Cantidad</th>
+                                <th>Valor unitario</th>
+                                <th>Valor total</th>
+                                <th>Tipo de gasto</th>
+                                <th>Observaciones</th>
+                                <th>Links relacionados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${infraestructuraData.map(item => `
+                                <tr>
+                                    <td style="font-weight: 600;">${item.concepto}</td>
+                                    <td class="text-center">${item.cantidad}</td>
+                                    <td class="text-right">${item.valorUnitario}</td>
+                                    <td class="text-right" style="font-weight: bold;">${item.valorTotal}</td>
+                                    <td class="text-center">
+                                        <span class="badge ${item.tipoGasto === 'Mensual' ? 'badge-monthly' : 'badge-unique'}">${item.tipoGasto}</span>
+                                    </td>
+                                    <td style="font-size: 0.875rem;">${item.observaciones}</td>
+                                    <td>
+                                        ${item.link && item.link !== '#' ? `<a href="${item.link}" target="_blank" class="link">Ver enlace</a>` : ''}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function loadInsumos(container) {
+            container.innerHTML = `
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Estación</th>
+                                <th>Insumo</th>
+                                <th>Precio por moto</th>
+                                <th>Observaciones</th>
+                                <th>Links relacionados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${insumosData.map(item => `
+                                <tr>
+                                    <td style="font-weight: 600;">${item.estacion}</td>
+                                    <td>${item.insumo}</td>
+                                    <td class="text-right">${item.precio}</td>
+                                    <td style="font-size: 0.875rem;">${item.observaciones}</td>
+                                    <td>
+                                        ${item.link ? `<a href="${item.link}" target="_blank" class="link">Ver enlace</a>` : ''}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                            <!-- Total row -->
+                            <tr class="total-row">
+                                <td colspan="2" class="text-right">TOTAL Insumos fabricación una moto:</td>
+                                <td class="text-right">$ 10.305.902,76</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function loadNomina(container) {
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div class="grid grid-cols-3">
+                        ${nominaData.map(empleado => `
+                            <div class="employee-card">
+                                <h3 class="employee-title">${empleado.tipo}</h3>
+                                <div style="font-size: 0.875rem;">
+                                    <div class="employee-detail">
+                                        <span>Cantidad de empleados</span>
+                                        <span style="font-weight: 600;">${empleado.cantidadEmpleados}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Horas diarias</span>
+                                        <span style="font-weight: 600;">${empleado.horasDiarias}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Días que trabaja</span>
+                                        <span style="font-weight: 600;">${empleado.diasTrabajo}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Sueldo Básico</span>
+                                        <span style="font-weight: 600;">${empleado.sueldoBasico}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Auxilio de transporte</span>
+                                        <span style="font-weight: 600;">${empleado.auxilioTransporte}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Salud</span>
+                                        <span style="font-weight: 600;">${empleado.salud}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Pensión</span>
+                                        <span style="font-weight: 600;">${empleado.pension}</span>
+                                    </div>
+                                    <div class="employee-detail">
+                                        <span>Pago hora</span>
+                                        <span style="font-weight: 600;">${empleado.pagoHora}</span>
+                                    </div>
+                                    <div class="employee-total">
+                                        <div class="employee-detail">
+                                            <span style="color: #00BFFF; font-weight: bold;">Total neto</span>
+                                            <span style="color: #00BFFF; font-weight: bold;">${empleado.totalNeto}</span>
+                                        </div>
+                                    </div>
+                                    <div class="employee-breakdown">
+                                        <div class="employee-detail" style="border-top: 1px solid #A0A0A0; padding-top: 0.25rem;">
+                                            <span style="color: #00BFFF; font-weight: bold; font-size: 0.75rem;">Total nómina</span>
+                                            <span style="color: #00BFFF; font-weight: bold; font-size: 0.75rem;">${empleado.totalNomina}</span>
+                                        </div>
+                                        <div class="employee-detail">
+                                            <span style="color: white; font-size: 0.75rem;">ARL</span>
+                                            <span style="color: white; font-size: 0.75rem;">${empleado.arl}</span>
+                                        </div>
+                                        <div class="employee-detail">
+                                            <span style="color: white; font-size: 0.75rem;">Cesantías</span>
+                                            <span style="color: white; font-size: 0.75rem;">${empleado.cesantias}</span>
+                                        </div>
+                                        <div class="employee-detail">
+                                            <span style="color: white; font-size: 0.75rem;">Prima</span>
+                                            <span style="color: white; font-size: 0.75rem;">${empleado.prima}</span>
+                                        </div>
+                                        <div class="employee-detail">
+                                            <span style="color: white; font-size: 0.75rem;">Vacaciones</span>
+                                            <span style="color: white; font-size: 0.75rem;">${empleado.vacaciones}</span>
+                                        </div>
+                                        <div class="employee-detail" style="border-top: 1px solid #A0A0A0; padding-top: 0.25rem;">
+                                            <span style="color: #00BFFF; font-weight: bold; font-size: 0.75rem;">Total pago de nómina</span>
+                                            <span style="color: #00BFFF; font-weight: bold; font-size: 0.75rem;">${empleado.totalPagoNomina}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="highlight-box">
+                        <h3>TOTAL COSTO EMPLEADOS AL MES</h3>
+                        <p>$ 77.050.667,63</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadCostos(container) {
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div class="summary-box mb-4">
+                        <h3 class="chart-title">Resumen de Costos</h3>
+                        <div class="grid grid-cols-2" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; font-size: 0.875rem;">
+                            <div>
+                                <span style="color: #A0A0A0;">Por unidad</span>
+                                <p style="color: white; font-weight: 600;">${costosData.resumen.porUnidad}</p>
+                            </div>
+                            <div>
+                                <span style="color: #A0A0A0;">Unidades deseadas</span>
+                                <p style="color: white; font-weight: 600;">${costosData.resumen.unidadesDeseadas}</p>
+                            </div>
+                            <div>
+                                <span style="color: #A0A0A0;">Unidades producidas</span>
+                                <p style="color: white; font-weight: 600;">${costosData.resumen.unidadesProducidas}</p>
+                            </div>
+                            <div>
+                                <span style="color: #A0A0A0;">Pérdidas año 1</span>
+                                <p style="color: white; font-weight: 600;">${costosData.resumen.perdidasAno1}</p>
+                            </div>
+                            <div>
+                                <span style="color: #A0A0A0;">Pérdidas año 5</span>
+                                <p style="color: white; font-weight: 600;">${costosData.resumen.perdidasAno5}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mes</th>
+                                    <th>U fabricadas</th>
+                                    <th>Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${costosData.meses.map(item => `
+                                    <tr>
+                                        <td style="font-weight: 600;">${item.mes}</td>
+                                        <td class="text-center">${item.unidades}</td>
+                                        <td class="text-right">${item.costo}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadVentas(container) {
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div class="summary-box mb-4">
+                        <h3 class="chart-title">Información de Ventas</h3>
+                        <div class="grid grid-cols-2" style="gap: 1rem; font-size: 0.875rem;">
+                            <div>
+                                <span style="color: #A0A0A0;">Precio de venta por unidad</span>
+                                <p style="color: white; font-weight: 600; font-size: 1.125rem;">${ventasData.resumen.porUnidad}</p>
+                            </div>
+                            <div>
+                                <span style="color: #A0A0A0;">Proporción Costo</span>
+                                <p style="color: white; font-weight: 600; font-size: 1.125rem;">${ventasData.resumen.proporcionCosto}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mes</th>
+                                    <th>U vendidas</th>
+                                    <th>Ingresos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${ventasData.meses.map(item => `
+                                    <tr>
+                                        <td style="font-weight: 600;">${item.mes}</td>
+                                        <td class="text-center">${item.unidades}</td>
+                                        <td class="text-right">${item.costo}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadGeneral(container) {
+            container.innerHTML = `
+                <div class="space-y-8">
+                    <!-- Resumen Financiero -->
+                    <div>
+                        <h3 class="chart-title">Resumen Financiero por Año</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Año</th>
+                                        <th>Ingreso</th>
+                                        <th>Egreso</th>
+                                        <th>Neto</th>
+                                        <th>Impuesto</th>
+                                        <th>Neto-Impuesto</th>
+                                        <th>Reserva</th>
+                                        <th>Neto Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${generalData.resumenFinanciero.map(item => `
+                                        <tr>
+                                            <td class="text-center" style="font-weight: 600;">${item.ano}</td>
+                                            <td class="text-right">${item.ingreso}</td>
+                                            <td class="text-right">${item.egreso}</td>
+                                            <td class="text-right">${item.neto}</td>
+                                            <td class="text-right">${item.impuesto}</td>
+                                            <td class="text-right">${item.netoImpuesto}</td>
+                                            <td class="text-right">${item.reserva}</td>
+                                            <td class="text-right" style="font-weight: bold;">${item.netoTotal}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Indicadores Clave -->
+                    <div class="grid grid-cols-4">
+                        <div class="summary-box">
+                            <h4 class="summary-title">V Actual Total</h4>
+                            <p class="summary-value">${generalData.indicadores.vActualTotal}</p>
+                        </div>
+                        <div class="summary-box">
+                            <h4 class="summary-title">V Anual</h4>
+                            <p class="summary-value">${generalData.indicadores.vAnual}</p>
+                        </div>
+                        <div class="summary-box">
+                            <h4 class="summary-title">V Futuro Total</h4>
+                            <p class="summary-value">${generalData.indicadores.vFuturoTotal}</p>
+                        </div>
+                        <div class="summary-box">
+                            <h4 class="summary-title">TIR</h4>
+                            <p class="summary-value" style="font-size: 1.5rem;">${generalData.indicadores.tir}</p>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de Flujo Neto -->
+                    <div>
+                        <h3 class="chart-title">Flujo Neto Mensual</h3>
+                        <div class="chart-container">
+                            <div style="position: relative; height: 400px; width: 100%;">
+                                <svg viewBox="0 0 800 400" style="width: 100%; height: 100%;">
+                                    <!-- Grid lines -->
+                                    <defs>
+                                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#555" stroke-width="1"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid)"/>
+                                    
+                                    <!-- Axes -->
+                                    <line x1="60" y1="350" x2="750" y2="350" stroke="#00BFFF" stroke-width="2"/>
+                                    <line x1="60" y1="50" x2="60" y2="350" stroke="#00BFFF" stroke-width="2"/>
+                                    
+                                    <!-- Zero line -->
+                                    <line x1="60" y1="200" x2="750" y2="200" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="5,5"/>
+                                    
+                                    <!-- Data line -->
+                                    <polyline fill="none" stroke="#00BFFF" stroke-width="3" points="${generalData.flujoMensual.map((item, index) => {
+                                        const x = 60 + index * (690 / 60);
+                                        const y = 200 - (item.flujo / 100000000000) * 150; // Scale factor
+                                        return `${x},${Math.max(50, Math.min(350, y))}`;
+                                    }).join(' ')}"/>
+                                    
+                                    <!-- Y-axis labels -->
+                                    <text x="45" y="55" fill="#A0A0A0" font-size="12" text-anchor="end">$90B</text>
+                                    <text x="45" y="125" fill="#A0A0A0" font-size="12" text-anchor="end">$45B</text>
+                                    <text x="45" y="205" fill="#A0A0A0" font-size="12" text-anchor="end">$0</text>
+                                    <text x="45" y="275" fill="#A0A0A0" font-size="12" text-anchor="end">-$45B</text>
+                                    <text x="45" y="355" fill="#A0A0A0" font-size="12" text-anchor="end">-$90B</text>
+                                    
+                                    <!-- X-axis labels -->
+                                    <text x="60" y="370" fill="#A0A0A0" font-size="12" text-anchor="middle">0</text>
+                                    <text x="200" y="370" fill="#A0A0A0" font-size="12" text-anchor="middle">12</text>
+                                    <text x="340" y="370" fill="#A0A0A0" font-size="12" text-anchor="middle">24</text>
+                                    <text x="480" y="370" fill="#A0A0A0" font-size="12" text-anchor="middle">36</text>
+                                    <text x="620" y="370" fill="#A0A0A0" font-size="12" text-anchor="middle">48</text>
+                                    <text x="750" y="370" fill="#A0A0A0" font-size="12" text-anchor="middle">60</text>
+                                    
+                                    <!-- Chart title -->
+                                    <text x="400" y="30" fill="#00BFFF" font-size="18" text-anchor="middle" font-weight="bold">Flujo Neto (Meses)</text>
+                                </svg>
+                            </div>
+                            <p style="color: #A0A0A0; font-size: 0.875rem; margin-top: 1rem; text-align: center;">
+                                El gráfico muestra la evolución del flujo neto acumulado durante los 60 meses del proyecto. El punto de equilibrio se alcanza aproximadamente en el mes 10.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadBalance(container) {
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <h3 class="chart-title">Balance General por Año</h3>
+                    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                        ${balanceData.map(balance => `
+                            <div class="balance-card">
+                                <h4 class="balance-year-title">Año ${balance.año}</h4>
+
+                                <!-- Activos -->
+                                <div class="balance-section">
+                                    <h5 class="balance-section-title">Activos</h5>
+                                    <div class="space-y-1">
+                                        <div class="balance-item">
+                                            <span>Caja</span>
+                                            <span style="font-family: monospace;">${balance.activos.caja}</span>
+                                        </div>
+                                        <div class="balance-item">
+                                            <span>Bodega</span>
+                                            <span style="font-family: monospace;">${balance.activos.bodega}</span>
+                                        </div>
+                                        <div class="balance-item">
+                                            <span>D. Cobrar</span>
+                                            <span style="font-family: monospace;">${balance.activos.dCobrar}</span>
+                                        </div>
+                                        <div class="balance-total">
+                                            <span>Total</span>
+                                            <span>${balance.activos.total}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pasivos -->
+                                <div class="balance-section">
+                                    <h5 class="balance-section-title">Pasivos</h5>
+                                    <div class="space-y-1">
+                                        <div class="balance-item">
+                                            <span>Sobregiro</span>
+                                            <span style="font-family: monospace;">${balance.pasivos.sobregiro}</span>
+                                        </div>
+                                        <div class="balance-item">
+                                            <span>O. Bancarias</span>
+                                            <span style="font-family: monospace;">${balance.pasivos.oBancarias}</span>
+                                        </div>
+                                        <div class="balance-item">
+                                            <span>D. pagar</span>
+                                            <span style="font-family: monospace;">${balance.pasivos.dPagar}</span>
+                                        </div>
+                                        <div class="balance-total">
+                                            <span>Total</span>
+                                            <span>${balance.pasivos.total}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Patrimonio -->
+                                <div class="balance-section">
+                                    <h5 class="balance-section-title">Patrimonio</h5>
+                                    <div class="balance-total">
+                                        <span>Total</span>
+                                        <span>${balance.patrimonio.total}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDescripciones(document.getElementById('content-area'));
+        });
+    </script>
 </body>
 </html>
