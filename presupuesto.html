@@ -1888,7 +1888,7 @@
                                     ${descripcionesData.filter(item => item.elementosGenerales && item.elementosGenerales.trim() !== '').map(item => `
                                         <tr>
                                             <td style="font-weight: 600;">${item.elementosGenerales}</td>
-                                            <td>Elemento necesario para la estación: ${item.estacion}</td>
+                                            <td>Elemento presente en todas las estaciones</td>
                                         </tr>
                                     `).join('')}
                                 </tbody>
@@ -1911,7 +1911,7 @@
                                     ${descripcionesData.filter(item => item.elementosPlanta && item.elementosPlanta.trim() !== '').map(item => `
                                         <tr>
                                             <td style="font-weight: 600;">${item.elementosPlanta}</td>
-                                            <td>Elemento de infraestructura general de la planta</td>
+                                            <td>Elemento general de la planta</td>
                                         </tr>
                                     `).join('')}
                                 </tbody>
