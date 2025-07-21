@@ -308,7 +308,18 @@
           "estructura"
           "ingresos";
       }
-     
+     .chart-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .nota {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
 }
 </style>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" referrerpolicy="no-referrer" rel="stylesheet"/></head>
@@ -415,7 +426,7 @@
     <div class="chart-container">
       <canvas id="curvaSChart"></canvas>
     </div>
-    <p class="nota">Esta gráfica muestra la evolución comparativa entre el avance esperado y el real del proyecto a lo largo del tiempo.</p>
+    <p class="nota" style="color: #A0A0A0;">Esta gráfica muestra la evolución comparativa entre el avance esperado y el real del proyecto a lo largo del tiempo.</p>
   </div>
 
   <script>
