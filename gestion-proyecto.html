@@ -7,6 +7,7 @@
 <title>Blue Energy Bikes</title>
 <link href="Multimedia/logo-circ.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
     :root {
       --black: #1C1C1C;
@@ -295,6 +296,18 @@
           "estructura"
           "ingresos";
       }
+    .chart-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .nota {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }  
 }
 </style>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" referrerpolicy="no-referrer" rel="stylesheet"/></head>
@@ -395,6 +408,78 @@
 <img alt="Diagrama de Gantt" src="Multimedia/gantt.png" style="height: auto; max-height: 650px;"/>
 </div>
 </div>
+    
+<div class="card">
+    <h2>Curva S de Avance del Proyecto</h2>
+    <div class="chart-container">
+      <canvas id="curvaSChart"></canvas>
+    </div>
+    <p class="nota">Esta gráfica muestra la evolución comparativa entre el avance esperado y el real del proyecto a lo largo del tiempo.</p>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('curvaSChart').getContext('2d');
+    const curvaSChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [
+          'Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7',
+          'Semana 8', 'Semana 9', 'Semana 10', 'Semana 11', 'Semana 12', 'Semana 13', 'Semana 14'
+        ],
+        datasets: [
+          {
+            label: 'Avance Esperado',
+            data: [7, 14, 21, 29, 36, 43, 50, 57, 64, 71, 79, 86, 93, 100],
+            borderColor: '#00BFFF',
+            backgroundColor: 'transparent',
+            tension: 0.3
+          },
+          {
+            label: 'Avance Real',
+            data: [2, 5, 7, 12, 18, 23, 26, 32, 42, 57, 61, 70, 80, 92],
+            borderColor: '#BFFF00',
+            backgroundColor: 'transparent',
+            tension: 0.3
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white'
+            }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: 'white'
+            },
+            grid: {
+              color: '#444'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            max: 110,
+            ticks: {
+              color: 'white',
+              callback: function(value) { return value + '%'; }
+            },
+            grid: {
+              color: '#444'
+            }
+          }
+        }
+      }
+    });
+  </script>    
 <div class="card">
 <h2>4. Análisis de Necesidades del Usuario y Benchmarking</h2>
 <p>Se realizó una investigación en el mercado colombiano de movilidad urbana, encontrando que los usuarios priorizan la autonomía, el diseño deportivo, la conectividad y facilidad de recarga. El benchmarking incluyó marcas como NIU, Super Soco y Stärker, destacando elementos clave como baterías intercambiables, conectividad vía app y diseño aerodinámico.</p>
@@ -437,15 +522,8 @@
 <p>Venta de motos, personalización, repuestos, mantenimiento técnico.</p>
 </div>
 </div></div>
-<div class="card">
-<h2>5. Selección y Justificación de Características Clave</h2>
-<ul>
-<li><strong>Tipo de motor:</strong> Motor de cubo sin escobillas de 3.500W por su eficiencia y bajo mantenimiento.</li>
-<li><strong>Tipo de batería:</strong> Batería de litio de 72V/40Ah, intercambiable, por su peso reducido y facilidad de recarga.</li>
-<li><strong>Chasis:</strong> Acero reforzado, por su relación peso/resistencia.</li>
-<li><strong>Frenos:</strong> Disco hidráulico delantero y trasero, por seguridad y respuesta rápida.</li>
-</ul>
-</div>
+
+    
 </div>
 </body>
 </html>
