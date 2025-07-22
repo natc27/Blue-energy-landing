@@ -1,293 +1,726 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Celda de Manufactura Automatizada - Blue Energy Bikes</title>
-  <link rel="icon" href="Multimedia/logo-circ.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    :root {
-      --black: #1C1C1C;
-      --electric-blue: #00BFFF;
-      --white: #FFFFFF;
-      --card-bg: #2a2a2a;
-      --hover-bg: #3a3a3a;
-      --titanium: #A0A0A0;
-      --neon-lime: #BFFF00;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--black);
-      color: var(--white);
-    }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: var(--black);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      z-index: 100;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    }
-    .logo {
-      height: 80px;
-      width: 80px;
-      border-radius: 50%;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    nav a, .dropdown-button {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .dropdown-container {
-      position: relative;
-    }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background-color: var(--black);
-      padding: 0.5rem;
-      border-radius: 5px;
-      top: 100%;
-      left: 0;
-      min-width: 250px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-    
-    .dropdown-menu li a {
-      display: block;
-      padding: 0.4rem 1rem;
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    
-    .dropdown-menu li a:hover {
-      background-color: var(--hover-bg, #3a3a3a);
-    }
-    
-    .dropdown-container:hover .dropdown-menu {
-      display: block;
-    }
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .menu-toggle span {
-      background: var(--white);
-      height: 3px;
-      margin: 5px 0;
-      width: 25px;
-    }
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background-color: var(--black);
-      padding: 1rem;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-    }
-    .mobile-nav a {
-      color: var(--white);
-      padding: 0.5rem 0;
-      text-decoration: none;
-      border-bottom: 1px solid var(--titanium);
-    }
-    @media (max-width: 850px) {
-      nav ul { display: none; }
-      .menu-toggle { display: flex; }
-      .mobile-nav { display: none; }
-      .mobile-nav.active { display: flex; }
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 8rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    h1 {
-      color: var(--electric-blue);
-      margin-bottom: 2rem;
-      text-align: center;
-      font-size: 2.5rem;
-    }
-    .section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-      align-items: start;
-    }
-    .info-box {
-      background-color: var(--card-bg);
-      border-left: 5px solid var(--electric-blue);
-      padding: 2rem;
-      max-width: 800px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 191, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .info-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
-    }
-    .info-box h2 {
-      color: var(--electric-blue);
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-    }
-    .info-box p, .info-box ul li {
-      color: var(--white);
-      line-height: 1.6;
-    }
-    .info-box ul {
-      padding-left: 1.2rem;
-    }
-    .video-box {
-      text-align: center;
-    }
-    .video-box a {
-      color: var(--electric-blue);
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Celda de Manufactura Automatizada - Blue Energy Bikes</title>
+    <link href="Multimedia/logo-circ.png" rel="icon" type="image/png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <style>
+        :root {
+            --black: #1C1C1C;
+            --electric-blue: #00BFFF;
+            --titanium: #A0A0A0;
+            --white: #FFFFFF;
+            --neon-lime: #BFFF00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            padding-top: 110px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--black);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        nav a, .dropdown-button {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--black);
+            padding: 0.5rem;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+            min-width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.4rem 1rem;
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu li a:hover {
+            background-color: var(--hover-bg, #3a3a3a);
+        }
+        
+        .dropdown-container:hover .dropdown-menu {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            background: var(--white);
+            height: 3px;
+            margin: 5px 0;
+            width: 25px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--black);
+            padding: 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+        }
+
+        .mobile-nav a {
+            color: var(--white);
+            padding: 0.5rem 0;
+            text-decoration: none;
+            border-bottom: 1px solid var(--titanium);
+        }
+
+        @media (max-width: 850px) {
+            nav ul {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: var(--electric-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card p, .card li, .card td, .card th {
+            color: var(--white);
+        }
+
+        .card ul {
+            padding-left: 1.5rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Info Grid for better organization */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--electric-blue);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            color: var(--white);
+        }
+
+        /* Stats cards for key metrics */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--titanium);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--titanium);
+            font-size: 0.9rem;
+        }
+
+        /* Table styling consistent with gestion-proyecto */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid var(--titanium);
+            text-align: left;
+        }
+
+        th {
+            background-color: #1C1C1C;
+            color: var(--electric-blue);
+            font-weight: bold;
+        }
+
+        /* Risk level indicators */
+        .risk-high { 
+            background-color: #ff4c4c; 
+            color: black; 
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .risk-medium { 
+            background-color: #ffc107; 
+            color: black; 
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .risk-low { 
+            background-color: #66ff66; 
+            color: black; 
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Process flow visualization */
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .process-step {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            border: 1px solid var(--titanium);
+        }
+
+        .process-step h4 {
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-arrow {
+            color: var(--electric-blue);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Image container styling */
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 2px dashed var(--electric-blue);
+        }
+
+        .image-placeholder {
+            color: var(--electric-blue);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-flow {
+                flex-direction: column;
+            }
+
+            .process-arrow {
+                transform: rotate(90deg);
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                display: none;
+            }
+
+            td {
+                position: relative;
+                padding-left: 50%;
+                text-align: left;
+            }
+
+            td::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 45%;
+                padding-left: 0.75rem;
+                white-space: nowrap;
+                color: var(--electric-blue);
+                font-weight: bold;
+                content: attr(data-label);
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="Multimedia/logo-circ.png" alt="Logo Blue Energy" class="logo">
-    <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Header -->
+    <header>
+        <img alt="Logo Blue Energy" class="logo" src="Multimedia/logo-circ.png"/>
+        <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown-container">
+                    <button class="dropdown-button">Módulos ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="estado-actual.html">Estado actual</a></li>
+                        <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+                        <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+                        <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+                        <li><a href="presupuesto.html">Presupuesto</a></li>
+                        <li><a href="proceso-aprendizaje.html">Proceso de Aprendizaje</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-nav">
+            <a href="index.html">Inicio</a>
+            <a href="estado-actual.html">Estado actual</a>
+            <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+            <a href="gestion-produccion.html">Gestión de Producción</a>
+            <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+            <a href="presupuesto.html">Presupuesto</a>
+            <a href="proceso-aprendizaje.html">Proceso de Aprendizaje</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#contacto">Contacto</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Módulo 5: Celdas de Manufactura Robotizadas</h1>
+
+        <!-- Station Selection -->
+        <div class="card">
+            <h2>1. Selección de Estación</h2>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Estación a robotizar:</div>
+                    <div class="info-value">Chasis</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Entrada:</div>
+                    <div class="info-value">Chasis pintado sin soportes</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Salida:</div>
+                    <div class="info-value">Chasis limpio y listo para ensamblaje</div>
+                </div>
+            </div>
+
+            <p><strong>Descripción general:</strong><br/>
+            La estación tiene como función principal preparar el esqueleto estructural de la motocicleta, sobre el cual se montarán los demás componentes.</p>
+
+            <p><strong>Actividades principales:</strong></p>
+            <ul>
+                <li>Recepción del chasis prefabricado o soldado.</li>
+                <li>Limpieza del chasis (por aire comprimido o cepillo rotativo).</li>
+                <li>Inserción de tuercas remachables o pernos de fijación.</li>
+                <li>Liberación del chasis hacia la siguiente estación.</li>
+            </ul>
+        </div>
+
+        <!-- Process Flow -->
+        <div class="card">
+            <h2>2. Hoja de Ruta del Proceso</h2>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <h4>Recepción</h4>
+                    <p>Chasis pintado</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <h4>Limpieza</h4>
+                    <p>Aire comprimido</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <h4>Instalación</h4>
+                    <p>Soportes y pernos</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <h4>Liberación</h4>
+                    <p>Siguiente estación</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+    <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/FlowChart.png" 
+         alt="Diagrama de flujo del proceso de manufactura" 
+         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+</div>
+        </div>
+
+        <!-- Cell Description -->
+        <div class="card">
+            <h2>3. Descripción de la Celda Robotizada</h2>
+            
+            <p>La celda está diseñada para el alistamiento de soportes adicionales en el chasis, necesarios para el cableado y montaje posterior.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4.8</div>
+                    <div class="stat-label">Takt Time (min)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Throughput Time (min)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Unidades/día</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Horas/turno</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Estado de entrada</div>
+                    <div class="info-value">Chasis desempacado del proveedor, con suciedad superficial, pintado y sin soportes adicionales</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Estado de salida</div>
+                    <div class="info-value">Chasis limpio, con pintura intacta y con soportes colocados y soldados (tuercas remachables, pernos, etc.)</div>
+                </div>
+            </div>
+
+            <p><strong>Normas de seguridad consideradas:</strong></p>
+            <ul>
+                <li><strong>NTC-ISO 12100</strong> - Análisis de riesgos en Máquinas</li>
+                <li><strong>NTC-ISO 10218</strong> - Requisitos de seguridad de robots industriales</li>
+            </ul>
+
+            <p>Además de un constante análisis de riesgos, mantenimientos frecuentes para evitar malfuncionamientos o situaciones que pongan en peligro la vida humana en los alrededores de la celda robotizada.</p>
+        </div>
+
+        <!-- Elements of the Cell -->
+        <div class="card">
+            <h2>4. Elementos de la Celda</h2>
+            <p>Los elementos principales de la celda robotizada incluyen:</p>
+            <ul>
+                <li>Robot industrial de 6 ejes para manipulación del chasis</li>
+                <li>Sistema de visión artificial para posicionamiento</li>
+                <li>Estación de limpieza con aire comprimido</li>
+                <li>Herramientas de soldadura y fijación</li>
+                <li>Sistema de transporte automatizado</li>
+                <li>Sensores de seguridad y barreras protectoras</li>
+                <li>Panel de control HMI</li>
+            </ul>
+        </div>
+
+        <!-- Safety Analysis -->
+        <div class="card">
+            <h2>5. Peligros y Elementos de Seguridad</h2>
+
+            <h3>Identificación de Peligros</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Peligro</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="#">1</td>
+                        <td data-label="Peligro">Golpe del robot en movimiento</td>
+                        <td data-label="Descripción">El operador puede recibir un impacto durante el periodo de programación, enseñanza o mantenimiento.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">2</td>
+                        <td data-label="Peligro">Atrapamiento</td>
+                        <td data-label="Descripción">Riesgo de atrapamiento entre el robot y otros elementos de la celda.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">3</td>
+                        <td data-label="Peligro">Fallo en el sistema de parada de emergencia</td>
+                        <td data-label="Descripción">La celda puede seguir funcionando en caso de emergencia.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">4</td>
+                        <td data-label="Peligro">Contacto con piezas calientes</td>
+                        <td data-label="Descripción">Algunas herramientas pueden calentarse durante la operación.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">5</td>
+                        <td data-label="Peligro">Descarga eléctrica</td>
+                        <td data-label="Descripción">Fallos en el aislamiento eléctrico o conexiones inseguras.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Evaluación de Riesgos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Peligro</th>
+                        <th>Severidad (S)</th>
+                        <th>Frecuencia (F)</th>
+                        <th>Probabilidad (P)</th>
+                        <th>Exposición (E)</th>
+                        <th>HRN = S × F × P × E</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="#">1</td>
+                        <td data-label="Peligro">Golpe del robot en movimiento</td>
+                        <td data-label="Severidad">3</td>
+                        <td data-label="Frecuencia">3</td>
+                        <td data-label="Probabilidad">2</td>
+                        <td data-label="Exposición">2</td>
+                        <td data-label="HRN"><span class="risk-high">36</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">2</td>
+                        <td data-label="Peligro">Atrapamiento</td>
+                        <td data-label="Severidad">3</td>
+                        <td data-label="Frecuencia">3</td>
+                        <td data-label="Probabilidad">2</td>
+                        <td data-label="Exposición">2</td>
+                        <td data-label="HRN"><span class="risk-high">36</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">3</td>
+                        <td data-label="Peligro">Fallo parada emergencia</td>
+                        <td data-label="Severidad">4</td>
+                        <td data-label="Frecuencia">2</td>
+                        <td data-label="Probabilidad">2</td>
+                        <td data-label="Exposición">2</td>
+                        <td data-label="HRN"><span class="risk-high">32</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">4</td>
+                        <td data-label="Peligro">Contacto con piezas calientes</td>
+                        <td data-label="Severidad">2</td>
+                        <td data-label="Frecuencia">3</td>
+                        <td data-label="Probabilidad">2</td>
+                        <td data-label="Exposición">2</td>
+                        <td data-label="HRN"><span class="risk-medium">24</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">5</td>
+                        <td data-label="Peligro">Descarga eléctrica</td>
+                        <td data-label="Severidad">4</td>
+                        <td data-label="Frecuencia">2</td>
+                        <td data-label="Probabilidad">2</td>
+                        <td data-label="Exposición">1</td>
+                        <td data-label="HRN"><span class="risk-low">16</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Medidas de Mitigación y Componentes de Seguridad</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Peligro</th>
+                        <th>Mitigación / Componente de Seguridad</th>
+                        <th>Tipo de Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="#">1</td>
+                        <td data-label="Peligro">Golpe del robot</td>
+                        <td data-label="Mitigación">Sensores de presencia, barreras fotoeléctricas</td>
+                        <td data-label="Tipo">Componente de seguridad</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">2</td>
+                        <td data-label="Peligro">Atrapamiento</td>
+                        <td data-label="Mitigación">Zonificación, diseño ergonómico</td>
+                        <td data-label="Tipo">Mitigación + seguridad</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">3</td>
+                        <td data-label="Peligro">Fallo emergencia</td>
+                        <td data-label="Mitigación">Redundancia en botoneras, pruebas periódicas</td>
+                        <td data-label="Tipo">Componente de seguridad</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">4</td>
+                        <td data-label="Peligro">Superficie caliente</td>
+                        <td data-label="Mitigación">Etiquetas de advertencia, EPP térmico</td>
+                        <td data-label="Tipo">Mitigación</td>
+                    </tr>
+                    <tr>
+                        <td data-label="#">5</td>
+                        <td data-label="Peligro">Descarga eléctrica</td>
+                        <td data-label="Mitigación">Interruptores diferenciales, aislamientos, EPP</td>
+                        <td data-label="Tipo">Seguridad + mitigación</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Simulation Section -->
+        <div class="card">
+            <h2>6. Simulación en RobotStudio</h2>
+
+<div style="text-align: center; margin: 2rem 0;">
+    <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Layout_Celda_Robotizada.jpeg" 
+         alt="Layout de la Celda Robotizada" 
+         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); margin-bottom: 2rem;">
+</div>
+
+<h3 style="color: var(--electric-blue); margin-bottom: 1rem;">Video de Simulación</h3>
+<div style="text-align: center; margin: 2rem 0;">
+    <video controls style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+        <source src="https://github.com/user-attachments/assets/a102a87e-56c7-4160-a77a-69611ef10de9" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+</div>
+
+<p>La simulación completa de la celda robotizada muestra el proceso automatizado de preparación del chasis, incluyendo los movimientos del robot, las estaciones de trabajo y los sistemas de seguridad implementados.</p>
+</div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-container">
-          <button class="dropdown-button">Módulos ▾</button>
-          <ul class="dropdown-menu">
-            <li><a href="estado-actual.html">Estado actual</a></li>
-            <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
-            <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
-            <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
-            <li><a href="presupuesto.html">Presupuesto</a></li>
-            <li><a href="proceso-aprendizaje.html">Proceso de Aprendizaje</a></li>
-          </ul>
-        </li>
-        <li><a href="index.html#productos">Productos</a></li>
-        <li><a href="index.html#nosotros">Nosotros</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <nav class="mobile-nav">
-      <a href="index.html">Inicio</a>
-      <a href="estado-actual.html">Estado actual</a>
-      <a href="gestion-proyecto.html">Gestión de Proyecto</a>
-      <a href="gestion-produccion.html">Gestión de Producción</a>
-      <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
-      <a href="presupuesto.html">Presupuesto</a>
-      <a href="proceso-aprendizaje.html">Proceso de Aprendizaje</a>
-      <a href="index.html#productos">Productos</a>
-      <a href="index.html#nosotros">Nosotros</a>
-      <a href="index.html#contacto">Contacto</a>
-    </nav>
-  </header>
-  <div class="container">
-      <h1>Celda de Manufactura Automatizada</h1>
-      <div class="section">
-        <div class="info-box">
-          <h2>Introducción</h2>
-          <p>En el contexto de la automatización y la mejora continua de los procesos productivos, Blue Energy Bikes ha identificado oportunidades clave para optimizar la estación de preparación del chasis, una etapa crítica dentro de su cadena de ensamblaje de motocicletas. Considerando el crecimiento del mercado y la necesidad de mantener altos estándares de calidad y eficiencia, el equipo de ingeniería ha propuesto el diseño e implementación de una celda robotizada orientada a mejorar el alistamiento del chasis antes del ensamblaje final.</p>
-          <p>El análisis de esta estación, realizado a partir de herramientas de diseño de celdas y bajo la perspectiva del pensamiento Lean, ha evidenciado la posibilidad de reducir tiempos de ciclo, minimizar desperdicios y asegurar la homogeneidad en tareas repetitivas que tradicionalmente eran realizadas de forma manual. La automatización de estas operaciones permitirá un flujo continuo, mayor precisión y una integración más armónica con las etapas posteriores de producción.</p>
-        </div>
-        <div class="info-box">
-          <h2>Objetivo</h2>
-          <p>Diseñar una celda robotizada eficiente y segura que aumente la productividad, reduzca errores y mantenga la flexibilidad operativa bajo principios de Lean Manufacturing.</p>
-        </div>
-      </div>
-      <div class="section">
-        <div class="info-box">
-          <h2>Estación Seleccionada</h2>
-          <p><strong>Preparación del chasis:</strong> Incluye limpieza superficial, instalación de soportes y liberación para el ensamblaje. Automatizarla asegura uniformidad y eficiencia.</p>
-        </div>
-        <div class="info-box">
-          <h2>Rutinas del Manipulador</h2>
-          <ul>
-            <li>Recepción del chasis</li>
-            <li>Limpieza con aire o cepillo</li>
-            <li>Instalación de componentes</li>
-            <li>Traslado a siguiente estación</li>
-          </ul>
-          <p><strong>Takt Time:</strong> 4.8 min &nbsp;|&nbsp; <strong>Throughput Time:</strong> 5 min</p>
-        </div>
-      </div>
-      <div class="section">
-        <div class="info-box">
-          <h2>Estado de Entrada y Salida</h2>
-          <p><strong>Entrada:</strong> Chasis pintado sin soportes.<br><strong>Salida:</strong> Chasis limpio y listo para ensamblaje.</p>
-        </div>
-        <div class="info-box">
-          <h2>Componentes de la Celda</h2>
-          <ul>
-            <li><strong>Proceso:</strong> Limpieza, inserción.</li>
-            <li><strong>Manipulación:</strong> Brazo robótico o pórtico.</li>
-            <li><strong>Transporte:</strong> AGV o banda.</li>
-            <li><strong>Control:</strong> HMI, sensores, monitoreo.</li>
-            <li><strong>Seguridad:</strong> Cortinas, paros, señalización.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="section">
-        <div class="info-box">
-          <h2>Impacto Esperado</h2>
-          <p>Reducción de errores, optimización de tareas repetitivas y mayor flujo productivo, alineado con producción Lean.</p>
-        </div>
-        <div class="info-box video-box">
-          <h2>Simulación en RobotStudio</h2>
-          <p>Modelo 3D y programación del flujo en RobotStudio. Animación de movimientos y video de validación operativa.</p>
-          <a href="#">Ver simulación de la celda</a>
-        </div>
-      </div>
-      <div class="info-box">
-        <h2>Gestión del Riesgo</h2>
-        <ul>
-          <li>Peligros: colisiones, atrapamientos, fallos.</li>
-          <li>Análisis de severidad y probabilidad.</li>
-          <li>Mitigación: escáneres, paros, zonas seguras.</li>
-          <li>Evaluación posterior con medidas aplicadas.</li>
-        </ul>
-      </div>
-      <div class="info-box">
-        <h2>Diseño de la Celda Robotizada</h2>
-        <p>La celda ha sido diseñada considerando el espacio disponible, el flujo de producto, la interacción segura con el personal, y las necesidades funcionales. Se incorporan sensores, barreras de seguridad y mecanismos de agarre adaptado al producto.</p>
-      </div>
-    </div>
-  </body>
-  </html>
+</body>
+</html>
