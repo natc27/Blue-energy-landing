@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Virtualización de Fábrica - Blue Energy Bikes</title>
+    <link href="Multimedia/logo-circ.png" rel="icon" type="image/png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <style>
+        :root {
+            --black: #1C1C1C;
+            --electric-blue: #00BFFF;
+            --titanium: #A0A0A0;
+            --white: #FFFFFF;
+            --neon-lime: #BFFF00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            padding-top: 110px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--black);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        nav a, .dropdown-button {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--black);
+            padding: 0.5rem;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+            min-width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.4rem 1rem;
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu li a:hover {
+            background-color: var(--hover-bg, #3a3a3a);
+        }
+        
+        .dropdown-container:hover .dropdown-menu {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            background: var(--white);
+            height: 3px;
+            margin: 5px 0;
+            width: 25px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: var(--black);
+            padding: 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+        }
+
+        .mobile-nav a {
+            color: var(--white);
+            padding: 0.5rem 0;
+            text-decoration: none;
+            border-bottom: 1px solid var(--titanium);
+        }
+
+        @media (max-width: 850px) {
+            nav ul {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: none;
+            }
+
+            .mobile-nav.active {
+                display: flex;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: var(--electric-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .card p, .card li, .card td, .card th {
+            color: var(--white);
+        }
+
+        .card ul {
+            padding-left: 1.5rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Single image container */
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Dual image container for side-by-side images */
+        .dual-image-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .dual-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Note styling */
+        .note {
+            background-color: rgba(0, 191, 255, 0.1);
+            border-left: 4px solid var(--electric-blue);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--titanium);
+        }
+
+        .note strong {
+            color: var(--electric-blue);
+        }
+
+        /* Video container */
+        .video-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .video-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .dual-image-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img alt="Logo Blue Energy" class="logo" src="Multimedia/logo-circ.png"/>
+        <div class="menu-toggle" onclick="document.querySelector('.mobile-nav').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown-container">
+                    <button class="dropdown-button">Módulos ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="estado-actual.html">Estado actual</a></li>
+                        <li><a href="gestion-proyecto.html">Gestión de Proyecto</a></li>
+                        <li><a href="gestion-produccion.html">Gestión de Producción</a></li>
+                        <li><a href="celda-manufactura.html">Celda de Manufactura Automatizada</a></li>
+                        <li><a href="presupuesto.html">Presupuesto</a></li>
+                        <li><a href="proceso-aprendizaje.html">Proceso de Aprendizaje</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-nav">
+            <a href="index.html">Inicio</a>
+            <a href="estado-actual.html">Estado actual</a>
+            <a href="gestion-proyecto.html">Gestión de Proyecto</a>
+            <a href="gestion-produccion.html">Gestión de Producción</a>
+            <a href="celda-manufactura.html">Celda de Manufactura Automatizada</a>
+            <a href="presupuesto.html">Presupuesto</a>
+            <a href="proceso-aprendizaje.html">Proceso de Aprendizaje</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#contacto">Contacto</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Módulo: Virtualización de Fábrica</h1>
+
+        <!-- CAD Modeling Section -->
+        <div class="card">
+            <h2>Modelado CAD</h2>
+            
+            <p>Para empezar, se buscó un modelo CAD que tuviera los componentes necesarios para una adecuada simulación, para ello se empleó el modelo <a href="https://grabcad.com/library/honda-nsr-150sp-1997-1" style="color: var(--electric-blue);">Honda NSR 150SP-1997</a> que se ve en la siguiente imagen:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Moto_CAD.png" alt="Modelo CAD Honda NSR 150SP-1997">
+            </div>
+
+            <div class="note">
+                <strong>NOTA:</strong> El modelo original no tenía los soportes, estos fueron agregados para evitar que se cayera durante el transporte.
+            </div>
+
+            <p>Dicho modelo se desglosó para las diferentes etapas de la línea de producción planteada, en la siguiente imagen se puede observar el chasis inicial, el chasis hasta la estación batería y el chasis hasta la estación frenos y llantas:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Moto_Partes_CAD.png" alt="Partes del modelo CAD desglosadas">
+            </div>
+
+            <div class="note">
+                <strong>Nota:</strong> Para saber más sobre cada estación de la línea de producción leer <a href="gestion-produccion.html" style="color: var(--electric-blue);">Gestión de Producción</a>.
+            </div>
+
+            <p>Teniendo el modelo de la moto, se buscaron los demás archivos CAD que permitieron crear la línea de producción que se ve en la siguiente imagen, para facilidad de ubicación y entendimiento cada estación tiene su nombre a un costado:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/ModeloCAD_Fusion.png" alt="Línea de producción completa en Fusion 360">
+            </div>
+
+            <p>En la siguiente imagen se puede observar con mayor detalle la estación robotizada (Estación Chasis), los robots empleados se describen en el módulo <a href="celda-manufactura.html" style="color: var(--electric-blue);">Celda Robotizada</a>:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/ModeloCAD_Fusion_Detalle.png" alt="Detalle de la estación robotizada">
+            </div>
+
+            <p>Cada estación de la línea de producción tiene actuadores, sensores, banda transportadora y rodillos de transporte interno, como se observa en la siguiente imagen:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/ModeloCAD_SyA.png" alt="Sensores y actuadores en las estaciones">
+            </div>
+
+            <div class="note">
+                <strong>Nota:</strong> Por simplicidad, los sensores para la simulación son de presencia y actuadores de tipo motor sin entrar en detalles no requeridos en esta etapa.
+            </div>
+
+            <p>Por otro lado, la estación <em>Porta Placas</em> emplea una cortadora láser:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Corte_Laser_CAD.png" alt="Cortadora láser para porta placas">
+            </div>
+
+            <p>Una vez hecho el ensamble de la línea en <em>Autodesk Fusion</em> se exportó el archivo general en formato STEP para poderlo emplear de la manera adecuada en Siemens NX.</p>
+        </div>
+
+        <!-- Siemens NX Section -->
+        <div class="card">
+            <h2>Siemens NX</h2>
+            
+            <p>Exportado el archivo CAD en formato STEP, se procede a importar en Siemens NX dicho archivo como se muestra en la siguiente imagen:</p>
+
+            <div class="image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Linea_Produccion_NX.jpg" alt="Línea de producción importada en Siemens NX">
+            </div>
+
+            <p>Posteriormente se configuran los cuerpos rígidos y cuerpos de colisión, es decir todo lo que va a estar en contacto y queremos simular su comportamiento, además de configurar las fuentes y sumideros de productos para ver el flujo de materiales a lo largo de la línea de producción así como configurar los transformadores para poder visualizar la transformación de las motos. Dicha configuración se ve en las siguientes imágenes:</p>
+
+            <div class="dual-image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Cuerpos_Colision1.jpg" alt="Configuración de cuerpos de colisión - Parte 1">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Cuerpos_Colision2.jpg" alt="Configuración de cuerpos de colisión - Parte 2">
+            </div>
+
+            <p>Después de esto, se configuraron las superficies de transporte, teniendo en cuenta que las bandas transportadoras van a ser la conexión entre las estaciones y los rodillos van a ser las estaciones como tal, cada banda transportadora y rodillos tienen 2 sensores de presencia, uno al inicio y otro al final para fines prácticos de lógica de programación. Como se muestra en las siguientes imágenes:</p>
+
+            <div class="dual-image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Superficies_Transporte.jpg" alt="Configuración de superficies de transporte">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Sensores.jpg" alt="Configuración de sensores">
+            </div>
+
+            <p>Lo siguiente que se hizo fue definir cada una de las señales que se van a utilizar en la programación en Ladder, por lo que se tiene que especificar el sensor o actuador y qué señal se quiere enviar al controlador:</p>
+
+            <div class="dual-image-container">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Adaptador_Senal1.jpg" alt="Configuración de adaptador de señales - Parte 1">
+                <img src="https://raw.githubusercontent.com/natc27/Blue-energy-landing/main/Multimedia/Adaptador_Senal2.jpg" alt="Configuración de adaptador de señales - Parte 2">
+            </div>
+
+            <p>Después de realizar esto, se hace el paso más importante que es realizar la conexión con el servidor OPC UA, del cual se van a extraer y enviar las señales de los sensores y actuadores, teniendo en cuenta que cada señal debe tener su respectiva etiqueta en el servidor OPC UA.</p>
+
+            <h3>Video de Simulación</h3>
+            <div class="video-container">
+                <video controls style="max-width: 100%; height: auto;">
+                    <source src="https://github.com/user-attachments/assets/a102a87e-56c7-4160-a77a-69611ef10de9" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+
+            <p>El video muestra la simulación completa de la línea de producción virtualizada, incluyendo el flujo de materiales, la operación de los robots y la interacción entre las diferentes estaciones de trabajo.</p>
+        </div>
+    </div>
+</body>
+</html>
